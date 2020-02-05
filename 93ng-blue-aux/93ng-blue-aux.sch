@@ -30,53 +30,53 @@ U 1 1 5E397DCA
 P 6850 5350
 F 0 "U3" H 6850 5450 50  0000 C CNN
 F 1 "MC33897" H 6850 5350 50  0000 C CNN
-F 2 "custom_footprints:MC33897" H 6900 5300 50  0001 C CNN
+F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 6900 5300 50  0001 C CNN
 F 3 "" H 6900 5300 50  0001 C CNN
 	1    6850 5350
 	1    0    0    -1  
 $EndComp
 $Comp
-L custom_symbols:BM62SPKS1MC2-0001AA U?
+L custom_symbols:BM62SPKS1MC2-0001AA U4
 U 1 1 5E39ABB5
 P 7550 3200
-F 0 "U?" H 7575 4375 50  0000 C CNN
+F 0 "U4" H 7575 4375 50  0000 C CNN
 F 1 "BM62SPKS1MC2-0001AA" H 7575 4284 50  0000 C CNN
-F 2 "" H 7550 3200 50  0001 C CNN
+F 2 "custom_footprints:BM62SPKS1MC2-0001AA" H 7550 3200 50  0001 C CNN
 F 3 "" H 7550 3200 50  0001 C CNN
 	1    7550 3200
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector:Conn_01x02_Male J?
+L Connector:Conn_01x02_Male J1
 U 1 1 5E3A7C97
-P 1750 2000
-F 0 "J?" V 1812 2044 50  0000 L CNN
-F 1 "12V INPUT" V 1903 2044 50  0000 L CNN
-F 2 "" H 1750 2000 50  0001 C CNN
-F 3 "~" H 1750 2000 50  0001 C CNN
-	1    1750 2000
+P 1200 2300
+F 0 "J1" V 1262 2344 50  0000 L CNN
+F 1 "12V INPUT" V 1353 2344 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 1200 2300 50  0001 C CNN
+F 3 "~" H 1200 2300 50  0001 C CNN
+	1    1200 2300
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1950 2000 2200 2000
+	1400 2300 1650 2300
 Wire Wire Line
-	2200 2000 2200 1800
+	1650 2300 1650 2100
 $Comp
-L Device:C_Small C?
+L Device:C_Small C1
 U 1 1 5E3AE258
-P 3050 1900
-F 0 "C?" V 2821 1900 50  0000 C CNN
-F 1 "0.1uF" V 2912 1900 50  0000 C CNN
-F 2 "" H 3050 1900 50  0001 C CNN
-F 3 "~" H 3050 1900 50  0001 C CNN
-	1    3050 1900
+P 2500 2200
+F 0 "C1" V 2271 2200 50  0000 C CNN
+F 1 "0.1uF" V 2362 2200 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 2500 2200 50  0001 C CNN
+F 3 "~" H 2500 2200 50  0001 C CNN
+	1    2500 2200
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3050 2000 3050 2100
-Text GLabel 3050 1800 2    50   Input ~ 0
+	2500 2300 2500 2400
+Text GLabel 2500 2100 2    50   Input ~ 0
 3.3V
-Text GLabel 3050 2100 2    50   Input ~ 0
+Text GLabel 2500 2400 2    50   Input ~ 0
 GND
 Text GLabel 1450 3350 0    50   Input ~ 0
 3.3V
@@ -85,12 +85,12 @@ Text GLabel 2500 3150 0    50   Input ~ 0
 Text GLabel 2500 5950 0    50   Input ~ 0
 GND
 $Comp
-L Connector:Conn_01x03_Male J?
+L Connector:Conn_01x03_Male J2
 U 1 1 5E3BB7CF
 P 3350 2800
-F 0 "J?" V 3412 2944 50  0000 L CNN
+F 0 "J2" V 3412 2944 50  0000 L CNN
 F 1 "ESP32 UART" V 3503 2944 50  0000 L CNN
-F 2 "" H 3350 2800 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 3350 2800 50  0001 C CNN
 F 3 "~" H 3350 2800 50  0001 C CNN
 	1    3350 2800
 	0    1    1    0   
@@ -106,12 +106,12 @@ Wire Wire Line
 Wire Wire Line
 	3450 3650 3100 3650
 $Comp
-L Connector:Conn_01x04_Male J?
+L Connector:Conn_01x04_Male J3
 U 1 1 5E3BD260
 P 4350 2800
-F 0 "J?" V 4412 2944 50  0000 L CNN
+F 0 "J3" V 4412 2944 50  0000 L CNN
 F 1 "ESP32 JTAG" V 4503 2944 50  0000 L CNN
-F 2 "" H 4350 2800 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 4350 2800 50  0001 C CNN
 F 3 "~" H 4350 2800 50  0001 C CNN
 	1    4350 2800
 	0    1    1    0   
@@ -125,60 +125,45 @@ Wire Wire Line
 Wire Wire Line
 	3100 4250 4150 4250
 $Comp
-L Switch:SW_SPDT SW?
-U 1 1 5E3C03CA
-P 3750 3350
-F 0 "SW?" H 3750 3635 50  0000 C CNN
-F 1 "ESP32 BOOT OPTION" H 3750 3544 50  0000 C CNN
-F 2 "" H 3750 3350 50  0001 C CNN
-F 3 "~" H 3750 3350 50  0001 C CNN
-	1    3750 3350
-	1    0    0    -1  
-$EndComp
-Text GLabel 3950 3450 3    50   Input ~ 0
-GND
-Wire Wire Line
-	3100 3350 3550 3350
-$Comp
-L Device:R_Small R?
+L Device:R_Small R2
 U 1 1 5E3C4F43
 P 4150 3300
-F 0 "R?" H 4209 3346 50  0000 L CNN
+F 0 "R2" H 4209 3346 50  0000 L CNN
 F 1 "100" H 4209 3255 50  0000 L CNN
-F 2 "" H 4150 3300 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 4150 3300 50  0001 C CNN
 F 3 "~" H 4150 3300 50  0001 C CNN
 	1    4150 3300
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:R_Small R?
+L Device:R_Small R3
 U 1 1 5E3C64CE
 P 4250 3550
-F 0 "R?" H 4309 3596 50  0000 L CNN
+F 0 "R3" H 4309 3596 50  0000 L CNN
 F 1 "100" H 4309 3505 50  0000 L CNN
-F 2 "" H 4250 3550 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 4250 3550 50  0001 C CNN
 F 3 "~" H 4250 3550 50  0001 C CNN
 	1    4250 3550
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:R_Small R?
+L Device:R_Small R4
 U 1 1 5E3C64D8
 P 4350 3750
-F 0 "R?" H 4409 3796 50  0000 L CNN
+F 0 "R4" H 4409 3796 50  0000 L CNN
 F 1 "100" H 4409 3705 50  0000 L CNN
-F 2 "" H 4350 3750 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 4350 3750 50  0001 C CNN
 F 3 "~" H 4350 3750 50  0001 C CNN
 	1    4350 3750
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:R_Small R?
+L Device:R_Small R5
 U 1 1 5E3C64E2
 P 4450 4000
-F 0 "R?" H 4509 4046 50  0000 L CNN
+F 0 "R5" H 4509 4046 50  0000 L CNN
 F 1 "100" H 4509 3955 50  0000 L CNN
-F 2 "" H 4450 4000 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 4450 4000 50  0001 C CNN
 F 3 "~" H 4450 4000 50  0001 C CNN
 	1    4450 4000
 	1    0    0    -1  
@@ -200,12 +185,12 @@ Wire Wire Line
 Wire Wire Line
 	4150 4250 4150 3400
 $Comp
-L Device:R_Small R?
+L Device:R_Small R1
 U 1 1 5E3CF5F4
 P 1650 3350
-F 0 "R?" V 1454 3350 50  0000 C CNN
+F 0 "R1" V 1454 3350 50  0000 C CNN
 F 1 "1k" V 1545 3350 50  0000 C CNN
-F 2 "" H 1650 3350 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1650 3350 50  0001 C CNN
 F 3 "~" H 1650 3350 50  0001 C CNN
 	1    1650 3350
 	0    1    1    0   
@@ -215,38 +200,38 @@ Wire Wire Line
 Wire Wire Line
 	1550 3350 1450 3350
 $Comp
-L custom_symbols:BA33DD0T U?
+L custom_symbols:BA33DD0T U2
 U 1 1 5E3D3413
-P 2500 1500
-F 0 "U?" V 2488 1322 50  0000 R CNN
-F 1 "BA33DD0T" V 2397 1322 50  0000 R CNN
-F 2 "" H 2500 1500 50  0001 C CNN
-F 3 "https://au.mouser.com/datasheet/2/348/baxxdd0-e-208708.pdf" H 2500 1500 50  0001 C CNN
-	1    2500 1500
+P 1950 1800
+F 0 "U2" V 1938 1622 50  0000 R CNN
+F 1 "BA33DD0T" V 1847 1622 50  0000 R CNN
+F 2 "Package_TO_SOT_THT:TO-220-3_Vertical" H 1950 1800 50  0001 C CNN
+F 3 "https://au.mouser.com/datasheet/2/348/baxxdd0-e-208708.pdf" H 1950 1800 50  0001 C CNN
+	1    1950 1800
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	2200 1800 2400 1800
+	1650 2100 1850 2100
 Wire Wire Line
-	2600 1800 3050 1800
+	2050 2100 2500 2100
 Wire Wire Line
-	2500 1800 2500 2100
+	1950 2100 1950 2400
 Wire Wire Line
-	1950 2100 2500 2100
+	1400 2400 1950 2400
 Wire Wire Line
-	2500 2100 3050 2100
-Connection ~ 2500 2100
+	1950 2400 2500 2400
+Connection ~ 1950 2400
 Wire Notes Line
-	1650 1150 3350 1150
+	1100 1450 2800 1450
 Wire Notes Line
-	3350 1150 3350 2200
+	2800 1450 2800 2500
 Wire Notes Line
-	3350 2200 1650 2200
+	2800 2500 1100 2500
 Wire Notes Line
-	1650 2200 1650 1150
-Text Notes 1700 1250 0    50   ~ 0
+	1100 2500 1100 1450
+Text Notes 1150 1550 0    50   ~ 0
 POWER SUPPLY
-Text Notes 1700 1450 0    50   ~ 0
+Text Notes 1150 1750 0    50   ~ 0
 12V TO 3.3V\n2A OUTPUT
 Wire Notes Line
 	1100 2600 5100 2600
@@ -289,23 +274,23 @@ MC33_MODE1
 Text GLabel 5900 5900 0    50   Input ~ 0
 3.3V
 $Comp
-L Device:R_Small R?
+L Device:R_Small R7
 U 1 1 5E3FEA50
 P 6150 5700
-F 0 "R?" H 6209 5746 50  0000 L CNN
+F 0 "R7" H 6209 5746 50  0000 L CNN
 F 1 "2.7k" H 6209 5655 50  0000 L CNN
-F 2 "" H 6150 5700 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6150 5700 50  0001 C CNN
 F 3 "~" H 6150 5700 50  0001 C CNN
 	1    6150 5700
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:R_Small R?
+L Device:R_Small R6
 U 1 1 5E3FEC80
 P 5900 5600
-F 0 "R?" H 5841 5554 50  0000 R CNN
+F 0 "R6" H 5841 5554 50  0000 R CNN
 F 1 "10k" H 5841 5645 50  0000 R CNN
-F 2 "" H 5900 5600 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 5900 5600 50  0001 C CNN
 F 3 "~" H 5900 5600 50  0001 C CNN
 	1    5900 5600
 	-1   0    0    1   
@@ -336,10 +321,10 @@ Wire Wire Line
 Text Notes 3700 4550 0    50   ~ 0
 NOTE: USING ESP32 \nCAN CONTROLLER (SJA1000)
 $Comp
-L Diode:MMBZxx D?
+L Diode:MMBZxx D3
 U 1 1 5E40B3B3
 P 8850 5250
-F 0 "D?" H 9037 5296 50  0000 L CNN
+F 0 "D3" H 9037 5296 50  0000 L CNN
 F 1 "MMBZ15VDLT1" H 9037 5205 50  0000 L CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 9000 5150 50  0001 L CNN
 F 3 "http://www.onsemi.com/pub/Collateral/MMBZ5V6ALT1-D.PDF" V 8750 5250 50  0001 C CNN
@@ -347,23 +332,23 @@ F 3 "http://www.onsemi.com/pub/Collateral/MMBZ5V6ALT1-D.PDF" V 8750 5250 50  000
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:D D?
+L Device:D D1
 U 1 1 5E40BAD4
 P 7650 5450
-F 0 "D?" V 7604 5529 50  0000 L CNN
+F 0 "D1" V 7604 5529 50  0000 L CNN
 F 1 "D" V 7695 5529 50  0000 L CNN
-F 2 "" H 7650 5450 50  0001 C CNN
+F 2 "Diode_SMD:D_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7650 5450 50  0001 C CNN
 F 3 "~" H 7650 5450 50  0001 C CNN
 	1    7650 5450
 	0    1    1    0   
 $EndComp
 $Comp
-L Device:R_Small R?
+L Device:R_Small R9
 U 1 1 5E40C9A1
 P 7850 5200
-F 0 "R?" H 7909 5246 50  0000 L CNN
+F 0 "R9" H 7909 5246 50  0000 L CNN
 F 1 "6.49k" H 7909 5155 50  0000 L CNN
-F 2 "" H 7850 5200 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7850 5200 50  0001 C CNN
 F 3 "~" H 7850 5200 50  0001 C CNN
 	1    7850 5200
 	1    0    0    -1  
@@ -377,24 +362,24 @@ Wire Wire Line
 Wire Wire Line
 	7850 5400 7500 5400
 $Comp
-L Device:L_Small L?
+L Device:L_Small L1
 U 1 1 5E40E59B
 P 7950 5050
-F 0 "L?" V 8135 5050 50  0000 C CNN
+F 0 "L1" V 8135 5050 50  0000 C CNN
 F 1 "47uH" V 8044 5050 50  0000 C CNN
-F 2 "" H 7950 5050 50  0001 C CNN
+F 2 "Inductor_SMD:L_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7950 5050 50  0001 C CNN
 F 3 "~" H 7950 5050 50  0001 C CNN
 	1    7950 5050
 	0    -1   -1   0   
 $EndComp
 Connection ~ 7850 5050
 $Comp
-L Device:R_Small R?
+L Device:R_Small R10
 U 1 1 5E40EAF0
 P 7950 4750
-F 0 "R?" V 8146 4750 50  0000 C CNN
+F 0 "R10" V 8146 4750 50  0000 C CNN
 F 1 "1k" V 8055 4750 50  0000 C CNN
-F 2 "" H 7950 4750 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7950 4750 50  0001 C CNN
 F 3 "~" H 7950 4750 50  0001 C CNN
 	1    7950 4750
 	0    -1   -1   0   
@@ -404,12 +389,12 @@ Wire Wire Line
 Wire Wire Line
 	8050 4750 8050 5050
 $Comp
-L Device:C_Small C?
+L Device:C_Small C3
 U 1 1 5E410D36
 P 7550 4850
-F 0 "C?" H 7458 4804 50  0000 R CNN
+F 0 "C3" H 7458 4804 50  0000 R CNN
 F 1 "0.1uF" H 7458 4895 50  0000 R CNN
-F 2 "" H 7550 4850 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7550 4850 50  0001 C CNN
 F 3 "~" H 7550 4850 50  0001 C CNN
 	1    7550 4850
 	-1   0    0    1   
@@ -441,12 +426,12 @@ Wire Wire Line
 	7550 5850 6900 5850
 Connection ~ 6900 5850
 $Comp
-L Device:C_Small C?
+L Device:C_Small C4
 U 1 1 5E42115E
 P 8250 5150
-F 0 "C?" H 8158 5104 50  0000 R CNN
+F 0 "C4" H 8158 5104 50  0000 R CNN
 F 1 "47pF" H 8158 5195 50  0000 R CNN
-F 2 "" H 8250 5150 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 8250 5150 50  0001 C CNN
 F 3 "~" H 8250 5150 50  0001 C CNN
 	1    8250 5150
 	-1   0    0    1   
@@ -506,12 +491,12 @@ GND
 Text GLabel 8250 3850 2    50   Input ~ 0
 GND
 $Comp
-L Connector:AudioJack3 J?
+L Connector:AudioJack3 J4
 U 1 1 5E43F21A
 P 5600 2950
-F 0 "J?" H 5582 3275 50  0000 C CNN
+F 0 "J4" H 5582 3275 50  0000 C CNN
 F 1 "AUX OUT" H 5582 3184 50  0000 C CNN
-F 2 "" H 5600 2950 50  0001 C CNN
+F 2 "Connector_Audio:Jack_3.5mm_CUI_SJ-3523-SMT_Horizontal" H 5600 2950 50  0001 C CNN
 F 3 "~" H 5600 2950 50  0001 C CNN
 	1    5600 2950
 	1    0    0    -1  
@@ -533,12 +518,12 @@ Wire Wire Line
 Wire Wire Line
 	6850 2950 5800 2950
 $Comp
-L Connector:AudioJack3 J?
+L Connector:AudioJack3 J5
 U 1 1 5E4599C5
 P 5600 3550
-F 0 "J?" H 5582 3875 50  0000 C CNN
+F 0 "J5" H 5582 3875 50  0000 C CNN
 F 1 "MIC IN" H 5582 3784 50  0000 C CNN
-F 2 "" H 5600 3550 50  0001 C CNN
+F 2 "Connector_Audio:Jack_3.5mm_CUI_SJ-3523-SMT_Horizontal" H 5600 3550 50  0001 C CNN
 F 3 "~" H 5600 3550 50  0001 C CNN
 	1    5600 3550
 	1    0    0    -1  
@@ -559,12 +544,12 @@ Wire Wire Line
 	6700 3550 5800 3550
 Connection ~ 5800 3550
 $Comp
-L Device:C_Small C?
+L Device:C_Small C2
 U 1 1 5E45FD4C
 P 6500 3500
-F 0 "C?" V 6729 3500 50  0000 C CNN
+F 0 "C2" V 6729 3500 50  0000 C CNN
 F 1 "4.7uF" V 6638 3500 50  0000 C CNN
-F 2 "" H 6500 3500 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6500 3500 50  0001 C CNN
 F 3 "~" H 6500 3500 50  0001 C CNN
 	1    6500 3500
 	0    -1   -1   0   
@@ -577,39 +562,17 @@ Wire Wire Line
 	6800 3450 6900 3450
 Text GLabel 6400 3500 0    50   Input ~ 0
 GND
-$Comp
-L Connector:TestPoint TP?
-U 1 1 5E46516A
-P 9000 3350
-F 0 "TP?" H 9058 3468 50  0000 L CNN
-F 1 "BM62_TX" H 9058 3377 50  0000 L CNN
-F 2 "" H 9200 3350 50  0001 C CNN
-F 3 "~" H 9200 3350 50  0001 C CNN
-	1    9000 3350
-	1    0    0    -1  
-$EndComp
-$Comp
-L Connector:TestPoint TP?
-U 1 1 5E46A6AB
-P 9000 3450
-F 0 "TP?" H 8942 3476 50  0000 R CNN
-F 1 "BM62_RX" H 8942 3567 50  0000 R CNN
-F 2 "" H 9200 3450 50  0001 C CNN
-F 3 "~" H 9200 3450 50  0001 C CNN
-	1    9000 3450
-	-1   0    0    1   
-$EndComp
 Wire Wire Line
 	9000 3350 8250 3350
 Wire Wire Line
 	8250 3450 9000 3450
 $Comp
-L Connector:TestPoint TP?
+L Connector:TestPoint TP1
 U 1 1 5E47DF3A
 P 6700 2250
-F 0 "TP?" H 6758 2368 50  0000 L CNN
+F 0 "TP1" H 6758 2368 50  0000 L CNN
 F 1 "TX_COND" H 6758 2277 50  0000 L CNN
-F 2 "" H 6900 2250 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Pad_D2.0mm" H 6900 2250 50  0001 C CNN
 F 3 "~" H 6900 2250 50  0001 C CNN
 	1    6700 2250
 	1    0    0    -1  
@@ -620,12 +583,12 @@ Connection ~ 6700 2250
 Wire Wire Line
 	6700 2250 6650 2250
 $Comp
-L Connector:TestPoint TP?
+L Connector:TestPoint TP2
 U 1 1 5E480A36
 P 6700 3950
-F 0 "TP?" V 6650 3950 50  0000 C CNN
+F 0 "TP2" V 6650 3950 50  0000 C CNN
 F 1 "FWD" V 6750 3950 50  0000 C CNN
-F 2 "" H 6900 3950 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Pad_D2.0mm" H 6900 3950 50  0001 C CNN
 F 3 "~" H 6900 3950 50  0001 C CNN
 	1    6700 3950
 	0    -1   -1   0   
@@ -633,12 +596,12 @@ $EndComp
 Wire Wire Line
 	6700 3950 6900 3950
 $Comp
-L Connector:TestPoint TP?
+L Connector:TestPoint TP5
 U 1 1 5E483497
 P 8350 3150
-F 0 "TP?" V 8304 3338 50  0000 L CNN
+F 0 "TP5" V 8304 3338 50  0000 L CNN
 F 1 "PLAY/PAUSE" V 8395 3338 50  0000 L CNN
-F 2 "" H 8550 3150 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Pad_D2.0mm" H 8550 3150 50  0001 C CNN
 F 3 "~" H 8550 3150 50  0001 C CNN
 	1    8350 3150
 	0    1    1    0   
@@ -646,23 +609,23 @@ $EndComp
 Wire Wire Line
 	8250 3150 8350 3150
 $Comp
-L Connector:TestPoint TP?
+L Connector:TestPoint TP3
 U 1 1 5E4863CC
 P 8250 3250
-F 0 "TP?" V 8204 3438 50  0000 L CNN
+F 0 "TP3" V 8204 3438 50  0000 L CNN
 F 1 "REV" V 8295 3438 50  0000 L CNN
-F 2 "" H 8450 3250 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Pad_D2.0mm" H 8450 3250 50  0001 C CNN
 F 3 "~" H 8450 3250 50  0001 C CNN
 	1    8250 3250
 	0    1    1    0   
 $EndComp
 $Comp
-L Connector:TestPoint TP?
+L Connector:TestPoint TP6
 U 1 1 5E486CEC
 P 8450 3550
-F 0 "TP?" V 8404 3738 50  0000 L CNN
+F 0 "TP6" V 8404 3738 50  0000 L CNN
 F 1 "VOL-" V 8495 3738 50  0000 L CNN
-F 2 "" H 8650 3550 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Pad_D2.0mm" H 8650 3550 50  0001 C CNN
 F 3 "~" H 8650 3550 50  0001 C CNN
 	1    8450 3550
 	0    1    1    0   
@@ -670,12 +633,12 @@ $EndComp
 Wire Wire Line
 	8250 3550 8450 3550
 $Comp
-L Connector:TestPoint TP?
+L Connector:TestPoint TP4
 U 1 1 5E48E99A
 P 8250 3650
-F 0 "TP?" V 8204 3838 50  0000 L CNN
+F 0 "TP4" V 8204 3838 50  0000 L CNN
 F 1 "VOL+" V 8295 3838 50  0000 L CNN
-F 2 "" H 8450 3650 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Pad_D2.0mm" H 8450 3650 50  0001 C CNN
 F 3 "~" H 8450 3650 50  0001 C CNN
 	1    8250 3650
 	0    1    1    0   
@@ -683,12 +646,12 @@ $EndComp
 Wire Wire Line
 	6900 3650 6900 3700
 $Comp
-L Device:R_Small R?
+L Device:R_Small R8
 U 1 1 5E4A3DEC
 P 6800 3750
-F 0 "R?" V 6604 3750 50  0000 C CNN
+F 0 "R8" V 6604 3750 50  0000 C CNN
 F 1 "1k" V 6695 3750 50  0000 C CNN
-F 2 "" H 6800 3750 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6800 3750 50  0001 C CNN
 F 3 "~" H 6800 3750 50  0001 C CNN
 	1    6800 3750
 	0    1    1    0   
@@ -698,23 +661,23 @@ Text GLabel 6700 3750 0    50   Input ~ 0
 Text GLabel 8250 2250 2    50   Input ~ 0
 3.3V
 $Comp
-L Device:LED D?
+L Device:LED D4
 U 1 1 5E4B1E05
 P 9100 2850
-F 0 "D?" H 9093 3066 50  0000 C CNN
+F 0 "D4" H 9093 3066 50  0000 C CNN
 F 1 "LED" H 9093 2975 50  0000 C CNN
-F 2 "" H 9100 2850 50  0001 C CNN
+F 2 "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 9100 2850 50  0001 C CNN
 F 3 "~" H 9100 2850 50  0001 C CNN
 	1    9100 2850
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:LED D?
+L Device:LED D2
 U 1 1 5E4B28C1
 P 8650 2950
-F 0 "D?" H 8643 3166 50  0000 C CNN
+F 0 "D2" H 8643 3166 50  0000 C CNN
 F 1 "LED" H 8643 3075 50  0000 C CNN
-F 2 "" H 8650 2950 50  0001 C CNN
+F 2 "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 8650 2950 50  0001 C CNN
 F 3 "~" H 8650 2950 50  0001 C CNN
 	1    8650 2950
 	1    0    0    -1  
@@ -742,4 +705,71 @@ Wire Notes Line
 	5200 1900 5200 4350
 Text Notes 5250 2000 0    50   ~ 0
 BLUETOOTH AUDIO MODULE
+Text GLabel 6900 2550 0    50   Input ~ 0
+BM62_P2_0
+Text GLabel 6900 2350 0    50   Input ~ 0
+BM62_EAN
+Text GLabel 8250 3050 2    50   Input ~ 0
+BM62_P2_4
+$Comp
+L Connector:Conn_01x03_Male J6
+U 1 1 5E508477
+P 9000 4300
+F 0 "J6" V 9150 4150 50  0000 R CNN
+F 1 "BM62 UART" V 9050 4150 50  0000 R CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 9000 4300 50  0001 C CNN
+F 3 "~" H 9000 4300 50  0001 C CNN
+	1    9000 4300
+	0    -1   -1   0   
+$EndComp
+Text GLabel 9100 4100 1    50   Input ~ 0
+GND
+Text GLabel 8900 4100 1    50   Input ~ 0
+BM62_RX
+Text GLabel 9000 4100 1    50   Input ~ 0
+BM62_TX
+Text GLabel 3100 3350 2    50   Input ~ 0
+ESP32_BOOTOPT
+Text GLabel 3800 2000 0    50   Input ~ 0
+ESP32_BOOTOPT
+Text GLabel 3800 2100 0    50   Input ~ 0
+BM62_P2_0
+Text GLabel 3800 2200 0    50   Input ~ 0
+BM62_EAN
+Text GLabel 3800 2300 0    50   Input ~ 0
+BM62_P2_4
+$Comp
+L Switch:SW_DIP_x04 SW1
+U 1 1 5E520477
+P 4100 2200
+F 0 "SW1" H 4100 2667 50  0000 C CNN
+F 1 "SYS CONFIG" H 4100 2576 50  0000 C CNN
+F 2 "Button_Switch_SMD:SW_DIP_SPSTx04_Slide_Omron_A6S-410x_W8.9mm_P2.54mm" H 4100 2200 50  0001 C CNN
+F 3 "~" H 4100 2200 50  0001 C CNN
+	1    4100 2200
+	1    0    0    -1  
+$EndComp
+Text GLabel 4450 2300 2    50   Input ~ 0
+GND
+Wire Wire Line
+	4400 2000 4400 2100
+Connection ~ 4400 2100
+Wire Wire Line
+	4400 2100 4400 2200
+Connection ~ 4400 2200
+Wire Wire Line
+	4400 2200 4400 2300
+Wire Wire Line
+	4450 2300 4400 2300
+Connection ~ 4400 2300
+Wire Notes Line
+	2900 2500 4750 2500
+Wire Notes Line
+	4750 2500 4750 1450
+Wire Notes Line
+	4750 1450 2900 1450
+Wire Notes Line
+	2900 1450 2900 2500
+Text Notes 2950 1700 0    50   ~ 0
+SYSTEM CONFIG SWITCHES\nUSED TO PUT ESP32 OR BM62\nINTO PROGRAM MODE
 $EndSCHEMATC
