@@ -211,8 +211,6 @@ Wire Wire Line
 	1950 2500 2500 2500
 Connection ~ 1950 2500
 Wire Notes Line
-	1100 1550 2800 1550
-Wire Notes Line
 	2800 1550 2800 2600
 Text Notes 1150 1650 0    50   ~ 0
 POWER SUPPLY
@@ -695,45 +693,41 @@ Text GLabel 8900 4200 1    50   Input ~ 0
 BM62_TX
 Text GLabel 3100 3350 2    50   Input ~ 0
 ESP32_BOOTOPT
-Text GLabel 3800 2100 0    50   Input ~ 0
+Text GLabel 3700 2100 0    50   Input ~ 0
 ESP32_BOOTOPT
-Text GLabel 3800 2200 0    50   Input ~ 0
+Text GLabel 3700 2200 0    50   Input ~ 0
 BM62_P2_0
-Text GLabel 3800 2300 0    50   Input ~ 0
+Text GLabel 3700 2300 0    50   Input ~ 0
 BM62_EAN
-Text GLabel 3800 2400 0    50   Input ~ 0
+Text GLabel 3700 2400 0    50   Input ~ 0
 BM62_P2_4
 $Comp
 L Switch:SW_DIP_x04 SW1
 U 1 1 5E520477
-P 4100 2300
-F 0 "SW1" H 4100 2767 50  0000 C CNN
-F 1 "SYS CONFIG" H 4100 2676 50  0000 C CNN
-F 2 "Button_Switch_SMD:SW_DIP_SPSTx04_Slide_Omron_A6S-410x_W8.9mm_P2.54mm" H 4100 2300 50  0001 C CNN
-F 3 "~" H 4100 2300 50  0001 C CNN
-	1    4100 2300
+P 4000 2300
+F 0 "SW1" H 4000 2767 50  0000 C CNN
+F 1 "SYS CONFIG" H 4000 2676 50  0000 C CNN
+F 2 "Button_Switch_SMD:SW_DIP_SPSTx04_Slide_Omron_A6S-410x_W8.9mm_P2.54mm" H 4000 2300 50  0001 C CNN
+F 3 "~" H 4000 2300 50  0001 C CNN
+	1    4000 2300
 	1    0    0    -1  
 $EndComp
-Text GLabel 4450 2400 2    50   Input ~ 0
+Text GLabel 4350 2400 2    50   Input ~ 0
 GND
 Wire Wire Line
-	4400 2100 4400 2200
-Connection ~ 4400 2200
+	4300 2100 4300 2200
+Connection ~ 4300 2200
 Wire Wire Line
-	4400 2200 4400 2300
-Connection ~ 4400 2300
+	4300 2200 4300 2300
+Connection ~ 4300 2300
 Wire Wire Line
-	4400 2300 4400 2400
+	4300 2300 4300 2400
 Wire Wire Line
-	4450 2400 4400 2400
-Connection ~ 4400 2400
+	4350 2400 4300 2400
+Connection ~ 4300 2400
 Wire Notes Line
-	4750 2600 4750 1550
-Wire Notes Line
-	4750 1550 2900 1550
-Wire Notes Line
-	2900 1550 2900 2600
-Text Notes 2950 1800 0    50   ~ 0
+	4650 2600 4650 1550
+Text Notes 2850 1800 0    50   ~ 0
 SYSTEM CONFIG SWITCHES\nUSED TO PUT ESP32 OR BM62\nINTO PROGRAM MODE
 $Comp
 L Connector:Screw_Terminal_01x02 J1
@@ -771,4 +765,6 @@ Wire Notes Line
 	5100 2000 5100 6100
 Wire Notes Line
 	1100 6100 9550 6100
+Wire Notes Line
+	1100 1550 4650 1550
 $EndSCHEMATC

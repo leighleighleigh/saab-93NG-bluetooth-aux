@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:93ng-blue-aux-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -14,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L RF_Module:ESP32-WROOM-32D U1
+L 93ng-blue-aux-rescue:ESP32-WROOM-32D-RF_Module U1
 U 1 1 5E395DE5
 P 2500 4550
 F 0 "U1" H 2500 6131 50  0000 C CNN
