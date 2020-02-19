@@ -361,10 +361,10 @@ Wire Wire Line
 Wire Wire Line
 	7950 4750 7950 5050
 $Comp
-L Device:C_Small C3
+L Device:C_Small C4
 U 1 1 5E410D36
 P 7450 4850
-F 0 "C3" H 7358 4804 50  0000 R CNN
+F 0 "C4" H 7358 4804 50  0000 R CNN
 F 1 "0.1uF" H 7358 4895 50  0000 R CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7450 4850 50  0001 C CNN
 F 3 "~" H 7450 4850 50  0001 C CNN
@@ -398,10 +398,10 @@ Wire Wire Line
 	7450 5850 6800 5850
 Connection ~ 6800 5850
 $Comp
-L Device:C_Small C4
+L Device:C_Small C5
 U 1 1 5E42115E
 P 8150 5150
-F 0 "C4" H 8058 5104 50  0000 R CNN
+F 0 "C5" H 8058 5104 50  0000 R CNN
 F 1 "47pF" H 8058 5195 50  0000 R CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 8150 5150 50  0001 C CNN
 F 3 "~" H 8150 5150 50  0001 C CNN
@@ -510,10 +510,10 @@ Wire Wire Line
 	6600 3650 5700 3650
 Connection ~ 5700 3650
 $Comp
-L Device:C_Small C2
+L Device:C_Small C3
 U 1 1 5E45FD4C
 P 6400 3600
-F 0 "C2" V 6629 3600 50  0000 C CNN
+F 0 "C3" V 6629 3600 50  0000 C CNN
 F 1 "4.7uF" V 6538 3600 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6400 3600 50  0001 C CNN
 F 3 "~" H 6400 3600 50  0001 C CNN
@@ -532,83 +532,6 @@ Wire Wire Line
 	8900 3450 8150 3450
 Wire Wire Line
 	8150 3550 8900 3550
-$Comp
-L Connector:TestPoint TP1
-U 1 1 5E47DF3A
-P 6600 2350
-F 0 "TP1" H 6658 2468 50  0000 L CNN
-F 1 "TX_COND" H 6658 2377 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_D2.0mm" H 6800 2350 50  0001 C CNN
-F 3 "~" H 6800 2350 50  0001 C CNN
-	1    6600 2350
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	6800 2350 6600 2350
-Connection ~ 6600 2350
-Wire Wire Line
-	6600 2350 6550 2350
-$Comp
-L Connector:TestPoint TP2
-U 1 1 5E480A36
-P 6600 4050
-F 0 "TP2" V 6550 4050 50  0000 C CNN
-F 1 "FWD" V 6650 4050 50  0000 C CNN
-F 2 "TestPoint:TestPoint_Pad_D2.0mm" H 6800 4050 50  0001 C CNN
-F 3 "~" H 6800 4050 50  0001 C CNN
-	1    6600 4050
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	6600 4050 6800 4050
-$Comp
-L Connector:TestPoint TP5
-U 1 1 5E483497
-P 8250 3250
-F 0 "TP5" V 8204 3438 50  0000 L CNN
-F 1 "PLAY/PAUSE" V 8295 3438 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_D2.0mm" H 8450 3250 50  0001 C CNN
-F 3 "~" H 8450 3250 50  0001 C CNN
-	1    8250 3250
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	8150 3250 8250 3250
-$Comp
-L Connector:TestPoint TP3
-U 1 1 5E4863CC
-P 8150 3350
-F 0 "TP3" V 8104 3538 50  0000 L CNN
-F 1 "REV" V 8195 3538 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_D2.0mm" H 8350 3350 50  0001 C CNN
-F 3 "~" H 8350 3350 50  0001 C CNN
-	1    8150 3350
-	0    1    1    0   
-$EndComp
-$Comp
-L Connector:TestPoint TP6
-U 1 1 5E486CEC
-P 8350 3650
-F 0 "TP6" V 8304 3838 50  0000 L CNN
-F 1 "VOL-" V 8395 3838 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_D2.0mm" H 8550 3650 50  0001 C CNN
-F 3 "~" H 8550 3650 50  0001 C CNN
-	1    8350 3650
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	8150 3650 8350 3650
-$Comp
-L Connector:TestPoint TP4
-U 1 1 5E48E99A
-P 8150 3750
-F 0 "TP4" V 8104 3938 50  0000 L CNN
-F 1 "VOL+" V 8195 3938 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_D2.0mm" H 8350 3750 50  0001 C CNN
-F 3 "~" H 8350 3750 50  0001 C CNN
-	1    8150 3750
-	0    1    1    0   
-$EndComp
 Wire Wire Line
 	6800 3750 6800 3800
 $Comp
@@ -769,8 +692,8 @@ L Device:CP C1
 U 1 1 5E4E29F0
 P 1650 2350
 F 0 "C1" H 1768 2396 50  0000 L CNN
-F 1 "47uF" H 1768 2305 50  0000 L CNN
-F 2 "" H 1688 2200 50  0001 C CNN
+F 1 "10uF" H 1768 2305 50  0000 L CNN
+F 2 "Capacitor_THT:CP_Radial_D10.0mm_P5.00mm" H 1688 2200 50  0001 C CNN
 F 3 "~" H 1650 2350 50  0001 C CNN
 	1    1650 2350
 	1    0    0    -1  
@@ -785,4 +708,6 @@ Wire Wire Line
 Wire Wire Line
 	1500 2400 1400 2400
 Connection ~ 1650 2200
+Wire Wire Line
+	6550 2350 6800 2350
 $EndSCHEMATC
