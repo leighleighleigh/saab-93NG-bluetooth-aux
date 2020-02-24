@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source /home/leigh/Documents/GitHub/saab-93NG-bluetooth-aux/93ng-blue-aux/93ng-blue-aux-esp32-only.sch)
-    (date "Sun 23 Feb 2020 19:08:41 AEDT")
+    (date "Mon 24 Feb 2020 20:16:41 AEDT")
     (tool "Eeschema 5.1.4-e60b266~84~ubuntu19.04.1")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -19,6 +19,8 @@
       (value ESP32-WROOM-32D)
       (footprint RF_Module:ESP32-WROOM-32)
       (datasheet https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32d_esp32-wroom-32u_datasheet_en.pdf)
+      (fields
+        (field (name manf#) ESP32-WROOM-32D))
       (libsource (lib 93ng-blue-aux-rescue) (part ESP32-WROOM-32D-RF_Module) (description ""))
       (sheetpath (names /) (tstamps /))
       (tstamp 5E395DE5))
@@ -109,6 +111,8 @@
       (value CP2102N-A01-GQFN28)
       (footprint Package_DFN_QFN:QFN-28-1EP_5x5mm_P0.5mm_EP3.35x3.35mm)
       (datasheet https://www.silabs.com/documents/public/data-sheets/cp2102n-datasheet.pdf)
+      (fields
+        (field (name manf#) CP2102N-A02-GQFN24))
       (libsource (lib Interface_USB) (part CP2102N-A01-GQFN28) (description "USB to UART master bridge, QFN-28"))
       (sheetpath (names /) (tstamps /))
       (tstamp 5E52271F))
@@ -116,6 +120,8 @@
       (value FUSB302BMPX)
       (footprint Package_DFN_QFN:WQFN-14-1EP_2.5x2.5mm_P0.5mm_EP1.45x1.45mm)
       (datasheet http://www.onsemi.com/pub/Collateral/FUSB302B-D.PDF)
+      (fields
+        (field (name manf#) FUSB302BMPX))
       (libsource (lib Interface_USB) (part FUSB302BMPX) (description "Programmable USB Type-C Controller w/PD, I2C address 0x22, WQFN-14"))
       (sheetpath (names /) (tstamps /))
       (tstamp 5E52860D))
@@ -123,12 +129,14 @@
       (value USB_C_Receptacle_USB2.0)
       (footprint Connector_USB:USB_C_Receptacle_Amphenol_12401610E4-2A)
       (datasheet https://www.usb.org/sites/default/files/documents/usb_type-c.zip)
+      (fields
+        (field (name manf#) 12401610E4#2A))
       (libsource (lib Connector) (part USB_C_Receptacle_USB2.0) (description "USB 2.0-only Type-C Receptacle connector"))
       (sheetpath (names /) (tstamps /))
       (tstamp 5E53E2D6))
     (comp (ref C1)
       (value 10uF)
-      (footprint Capacitor_THT:CP_Radial_D10.0mm_P5.00mm)
+      (footprint Capacitor_SMD:C_2010_5025Metric_Pad1.52x2.65mm_HandSolder)
       (datasheet ~)
       (libsource (lib Device) (part CP) (description "Polarized capacitor"))
       (sheetpath (names /) (tstamps /))
@@ -170,7 +178,7 @@
       (tstamp 5E5753FB))
     (comp (ref D4)
       (value 1N5819)
-      (footprint Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal)
+      (footprint Diode_SMD:D_0805_2012Metric_Pad1.15x1.40mm_HandSolder)
       (datasheet http://www.vishay.com/docs/88525/1n5817.pdf)
       (libsource (lib Diode) (part 1N5819) (description "40V 1A Schottky Barrier Rectifier Diode, DO-41"))
       (sheetpath (names /) (tstamps /))
@@ -228,6 +236,8 @@
       (value S8050)
       (footprint Package_TO_SOT_SMD:SOT-23_Handsoldering)
       (datasheet http://www.unisonic.com.tw/datasheet/S8050.pdf)
+      (fields
+        (field (name manf#) MMS8050-H-TP))
       (libsource (lib Transistor_BJT) (part S8050) (description "0.7A Ic, 20V Vce, Low Voltage High Current NPN Transistor, TO-92"))
       (sheetpath (names /) (tstamps /))
       (tstamp 5E7204FE))
@@ -242,6 +252,8 @@
       (value S8050)
       (footprint Package_TO_SOT_SMD:SOT-23_Handsoldering)
       (datasheet http://www.unisonic.com.tw/datasheet/S8050.pdf)
+      (fields
+        (field (name manf#) MMS8050-H-TP))
       (libsource (lib Transistor_BJT) (part S8050) (description "0.7A Ic, 20V Vce, Low Voltage High Current NPN Transistor, TO-92"))
       (sheetpath (names /) (tstamps /))
       (tstamp 5E6515ED))

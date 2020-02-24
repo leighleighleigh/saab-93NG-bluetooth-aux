@@ -22,6 +22,7 @@ F 0 "U1" H 2150 4600 50  0000 C CNN
 F 1 "ESP32-WROOM-32D" V 1600 3700 50  0000 C CNN
 F 2 "RF_Module:ESP32-WROOM-32" H 2150 3100 50  0001 C CNN
 F 3 "https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32d_esp32-wroom-32u_datasheet_en.pdf" H 1850 4650 50  0001 C CNN
+F 4 "ESP32-WROOM-32D" H 2150 4600 50  0001 C CNN "manf#"
 	1    2150 4600
 	1    0    0    -1  
 $EndComp
@@ -292,6 +293,7 @@ F 0 "U5" V 7200 1800 50  0000 C CNN
 F 1 "CP2102N-A01-GQFN28" V 7300 2200 50  0000 C CNN
 F 2 "Package_DFN_QFN:QFN-28-1EP_5x5mm_P0.5mm_EP3.35x3.35mm" H 8200 1750 50  0001 L CNN
 F 3 "https://www.silabs.com/documents/public/data-sheets/cp2102n-datasheet.pdf" H 7800 2200 50  0001 C CNN
+F 4 "CP2102N-A02-GQFN24" V 7750 2950 50  0001 C CNN "manf#"
 	1    7750 2950
 	1    0    0    -1  
 $EndComp
@@ -303,6 +305,7 @@ F 0 "U4" H 5850 3261 50  0000 C CNN
 F 1 "FUSB302BMPX" H 5850 3170 50  0000 C CNN
 F 2 "Package_DFN_QFN:WQFN-14-1EP_2.5x2.5mm_P0.5mm_EP1.45x1.45mm" H 5850 3250 50  0001 C CNN
 F 3 "http://www.onsemi.com/pub/Collateral/FUSB302B-D.PDF" H 5950 3350 50  0001 C CNN
+F 4 "FUSB302BMPX" H 5850 3750 50  0001 C CNN "manf#"
 	1    5850 3750
 	1    0    0    -1  
 $EndComp
@@ -314,6 +317,7 @@ F 0 "J3" V 5350 1950 50  0000 L CNN
 F 1 "USB_C_Receptacle_USB2.0" V 5450 1500 50  0000 L CNN
 F 2 "Connector_USB:USB_C_Receptacle_Amphenol_12401610E4-2A" H 6050 2000 50  0001 C CNN
 F 3 "https://www.usb.org/sites/default/files/documents/usb_type-c.zip" H 6050 2000 50  0001 C CNN
+F 4 "12401610E4#2A" V 5900 2000 50  0001 C CNN "manf#"
 	1    5900 2000
 	0    1    1    0   
 $EndComp
@@ -367,7 +371,7 @@ U 1 1 5E4E29F0
 P 2400 2300
 F 0 "C1" H 2350 2350 50  0000 L CNN
 F 1 "10uF" H 2300 2250 50  0000 L CNN
-F 2 "Capacitor_THT:CP_Radial_D10.0mm_P5.00mm" H 2438 2150 50  0001 C CNN
+F 2 "Capacitor_SMD:C_2010_5025Metric_Pad1.52x2.65mm_HandSolder" H 2438 2150 50  0001 C CNN
 F 3 "~" H 2400 2300 50  0001 C CNN
 	1    2400 2300
 	1    0    0    -1  
@@ -460,7 +464,7 @@ U 1 1 5E5B490D
 P 6500 2750
 F 0 "D4" V 6546 2671 50  0000 R CNN
 F 1 "1N5819" V 6455 2671 50  0000 R CNN
-F 2 "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal" H 6500 2575 50  0001 C CNN
+F 2 "Diode_SMD:D_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6500 2575 50  0001 C CNN
 F 3 "http://www.vishay.com/docs/88525/1n5817.pdf" H 6500 2750 50  0001 C CNN
 	1    6500 2750
 	0    -1   -1   0   
@@ -633,6 +637,7 @@ F 0 "Q2" H 4341 3304 50  0000 L CNN
 F 1 "S8050" H 4341 3395 50  0000 L CNN
 F 2 "Package_TO_SOT_SMD:SOT-23_Handsoldering" H 4350 3275 50  0001 L CIN
 F 3 "http://www.unisonic.com.tw/datasheet/S8050.pdf" H 4150 3350 50  0001 L CNN
+F 4 "MMS8050-H-TP" H 4150 3350 50  0001 C CNN "manf#"
 	1    4150 3350
 	-1   0    0    1   
 $EndComp
@@ -669,6 +674,7 @@ F 0 "Q1" H 4240 2546 50  0000 L CNN
 F 1 "S8050" H 4240 2455 50  0000 L CNN
 F 2 "Package_TO_SOT_SMD:SOT-23_Handsoldering" H 4250 2425 50  0001 L CIN
 F 3 "http://www.unisonic.com.tw/datasheet/S8050.pdf" H 4050 2500 50  0001 L CNN
+F 4 "MMS8050-H-TP" H 4050 2500 50  0001 C CNN "manf#"
 	1    4050 2500
 	1    0    0    -1  
 $EndComp
