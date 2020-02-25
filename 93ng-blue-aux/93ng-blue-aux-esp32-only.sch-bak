@@ -41,17 +41,6 @@ Text GLabel 2150 3200 1    50   Input ~ 0
 3.3V
 Text GLabel 2150 6000 0    50   Input ~ 0
 GND
-$Comp
-L Connector:Conn_01x03_Male J2
-U 1 1 5E3BB7CF
-P 3350 3850
-F 0 "J2" V 3400 3550 50  0000 L CNN
-F 1 "ESP32 UART" V 3300 3550 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 3350 3850 50  0001 C CNN
-F 3 "~" H 3350 3850 50  0001 C CNN
-	1    3350 3850
-	-1   0    0    1   
-$EndComp
 Text GLabel 3150 3750 0    50   Input ~ 0
 GND
 Text Notes 1150 1500 0    50   ~ 0
@@ -298,18 +287,6 @@ F 4 "CP2102N-A02-GQFN24" V 7750 2950 50  0001 C CNN "manf#"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Interface_USB:FUSB302BMPX U4
-U 1 1 5E52860D
-P 5850 3750
-F 0 "U4" H 5850 3261 50  0000 C CNN
-F 1 "FUSB302BMPX" H 5850 3170 50  0000 C CNN
-F 2 "Package_DFN_QFN:WQFN-14-1EP_2.5x2.5mm_P0.5mm_EP1.45x1.45mm" H 5850 3250 50  0001 C CNN
-F 3 "http://www.onsemi.com/pub/Collateral/FUSB302B-D.PDF" H 5950 3350 50  0001 C CNN
-F 4 "FUSB302BMPX" H 5850 3750 50  0001 C CNN "manf#"
-	1    5850 3750
-	1    0    0    -1  
-$EndComp
-$Comp
 L Connector:USB_C_Receptacle_USB2.0 J3
 U 1 1 5E53E2D6
 P 5900 2000
@@ -337,21 +314,13 @@ Text GLabel 6500 2900 2    50   Input ~ 10
 USB_VBUS
 Text GLabel 7200 2250 0    50   Input ~ 10
 USB_VBUS
-Text GLabel 6350 3650 2    50   Input ~ 10
-USB_VBUS
 Text GLabel 6200 2600 3    50   Input ~ 10
 USB_CC2
 Text GLabel 6300 2600 3    50   Input ~ 10
 USB_CC1
-Text GLabel 6350 3750 2    50   Input ~ 10
-USB_CC1
-Text GLabel 6350 3850 2    50   Input ~ 10
-USB_CC2
 Text GLabel 5000 2000 0    50   Input ~ 0
 GND
 Text GLabel 5000 1700 0    50   Input ~ 0
-GND
-Text GLabel 5850 4150 0    50   Input ~ 0
 GND
 Text GLabel 7750 4250 0    50   Input ~ 0
 GND
@@ -371,7 +340,7 @@ U 1 1 5E4E29F0
 P 2400 2300
 F 0 "C1" H 2350 2350 50  0000 L CNN
 F 1 "10uF" H 2300 2250 50  0000 L CNN
-F 2 "Capacitor_THT:CP_Radial_D10.0mm_P5.00mm" H 2438 2150 50  0001 C CNN
+F 2 "Capacitor_SMD:C_2010_5025Metric_Pad1.52x2.65mm_HandSolder" H 2438 2150 50  0001 C CNN
 F 3 "~" H 2400 2300 50  0001 C CNN
 	1    2400 2300
 	1    0    0    -1  
@@ -415,8 +384,6 @@ Wire Wire Line
 	2250 2250 2250 2150
 Wire Wire Line
 	1600 2450 2400 2450
-Text GLabel 5750 3350 0    50   Input ~ 0
-3.3V
 Wire Wire Line
 	1700 2150 1750 2150
 $Comp
@@ -469,12 +436,6 @@ F 3 "http://www.vishay.com/docs/88525/1n5817.pdf" H 6500 2750 50  0001 C CNN
 	1    6500 2750
 	0    -1   -1   0   
 $EndComp
-Text GLabel 5350 3650 0    50   Input ~ 0
-FUSB_SDA
-Text GLabel 5350 3750 0    50   Input ~ 0
-FUSB_SCL
-Text GLabel 5350 3850 0    50   Input ~ 0
-FUSB_INTN
 Wire Notes Line
 	4650 3100 7100 3100
 Wire Notes Line
@@ -504,7 +465,7 @@ Wire Wire Line
 Wire Wire Line
 	3150 3900 3150 3950
 Text Notes 4700 3200 0    50   ~ 0
-USB3.1 PD CONTROLLER
+USB3.1 CC PULLDOWNS
 Text Notes 4700 1500 0    50   ~ 0
 USB TYPE C PORT
 Text Notes 6750 1500 0    50   ~ 0
@@ -747,4 +708,53 @@ Wire Notes Line
 	3550 4450 8950 4450
 Wire Notes Line
 	1100 1400 8950 1400
+Text GLabel 5350 3750 0    50   Input ~ 10
+USB_CC2
+Text GLabel 5350 3650 0    50   Input ~ 10
+USB_CC1
+$Comp
+L Device:R_Small R13
+U 1 1 5E56B54F
+P 5700 3650
+F 0 "R13" V 5650 3650 50  0000 C CNN
+F 1 "5.1k" V 5600 3650 50  0000 C CNN
+F 2 "" H 5700 3650 50  0001 C CNN
+F 3 "~" H 5700 3650 50  0001 C CNN
+	1    5700 3650
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R14
+U 1 1 5E56C633
+P 5700 3750
+F 0 "R14" V 5800 3750 50  0000 C CNN
+F 1 "5.1k" V 5850 3750 50  0000 C CNN
+F 2 "" H 5700 3750 50  0001 C CNN
+F 3 "~" H 5700 3750 50  0001 C CNN
+	1    5700 3750
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5350 3650 5600 3650
+Wire Wire Line
+	5600 3750 5350 3750
+Text GLabel 6050 3700 2    50   Input ~ 0
+GND
+Wire Wire Line
+	5800 3650 6050 3650
+Wire Wire Line
+	6050 3650 6050 3750
+Wire Wire Line
+	6050 3750 5800 3750
+$Comp
+L Connector:Conn_01x03_Male J2
+U 1 1 5E3BB7CF
+P 3350 3850
+F 0 "J2" V 3400 3550 50  0000 L CNN
+F 1 "ESP32 UART" V 3300 3550 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 3350 3850 50  0001 C CNN
+F 3 "~" H 3350 3850 50  0001 C CNN
+	1    3350 3850
+	-1   0    0    1   
+$EndComp
 $EndSCHEMATC
