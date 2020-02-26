@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source /home/leigh/Documents/GitHub/saab-93NG-bluetooth-aux/93ng-blue-aux/esp32_saab_devboard.sch)
-    (date "Wed 26 Feb 2020 18:48:39 AEDT")
+    (date "Wed 26 Feb 2020 19:42:42 AEDT")
     (tool "Eeschema 5.1.5-52549c5~84~ubuntu19.04.1")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -167,7 +167,7 @@
       (tstamp 5E6515ED))
     (comp (ref J1)
       (value "12V INPUT")
-      (footprint TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-3-2-5.08_1x02_P5.08mm_Horizontal)
+      (footprint TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal)
       (datasheet ~)
       (libsource (lib Connector) (part Screw_Terminal_01x02) (description "Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"))
       (sheetpath (names /) (tstamps /))
