@@ -757,14 +757,14 @@ F 3 "~" H 3350 3850 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Connector_Generic:Conn_02x16_Row_Letter_First J4
+L Connector_Generic:Conn_02x16_Top_Bottom J4
 U 1 1 5E57890B
-P 2850 6650
-F 0 "J4" V 2854 5762 50  0000 R CNN
-F 1 "Conn_02x16_Row_Letter_First" V 2945 5762 50  0000 R CNN
-F 2 "Connector_PinHeader_1.00mm:PinHeader_2x16_P1.00mm_Vertical" H 2850 6650 50  0001 C CNN
-F 3 "~" H 2850 6650 50  0001 C CNN
-	1    2850 6650
+P 2850 6950
+F 0 "J4" V 2854 6062 50  0000 R CNN
+F 1 "Conn_02x16_Row_Letter_First" V 2945 6062 50  0000 R CNN
+F 2 "Connector_PinHeader_1.00mm:PinHeader_2x16_P1.00mm_Vertical" H 2850 6950 50  0001 C CNN
+F 3 "~" H 2850 6950 50  0001 C CNN
+	1    2850 6950
 	0    1    1    0   
 $EndComp
 Text GLabel 1550 4600 0    50   Input ~ 0
@@ -793,8 +793,6 @@ Text GLabel 2750 4300 2    50   Input ~ 0
 ESP32_23
 Text GLabel 2750 4800 2    50   Input ~ 0
 ESP32_33
-Text GLabel 2750 4900 2    50   Input ~ 0
-ESP32_36
 Text GLabel 2750 5000 2    50   Input ~ 0
 ESP32_37
 Text GLabel 2750 5100 2    50   Input ~ 0
@@ -811,14 +809,68 @@ Text GLabel 2750 5600 2    50   Input ~ 0
 ESP32_6
 Text GLabel 2750 5700 2    50   Input ~ 0
 ESP32_7
-Text GLabel 3250 6450 1    50   Input ~ 0
+Text GLabel 3250 6750 1    50   Input ~ 0
 GND
-Text GLabel 3350 6450 1    50   Input ~ 0
+Text GLabel 3350 6750 1    50   Input ~ 0
 3.3V
 Text GLabel 2150 2250 1    50   Input ~ 0
 V_IN
-Text GLabel 3450 6450 1    50   Input ~ 0
+Text GLabel 3450 6750 1    50   Input ~ 0
 GND
-Text GLabel 3550 6450 1    50   Input ~ 0
+Text GLabel 3550 6750 1    50   Input ~ 0
 V_IN
+Text GLabel 3150 6750 1    50   Input ~ 0
+MC33_RX
+Text GLabel 3050 6750 1    50   Input ~ 0
+MC33_TX
+Text GLabel 2950 6750 1    50   Input ~ 0
+MC33_MODE0
+Text GLabel 2850 6750 1    50   Input ~ 0
+MC33_MODE1
+Text GLabel 2750 6750 1    50   Input ~ 0
+ESP32_6
+Text GLabel 2650 6750 1    50   Input ~ 0
+ESP32_7
+Text GLabel 2550 6750 1    50   Input ~ 0
+ESP32_8
+Text GLabel 2450 6750 1    50   Input ~ 0
+ESP32_9
+Text GLabel 2350 6750 1    50   Input ~ 0
+ESP32_10
+Text GLabel 2250 6750 1    50   Input ~ 0
+ESP32_11
+Text GLabel 2150 6750 1    50   Input ~ 0
+ESP32_12
+Text GLabel 2050 6750 1    50   Input ~ 0
+ESP32_13
+Text GLabel 3550 7250 3    50   Input ~ 0
+ESP32_14
+Text GLabel 3450 7250 3    50   Input ~ 0
+ESP32_16
+Text GLabel 3350 7250 3    50   Input ~ 0
+ESP32_17
+Text GLabel 3250 7250 3    50   Input ~ 0
+ESP32_18
+Text GLabel 3150 7250 3    50   Input ~ 0
+ESP32_19
+Text GLabel 3050 7250 3    50   Input ~ 0
+ESP32_20
+Text GLabel 2950 7250 3    50   Input ~ 0
+ESP32_21
+Text GLabel 2850 7250 3    50   Input ~ 0
+ESP32_22
+Text GLabel 2750 7250 3    50   Input ~ 0
+ESP32_23
+Text GLabel 2650 7250 3    50   Input ~ 0
+ESP32_26
+Text GLabel 2550 7250 3    50   Input ~ 0
+ESP32_29
+Text GLabel 2450 7250 3    50   Input ~ 0
+ESP32_33
+Text GLabel 2750 4900 2    50   Input ~ 0
+ESP32_36
+Text GLabel 2350 7250 3    50   Input ~ 0
+ESP32_36
+Text GLabel 2250 7250 3    50   Input ~ 0
+ESP32_37
 $EndSCHEMATC
