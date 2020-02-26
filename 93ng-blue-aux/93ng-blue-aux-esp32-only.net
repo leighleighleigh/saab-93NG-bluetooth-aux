@@ -1,8 +1,8 @@
 (export (version D)
   (design
     (source /home/leigh/Documents/GitHub/saab-93NG-bluetooth-aux/93ng-blue-aux/93ng-blue-aux-esp32-only.sch)
-    (date "Wed 26 Feb 2020 09:28:57 AEDT")
-    (tool "Eeschema 5.1.4-e60b266~84~ubuntu19.04.1")
+    (date "Wed 26 Feb 2020 15:54:01 AEDT")
+    (tool "Eeschema 5.1.5-52549c5~84~ubuntu19.04.1")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
         (title)
@@ -141,7 +141,7 @@
       (tstamp 5E3AE258))
     (comp (ref SW1)
       (value "PWR IN SELECT")
-      (footprint Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical)
+      (footprint Button_Switch_THT:SW_E-Switch_EG1271_DPDT)
       (datasheet ~)
       (libsource (lib Switch) (part SW_SPDT) (description "Switch, single pole double throw"))
       (sheetpath (names /) (tstamps /))
