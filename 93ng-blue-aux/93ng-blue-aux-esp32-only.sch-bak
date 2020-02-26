@@ -391,7 +391,7 @@ U 1 1 5E560A61
 P 1950 2250
 F 0 "SW1" H 1950 1925 50  0000 C CNN
 F 1 "PWR IN SELECT" H 1950 2016 50  0000 C CNN
-F 2 "Button_Switch_SMD:SW_SPDT_CK-JS102011SAQN" H 1950 2250 50  0001 C CNN
+F 2 "Button_Switch_THT:SW_E-Switch_EG1271_DPDT" H 1950 2250 50  0001 C CNN
 F 3 "~" H 1950 2250 50  0001 C CNN
 	1    1950 2250
 	-1   0    0    1   
@@ -755,5 +755,16 @@ F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 3350 3850 50 
 F 3 "~" H 3350 3850 50  0001 C CNN
 	1    3350 3850
 	-1   0    0    1   
+$EndComp
+$Comp
+L Connector_Generic:Conn_02x16_Row_Letter_First J?
+U 1 1 5E57890B
+P 2850 6650
+F 0 "J?" V 2854 5762 50  0000 R CNN
+F 1 "Conn_02x16_Row_Letter_First" V 2945 5762 50  0000 R CNN
+F 2 "Connector_PinHeader_1.00mm:PinHeader_2x16_P1.00mm_Vertical" H 2850 6650 50  0001 C CNN
+F 3 "~" H 2850 6650 50  0001 C CNN
+	1    2850 6650
+	0    1    1    0   
 $EndComp
 $EndSCHEMATC
