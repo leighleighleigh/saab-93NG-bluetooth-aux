@@ -221,6 +221,7 @@ void loop()
     {
       lastContent = currentContent;
       Serial.println(currentContent);
+      #ifdef USE_ICM2
       // Print to the display
       // Clean the debris off the display
       display.forceClear();
@@ -243,8 +244,10 @@ void loop()
       display.println(a2d_sink.get_artist_name());   
 
       display.display();
+      #endif
     }
 
+    #ifdef USE_ICM2
     // Draw the time bar
     if(millis() - playTime >= 500)
     {
@@ -319,11 +322,12 @@ void loop()
       display.display();     
       display.setFont();
     }
+    #endif
   }
   else
   {
     playingState = false;
   }
-  delay(100);
+  // delay(100);
 #endif
 }
