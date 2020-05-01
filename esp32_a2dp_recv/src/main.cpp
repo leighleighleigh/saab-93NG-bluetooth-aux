@@ -71,11 +71,10 @@
 // #define AVRC_ID_VENDOR      0x7E    /* vendor unique */
 // #define AVRC_KEYPRESSED_RELEASE 0x80
 
-
 BlootoothA2DSink a2d_sink;
 
 #define USE_CAN
-#define USE_ICM2
+// #define USE_ICM2
 
 #ifdef USE_CAN
 struct can_frame canMsg;
@@ -87,6 +86,9 @@ MCP2515 mcp2515(5);
 #define HEIGHT 64
 SAAB_ICM2 display = SAAB_ICM2();
 #endif
+
+bool muteState = false;
+int mutePin = 2;
 
 // I2C Pins
 // ws_io_num => GPIO 25,
@@ -101,10 +103,10 @@ void setup()
   // Turn off wifi
   esp_wifi_set_mode(WIFI_MODE_NULL);
   // esp_wifi_stop();
+  pinMode(mutePin,OUTPUT);
 
 #ifdef USE_ICM2
-  Wire.begin(33,32);
-
+  Wire.begin(33, 32);
   Wire.setClock(400000);
 
   if (!display.begin())
@@ -116,28 +118,28 @@ void setup()
   }
 
   // Clean the debris off the display
-	display.forceClear();
+  display.forceClear();
   display.setFont();
-	display.clearDisplay();
-	display.setCursor(1,1);
-	display.setTextSize(1);
-	
+  display.clearDisplay();
+  display.setCursor(1, 1);
+  display.setTextSize(1);
+
   display.fillScreen(ICM2_OFF);
 
-	display.fillRect(0,0,WIDTH,9,ICM2_ON);
-	display.setTextColor(ICM2_OFF);
-	
+  display.fillRect(0, 0, WIDTH, 9, ICM2_ON);
+  display.setTextColor(ICM2_OFF);
+
   display.println("Bluetooth");
 
-	display.setTextColor(ICM2_ON);
-	display.setCursor(0,14);
-	display.setTextWrap(false);
-	
-	display.println(" Song");
-	display.println(" Album");
-	display.println(" Artist");
-	
-	display.display();
+  display.setTextColor(ICM2_ON);
+  display.setCursor(0, 14);
+  display.setTextWrap(false);
+
+  display.println(" Song");
+  display.println(" Album");
+  display.println(" Artist");
+
+  display.display();
 
 #endif
 
@@ -163,6 +165,24 @@ long startPlayTime = millis();
 
 void loop()
 {
+
+// Check if we have connection
+if(a2d_sink.get_conn_state() != ESP_A2D_CONNECTION_STATE_CONNECTED)
+{
+  // Set digital mute ON and do not handle events.
+  digitalWrite(mutePin,1);
+  muteState = true;
+  playingState = false;
+  return;
+}else{
+  // Wait until playing again
+  if(playingState){
+    // Reinit to prevent glitchy noise
+    // Set digital mute off.
+    delay(50);
+    digitalWrite(mutePin,0); 
+  }
+}
 
 // Read messages
 #ifdef USE_CAN
@@ -208,6 +228,7 @@ void loop()
     }
   }
 
+
   // If playing content
   if (a2d_sink.get_audio_state() == 2)
   {
@@ -215,41 +236,41 @@ void loop()
     // Determine full screen refresh
     String currentContent = "";
     currentContent = a2d_sink.get_track_name() + " - " + a2d_sink.get_album_name() + " by " + a2d_sink.get_artist_name() + " : " + a2d_sink.get_track_length();
-    
+
     // Do full refresh
     if (currentContent != lastContent)
     {
       lastContent = currentContent;
       Serial.println(currentContent);
-      #ifdef USE_ICM2
+#ifdef USE_ICM2
       // Print to the display
       // Clean the debris off the display
       display.forceClear();
       display.clearDisplay();
-      display.setCursor(1,1);
+      display.setCursor(1, 1);
       display.setTextSize(1);
       display.fillScreen(ICM2_OFF);
 
-      display.fillRect(0,0,WIDTH,9,ICM2_ON);
+      display.fillRect(0, 0, WIDTH, 9, ICM2_ON);
       display.setTextColor(ICM2_OFF);
       // display.setFont(NULL);
       display.println("Bluetooth");
 
       display.setTextColor(ICM2_ON);
-      display.setCursor(0,14);
+      display.setCursor(0, 14);
       display.setTextWrap(false);
-      
+
       display.println(a2d_sink.get_track_name());
       display.println(a2d_sink.get_album_name());
-      display.println(a2d_sink.get_artist_name());   
+      display.println(a2d_sink.get_artist_name());
 
       display.display();
-      #endif
+#endif
     }
 
-    #ifdef USE_ICM2
+#ifdef USE_ICM2
     // Draw the time bar
-    if(millis() - playTime >= 500)
+    if (millis() - playTime >= 500)
     {
       playTime = millis();
 
@@ -257,21 +278,21 @@ void loop()
       display.setFont(&Picopixel);
 
       // Blank this whoel bottom section
-      display.fillRect(0,HEIGHT-12,WIDTH,12,ICM2_OFF);
+      display.fillRect(0, HEIGHT - 12, WIDTH, 12, ICM2_OFF);
 
       // Tasty rectangles
       long val = a2d_sink.get_track_pos().toInt();
-      long toVal = a2d_sink.get_track_length().toInt();    
+      long toVal = a2d_sink.get_track_length().toInt();
 
-      if(val > toVal)
+      if (val > toVal)
       {
         val = 0;
       }
 
-      long mapX = map(val,0,toVal,0,WIDTH-3);
-      display.drawRect(0,HEIGHT-6,WIDTH,6,ICM2_ON);
-      display.fillRect(2,HEIGHT-4,WIDTH-3,2,ICM2_OFF);
-      display.fillRect(2,HEIGHT-4,mapX,2,ICM2_ON);
+      long mapX = map(val, 0, toVal, 0, WIDTH - 3);
+      display.drawRect(0, HEIGHT - 6, WIDTH, 6, ICM2_ON);
+      display.fillRect(2, HEIGHT - 4, WIDTH - 3, 2, ICM2_OFF);
+      display.fillRect(2, HEIGHT - 4, mapX, 2, ICM2_ON);
 
       // Make timecode text
       String timeCodeText = "";
@@ -279,50 +300,56 @@ void loop()
 
       // Draw the time text over the top
       char buf[21];
-      unsigned long allSeconds=val/1000;
-      int runHours= allSeconds/3600;
-      int secsRemaining=allSeconds%3600;
-      int runMinutes=secsRemaining/60;
-      int runSeconds=secsRemaining%60;
-      
-      if(runHours != 0){
-        sprintf(buf,"%02d:%02d:%02d",runHours,runMinutes,runSeconds);
+      unsigned long allSeconds = val / 1000;
+      int runHours = allSeconds / 3600;
+      int secsRemaining = allSeconds % 3600;
+      int runMinutes = secsRemaining / 60;
+      int runSeconds = secsRemaining % 60;
+
+      if (runHours != 0)
+      {
+        sprintf(buf, "%02d:%02d:%02d", runHours, runMinutes, runSeconds);
         timeCodeText += buf;
-      }else{
-        sprintf(buf,"%02d:%02d",runMinutes,runSeconds);
+      }
+      else
+      {
+        sprintf(buf, "%02d:%02d", runMinutes, runSeconds);
         timeCodeText += buf;
       }
 
       // Also create the total time text
-      allSeconds=toVal/1000;
-      runHours= allSeconds/3600;
-      secsRemaining=allSeconds%3600;
-      runMinutes=secsRemaining/60;
-      runSeconds=secsRemaining%60;
-      
-      if(runHours != 0){
-        sprintf(buf,"%02d:%02d:%02d",runHours,runMinutes,runSeconds);
+      allSeconds = toVal / 1000;
+      runHours = allSeconds / 3600;
+      secsRemaining = allSeconds % 3600;
+      runMinutes = secsRemaining / 60;
+      runSeconds = secsRemaining % 60;
+
+      if (runHours != 0)
+      {
+        sprintf(buf, "%02d:%02d:%02d", runHours, runMinutes, runSeconds);
         totalTimeText += buf;
-      }else{
-        sprintf(buf,"%02d:%02d",runMinutes,runSeconds);
+      }
+      else
+      {
+        sprintf(buf, "%02d:%02d", runMinutes, runSeconds);
         totalTimeText += buf;
       }
 
       // Set cursor pos to left sidee
-      display.setCursor(1,HEIGHT-8);
+      display.setCursor(1, HEIGHT - 8);
       display.print(timeCodeText);
       // Set cursor pos to right size
-      int16_t  x1, y1;
+      int16_t x1, y1;
       uint16_t w, h;
 
-      display.getTextBounds(totalTimeText,6,HEIGHT-8,&x1,&y1,&w,&h);
-      display.setCursor(WIDTH - w - 1,HEIGHT - h - 3);
+      display.getTextBounds(totalTimeText, 6, HEIGHT - 8, &x1, &y1, &w, &h);
+      display.setCursor(WIDTH - w - 1, HEIGHT - h - 3);
       display.print(totalTimeText);
 
-      display.display();     
+      display.display();
       display.setFont();
     }
-    #endif
+#endif
   }
   else
   {
