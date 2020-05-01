@@ -87,13 +87,11 @@ MCP2515 mcp2515(5);
 SAAB_ICM2 display = SAAB_ICM2();
 #endif
 
-bool muteState = false;
-int mutePin = 2;
-
 // I2C Pins
 // ws_io_num => GPIO 25,
 // data_out_num => GPIO 22
 // bck_io_num => GPIO 26,
+int mutePin = 2;
 
 void setup()
 {
@@ -155,17 +153,17 @@ void setup()
   a2d_sink.start("SAAB");
 }
 
-bool playingStateRequest = false;
+bool muteState = false;
+bool playingStateRequest = true;
 bool playingState = false;
-bool pressed = false;
+
 String lastContent = "";
 
 long playTime = 0;
 long startPlayTime = millis();
 
 void loop()
-{
-
+{   
   // Check if we have connection
   if (a2d_sink.get_conn_state() != ESP_A2D_CONNECTION_STATE_CONNECTED)
   {
@@ -177,13 +175,31 @@ void loop()
   }
   else
   {
+    // Ask for key input to send
+    if(Serial.available() > 1)
+    {      
+      String userInput = Serial.readStringUntil('\n');
+      Serial.println(userInput);
+      long val = strtol(userInput.c_str(),NULL,16);      
+      Serial.print("Sending key ");
+      Serial.println(val,DEC);
+
+      esp_avrc_ct_send_passthrough_cmd(6, val, ESP_AVRC_PT_CMD_STATE_PRESSED);
+    }
     // Wait until playing again
     if (playingState)
     {
-      // Reinit to prevent glitchy noise
-      // Set digital mute off.
-      delay(50);
-      digitalWrite(mutePin, 0);
+      if(muteState){
+        muteState = false;
+        // Reinit to prevent glitchy noise
+        // Set digital mute off.
+        delay(50);
+        digitalWrite(mutePin, 0);
+        Serial.print("ACRC feat: ");
+        Serial.println(a2d_sink.get_remote_features(),HEX);
+      }
+    }else{
+      muteState = true;
     }
   }
 
