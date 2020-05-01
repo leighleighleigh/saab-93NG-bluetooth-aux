@@ -103,7 +103,7 @@ void setup()
   // Turn off wifi
   esp_wifi_set_mode(WIFI_MODE_NULL);
   // esp_wifi_stop();
-  pinMode(mutePin,OUTPUT);
+  pinMode(mutePin, OUTPUT);
 
 #ifdef USE_ICM2
   Wire.begin(33, 32);
@@ -166,23 +166,26 @@ long startPlayTime = millis();
 void loop()
 {
 
-// Check if we have connection
-if(a2d_sink.get_conn_state() != ESP_A2D_CONNECTION_STATE_CONNECTED)
-{
-  // Set digital mute ON and do not handle events.
-  digitalWrite(mutePin,1);
-  muteState = true;
-  playingState = false;
-  return;
-}else{
-  // Wait until playing again
-  if(playingState){
-    // Reinit to prevent glitchy noise
-    // Set digital mute off.
-    delay(50);
-    digitalWrite(mutePin,0); 
+  // Check if we have connection
+  if (a2d_sink.get_conn_state() != ESP_A2D_CONNECTION_STATE_CONNECTED)
+  {
+    // Set digital mute ON and do not handle events.
+    digitalWrite(mutePin, 1);
+    muteState = true;
+    playingState = false;
+    return;
   }
-}
+  else
+  {
+    // Wait until playing again
+    if (playingState)
+    {
+      // Reinit to prevent glitchy noise
+      // Set digital mute off.
+      delay(50);
+      digitalWrite(mutePin, 0);
+    }
+  }
 
 // Read messages
 #ifdef USE_CAN
@@ -227,7 +230,6 @@ if(a2d_sink.get_conn_state() != ESP_A2D_CONNECTION_STATE_CONNECTED)
       }
     }
   }
-
 
   // If playing content
   if (a2d_sink.get_audio_state() == 2)
