@@ -1,4 +1,4 @@
-16915896812523591
+16917486174302591
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -75221,3 +75221,10 @@ UDA1334A-Breakout
 0
 15
 15
+custom_footprints
+saab_logo
+
+
+0
+0
+0
