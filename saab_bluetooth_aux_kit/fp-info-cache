@@ -1,4 +1,4 @@
-16917486174302591
+16917487448675591
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -75198,7 +75198,7 @@ CC3-1205SF-E
 
 
 0
-7
+9
 7
 custom_footprints
 ESP32-WROOM-30GPIO

@@ -134,4 +134,7 @@ Wire Wire Line
 	2300 3800 2300 3900
 Wire Wire Line
 	2300 3900 2600 3900
+Wire Wire Line
+	2600 3800 2600 3900
+Connection ~ 2600 3900
 $EndSCHEMATC
