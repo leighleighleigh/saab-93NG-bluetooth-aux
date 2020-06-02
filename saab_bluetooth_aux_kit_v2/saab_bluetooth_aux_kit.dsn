@@ -1,0 +1,336 @@
+(pcb "/home/leigh/Documents/GitHub/saab-93NG-bluetooth-aux/saab_bluetooth_aux_kit/saab_bluetooth_aux_kit.dsn"
+  (parser
+    (string_quote ")
+    (space_in_quoted_tokens on)
+    (host_cad "KiCad's Pcbnew")
+    (host_version "5.1.5-52549c5~86~ubuntu19.04.1")
+  )
+  (resolution um 10)
+  (unit um)
+  (structure
+    (layer F.Cu
+      (type signal)
+      (property
+        (index 0)
+      )
+    )
+    (layer B.Cu
+      (type signal)
+      (property
+        (index 1)
+      )
+    )
+    (boundary
+      (path pcb 0  181916 -74948.5  182218 -75003.8  182511 -75095.1  182790 -75220.9
+            183053 -75379.6  183294 -75568.8  183511 -75785.7  183700 -76027.1
+            183859 -76289.6  183985 -76569.3  184076 -76862.1  184131 -77163.8
+            184150 -77470  184150 -129540  184131 -129846  184076 -130148
+            183985 -130441  183859 -130720  183700 -130983  183511 -131224
+            183294 -131441  183053 -131630  182790 -131789  182511 -131915
+            182218 -132006  181916 -132061  181610 -132080  97790 -132080
+            97483.8 -132061  97182.1 -132006  96889.3 -131915  96609.6 -131789
+            96347.1 -131630  96105.7 -131441  95888.8 -131224  95699.6 -130983
+            95540.9 -130720  95415.1 -130441  95323.8 -130148  95268.5 -129846
+            95250 -129540  95250 -77470  95268.5 -77163.8  95323.8 -76862.1
+            95415.1 -76569.3  95540.9 -76289.6  95699.6 -76027.1  95888.8 -75785.7
+            96105.7 -75568.8  96347.1 -75379.6  96609.6 -75220.9  96889.3 -75095.1
+            97182.1 -75003.8  97483.8 -74948.5  97790 -74930  181610 -74930
+            181916 -74948.5)
+    )
+    (via "Via[0-1]_800:400_um")
+    (rule
+      (width 250)
+      (clearance 200.1)
+      (clearance 200.1 (type default_smd))
+      (clearance 50 (type smd_smd))
+    )
+  )
+  (placement
+    (component Connector_BarrelJack:BarrelJack_Wuerth_6941xx301002
+      (place J1 133350 -104140 front 0 (PN Barrel_Jack))
+    )
+    (component custom_footprints:MCP2515_Module
+      (place U3 162560 -116332 front 0 (PN MCP2515_MODULE))
+    )
+    (component "custom_footprints:UDA1334A-Breakout"
+      (place U4 161925 -88900 front 0 (PN UDA1334A_BREAKOUT))
+    )
+    (component "custom_footprints:ESP32-WROOM-30GPIO"
+      (place U2 110490 -101600 front 0 (PN "ESP32-WROOM-DEVKIT-custom_symbols"))
+    )
+    (component "custom_footprints:CC3-1205SF-E"
+      (place U1 134366 -89154 front 180 (PN "CC3-0505SF-E"))
+    )
+  )
+  (library
+    (image Connector_BarrelJack:BarrelJack_Wuerth_6941xx301002
+      (outline (path signal 120  -4600 1000  -2500 1000))
+      (outline (path signal 50  6200 -500  5000 -500))
+      (outline (path signal 50  6200 -5500  5000 -5500))
+      (outline (path signal 50  6200 -500  6200 -5500))
+      (outline (path signal 50  5000 -500  5000 1400))
+      (outline (path signal 50  -5000 -14100  5000 -14100))
+      (outline (path signal 50  -5000 1400  -5000 -14100))
+      (outline (path signal 50  5000 1400  -5000 1400))
+      (outline (path signal 120  -4900 1300  -4900 -300))
+      (outline (path signal 120  -3200 1300  -4900 1300))
+      (outline (path signal 120  4600 1000  4600 -800))
+      (outline (path signal 120  2500 1000  4600 1000))
+      (outline (path signal 120  -4600 -13700  -4600 1000))
+      (outline (path signal 120  4600 -13700  -4600 -13700))
+      (outline (path signal 100  -4500 -13600  -4500 -100))
+      (outline (path signal 100  4500 -13600  -4500 -13600))
+      (outline (path signal 100  4500 900  4500 -13600))
+      (outline (path signal 100  4500 900  -3500 900))
+      (outline (path signal 100  -4500 -100  -3500 900))
+      (outline (path signal 120  4600 -5200  4600 -13700))
+      (outline (path signal 50  5000 -14100  5000 -5500))
+      (pin Rect[A]Pad_4400x1800_um 1 0 0)
+      (pin Oval[A]Pad_4000x1800_um 2 0 -5800)
+      (pin Oval[A]Pad_4000x1800_um (rotate 90) 3 4800 -3000)
+    )
+    (image custom_footprints:MCP2515_Module
+      (outline (path signal 120  16002 -1270  18034 -3302))
+      (outline (path signal 120  16002 3302  18034 1270))
+      (outline (path signal 120  18500 -2286  18418.7 -2773.05  18183.7 -3207.32  17820.4 -3541.75
+            17368.2 -3740.1  16876.1 -3780.88  16397.5 -3659.66  15984.1 -3389.59
+            15680.8 -2999.92  15520.5 -2532.89  15520.5 -2039.11  15680.8 -1572.08
+            15984.1 -1182.41  16397.5 -912.34  16876.1 -791.123  17368.2 -831.9
+            17820.4 -1030.25  18183.7 -1364.68  18418.7 -1798.95  18500 -2286))
+      (outline (path signal 120  18500 2286  18418.7 1798.95  18183.7 1364.68  17820.4 1030.25
+            17368.2 831.9  16876.1 791.123  16397.5 912.34  15984.1 1182.41
+            15680.8 1572.08  15520.5 2039.11  15520.5 2532.89  15680.8 2999.92
+            15984.1 3389.59  16397.5 3659.66  16876.1 3780.88  17368.2 3740.1
+            17820.4 3541.75  18183.7 3207.32  18418.7 2773.05  18500 2286))
+      (outline (path signal 120  14605 4953  14605 -4953))
+      (outline (path signal 120  12500 -5000  19939 -5000))
+      (outline (path signal 120  12500 5000  19939 5000))
+      (outline (path signal 120  12500 5000  12500 -5000))
+      (outline (path signal 120  19500 -12000  19418.7 -12487  19183.7 -12921.3  18820.4 -13255.8
+            18368.2 -13454.1  17876.1 -13494.9  17397.5 -13373.7  16984.1 -13103.6
+            16680.8 -12713.9  16520.5 -12246.9  16520.5 -11753.1  16680.8 -11286.1
+            16984.1 -10896.4  17397.5 -10626.3  17876.1 -10505.1  18368.2 -10545.9
+            18820.4 -10744.2  19183.7 -11078.7  19418.7 -11513  19500 -12000))
+      (outline (path signal 120  -16500 -12000  -16581.3 -12487  -16816.3 -12921.3  -17179.6 -13255.8
+            -17631.8 -13454.1  -18123.9 -13494.9  -18602.5 -13373.7  -19015.9 -13103.6
+            -19319.2 -12713.9  -19479.5 -12246.9  -19479.5 -11753.1  -19319.2 -11286.1
+            -19015.9 -10896.4  -18602.5 -10626.3  -18123.9 -10505.1  -17631.8 -10545.9
+            -17179.6 -10744.2  -16816.3 -11078.7  -16581.3 -11513  -16500 -12000))
+      (outline (path signal 120  19500 12000  19418.7 11513  19183.7 11078.7  18820.4 10744.2
+            18368.2 10545.9  17876.1 10505.1  17397.5 10626.3  16984.1 10896.4
+            16680.8 11286.1  16520.5 11753.1  16520.5 12246.9  16680.8 12713.9
+            16984.1 13103.6  17397.5 13373.7  17876.1 13494.9  18368.2 13454.1
+            18820.4 13255.8  19183.7 12921.3  19418.7 12487  19500 12000))
+      (outline (path signal 120  -16500 12000  -16581.3 11513  -16816.3 11078.7  -17179.6 10744.2
+            -17631.8 10545.9  -18123.9 10505.1  -18602.5 10626.3  -19015.9 10896.4
+            -19319.2 11286.1  -19479.5 11753.1  -19479.5 12246.9  -19319.2 12713.9
+            -19015.9 13103.6  -18602.5 13373.7  -18123.9 13494.9  -17631.8 13454.1
+            -17179.6 13255.8  -16816.3 12921.3  -16581.3 12487  -16500 12000))
+      (outline (path signal 120  20000 -14000  20000 14000))
+      (outline (path signal 120  -20000 14000  -20000 -14000))
+      (outline (path signal 120  20000 -14000  -20000 -14000))
+      (outline (path signal 120  -20000 14000  20000 14000))
+      (pin Round[T]Pad_1524_um CANL 17018 -2286)
+      (pin Round[T]Pad_1524_um CANH 17018 2286)
+      (pin Round[A]Pad_1524_um VIN -19050 -7620)
+      (pin Round[A]Pad_1524_um GND -19050 -5080)
+      (pin Round[A]Pad_1524_um CS -19050 -2540)
+      (pin Round[A]Pad_1524_um MISO -19050 0)
+      (pin Round[A]Pad_1524_um MOSI -19050 2540)
+      (pin Round[A]Pad_1524_um SCLK -19050 5080)
+      (pin Round[A]Pad_1524_um INT -19050 7620)
+    )
+    (image "custom_footprints:UDA1334A-Breakout"
+      (outline (path signal 120  22733 -2540  20701 -2540))
+      (outline (path signal 120  22733 2540  20701 2540))
+      (outline (path signal 120  22733 2540  22733 -2540))
+      (outline (path signal 120  6731 3048  6731 -3048))
+      (outline (path signal 120  20701 3048  6731 3048))
+      (outline (path signal 120  20701 -3048  6731 -3048))
+      (outline (path signal 120  20701 3048  20701 -3048))
+      (outline (path signal 120  19584.8 10668  19505.6 10295.5  19281.8 9987.42  18952 9797.01
+            18573.3 9757.21  18211.1 9874.89  17928.1 10129.7  17773.2 10477.6
+            17773.2 10858.4  17928.1 11206.3  18211.1 11461.1  18573.3 11578.8
+            18952 11539  19281.8 11348.6  19505.6 11040.5  19584.8 10668))
+      (outline (path signal 120  19584.8 -10287  19505.6 -10659.5  19281.8 -10967.6  18952 -11158
+            18573.3 -11197.8  18211.1 -11080.1  17928.1 -10825.3  17773.2 -10477.4
+            17773.2 -10096.6  17928.1 -9748.7  18211.1 -9493.89  18573.3 -9376.21
+            18952 -9416.01  19281.8 -9606.42  19505.6 -9914.51  19584.8 -10287))
+      (outline (path signal 120  -14832.2 -10287  -14911.4 -10659.5  -15135.2 -10967.6
+            -15465 -11158  -15843.7 -11197.8  -16205.9 -11080.1  -16488.9 -10825.3
+            -16643.8 -10477.4  -16643.8 -10096.6  -16488.9 -9748.7  -16205.9 -9493.89
+            -15843.7 -9376.21  -15465 -9416.01  -15135.2 -9606.42  -14911.4 -9914.51
+            -14832.2 -10287))
+      (outline (path signal 120  -14832.2 10668  -14911.4 10295.5  -15135.2 9987.42  -15465 9797.01
+            -15843.7 9757.21  -16205.9 9874.89  -16488.9 10129.7  -16643.8 10477.6
+            -16643.8 10858.4  -16488.9 11206.3  -16205.9 11461.1  -15843.7 11578.8
+            -15465 11539  -15135.2 11348.6  -14911.4 11040.5  -14832.2 10668))
+      (outline (path signal 120  -17780 -10287  -17780 10668))
+      (outline (path signal 120  18669 -12319  -15748 -12319))
+      (outline (path signal 120  20701 10668  20701 -10287))
+      (outline (path signal 120  -15748 12700  18669 12700))
+      (pin Round[A]Pad_1524_um Rout 10160 -10160)
+      (pin Round[A]Pad_1524_um AGND 7620 -10160)
+      (pin Round[A]Pad_1524_um Lout 5080 -10160)
+      (pin Round[A]Pad_1524_um BCLK 2540 -10160)
+      (pin Round[A]Pad_1524_um DIN 0 -10160)
+      (pin Round[A]Pad_1524_um WSEL -2540 -10160)
+      (pin Round[A]Pad_1524_um GND -5080 -10160)
+      (pin Round[A]Pad_1524_um VIN -10160 -10160)
+      (pin Round[A]Pad_1524_um 3V0 -7620 -10160)
+      (pin Round[A]Pad_1524_um DEEM 5080 10160)
+      (pin Round[A]Pad_1524_um PLL 2540 10160)
+      (pin Round[A]Pad_1524_um SF0 0 10160)
+      (pin Round[A]Pad_1524_um MUTE -2540 10160)
+      (pin Round[A]Pad_1524_um SF1 -5080 10160)
+      (pin Round[A]Pad_1524_um SCLK -7620 10160)
+    )
+    (image "custom_footprints:ESP32-WROOM-30GPIO"
+      (outline (path signal 120  -8890 18288  9144 18288))
+      (outline (path signal 120  9144 -508  9144 25400))
+      (outline (path signal 120  -8890 25400  -8890 -508))
+      (outline (path signal 120  -8890 -508  9144 -508))
+      (outline (path signal 120  -9676 -23368  -9757.27 -23855  -9992.29 -24289.3  -10355.6 -24623.8
+            -10807.8 -24822.1  -11299.9 -24862.9  -11778.5 -24741.7  -12191.9 -24471.6
+            -12495.2 -24081.9  -12655.5 -23614.9  -12655.5 -23121.1  -12495.2 -22654.1
+            -12191.9 -22264.4  -11778.5 -21994.3  -11299.9 -21873.1  -10807.8 -21913.9
+            -10355.6 -22112.2  -9992.29 -22446.7  -9757.27 -22881  -9676 -23368))
+      (outline (path signal 120  12930 -23368  12848.7 -23855  12613.7 -24289.3  12250.4 -24623.8
+            11798.2 -24822.1  11306.1 -24862.9  10827.5 -24741.7  10414.1 -24471.6
+            10110.8 -24081.9  9950.46 -23614.9  9950.46 -23121.1  10110.8 -22654.1
+            10414.1 -22264.4  10827.5 -21994.3  11306.1 -21873.1  11798.2 -21913.9
+            12250.4 -22112.2  12613.7 -22446.7  12848.7 -22881  12930 -23368))
+      (outline (path signal 120  12930 22606  12848.7 22119  12613.7 21684.7  12250.4 21350.2
+            11798.2 21151.9  11306.1 21111.1  10827.5 21232.3  10414.1 21502.4
+            10110.8 21892.1  9950.46 22359.1  9950.46 22852.9  10110.8 23319.9
+            10414.1 23709.6  10827.5 23979.7  11306.1 24100.9  11798.2 24060.1
+            12250.4 23861.8  12613.7 23527.3  12848.7 23093  12930 22606))
+      (outline (path signal 120  -9676 22606  -9757.27 22119  -9992.29 21684.7  -10355.6 21350.2
+            -10807.8 21151.9  -11299.9 21111.1  -11778.5 21232.3  -12191.9 21502.4
+            -12495.2 21892.1  -12655.5 22359.1  -12655.5 22852.9  -12495.2 23319.9
+            -12191.9 23709.6  -11778.5 23979.7  -11299.9 24100.9  -10807.8 24060.1
+            -10355.6 23861.8  -9992.29 23527.3  -9757.27 23093  -9676 22606))
+      (outline (path signal 120  -13970 -23368  -13970 22606))
+      (outline (path signal 120  11430 -26162  -11176 -26162))
+      (outline (path signal 120  14224 22606  14224 -23368))
+      (outline (path signal 120  -11176 25400  11430 25400))
+      (pin Round[A]Pad_1524_um GPIO32 -12827 5715)
+      (pin Round[A]Pad_1524_um 3V3 13081 -17145)
+      (pin Round[A]Pad_1524_um GND 13081 -14605)
+      (pin Round[A]Pad_1524_um GPIO15 13081 -12065)
+      (pin Round[A]Pad_1524_um GPIO2 13081 -9525)
+      (pin Round[A]Pad_1524_um GPIO4 13081 -6985)
+      (pin Round[A]Pad_1524_um GPIO16 13081 -4445)
+      (pin Round[A]Pad_1524_um GPIO17 13081 -1905)
+      (pin Round[A]Pad_1524_um GPIO5 13081 635)
+      (pin Round[A]Pad_1524_um GPIO18 13081 3175)
+      (pin Round[A]Pad_1524_um GPIO19 13081 5715)
+      (pin Round[A]Pad_1524_um GPIO21 13081 8255)
+      (pin Round[A]Pad_1524_um GPIO3 13081 10795)
+      (pin Round[A]Pad_1524_um GPIO1 13081 13335)
+      (pin Round[A]Pad_1524_um GPIO22 13081 15875)
+      (pin Round[A]Pad_1524_um GPIO23 13081 18415)
+      (pin Round[A]Pad_1524_um VIN -12827 -17145)
+      (pin Round[A]Pad_1524_um GND@1 -12827 -14605)
+      (pin Round[A]Pad_1524_um GPIO13 -12827 -12065)
+      (pin Round[A]Pad_1524_um GPIO12 -12827 -9525)
+      (pin Round[A]Pad_1524_um GPIO14 -12827 -6985)
+      (pin Round[A]Pad_1524_um GPIO27 -12827 -4445)
+      (pin Round[A]Pad_1524_um GPIO26 -12827 -1905)
+      (pin Round[A]Pad_1524_um GPIO25 -12827 635)
+      (pin Round[A]Pad_1524_um GPIO33 -12827 3175)
+      (pin Round[A]Pad_1524_um GPIO35 -12827 8255)
+      (pin Round[A]Pad_1524_um GPIO34 -12827 10795)
+      (pin Round[A]Pad_1524_um GPIO39 -12827 13335)
+      (pin Round[A]Pad_1524_um GPIO36 -12827 15875)
+      (pin Round[A]Pad_1524_um EN -12827 18415)
+    )
+    (image "custom_footprints:CC3-1205SF-E"
+      (outline (path signal 120  8255 10795  8255 -12065))
+      (outline (path signal 120  -8255 10795  8255 10795))
+      (outline (path signal 120  -8255 -12065  8255 -12065))
+      (outline (path signal 120  -8255 10795  -8255 -12065))
+      (pin Round[A]Pad_1524_um 5 2540 -12065)
+      (pin Round[A]Pad_1524_um 4 5080 -12065)
+      (pin Round[A]Pad_1524_um 6 -2540 -12065)
+      (pin Round[A]Pad_1524_um 7 -5080 -12065)
+      (pin Round[A]Pad_1524_um 3 5080 10795)
+      (pin Round[A]Pad_1524_um 2 2540 10795)
+      (pin Round[A]Pad_1524_um 1 -5080 10795)
+    )
+    (padstack Round[T]Pad_1524_um
+      (shape (circle F.Cu 1524))
+      (attach off)
+    )
+    (padstack Round[A]Pad_1524_um
+      (shape (circle F.Cu 1524))
+      (shape (circle B.Cu 1524))
+      (attach off)
+    )
+    (padstack Oval[A]Pad_4000x1800_um
+      (shape (path F.Cu 1800  -1100 0  1100 0))
+      (shape (path B.Cu 1800  -1100 0  1100 0))
+      (attach off)
+    )
+    (padstack Rect[A]Pad_4400x1800_um
+      (shape (rect F.Cu -2200 -900 2200 900))
+      (shape (rect B.Cu -2200 -900 2200 900))
+      (attach off)
+    )
+    (padstack "Via[0-1]_800:400_um"
+      (shape (circle F.Cu 800))
+      (shape (circle B.Cu 800))
+      (attach off)
+    )
+  )
+  (network
+    (net GND
+      (pins U3-GND U4-GND U4-SF0 U4-SF1 U2-GND U2-GND@1 U1-5)
+    )
+    (net 5VDC
+      (pins U3-VIN U2-VIN U1-7)
+    )
+    (net 3VDC
+      (pins U4-VIN U2-3V3)
+    )
+    (net SPI_CS
+      (pins U3-CS U2-GPIO5)
+    )
+    (net SPI_SCLK
+      (pins U3-SCLK U2-GPIO18)
+    )
+    (net SPI_MISO
+      (pins U3-MISO U2-GPIO19)
+    )
+    (net I2S_DIN
+      (pins U4-DIN U2-GPIO22)
+    )
+    (net SPI_MOSI
+      (pins U3-MOSI U2-GPIO23)
+    )
+    (net I2S_BCLK
+      (pins U4-BCLK U2-GPIO26)
+    )
+    (net I2S_WSEL
+      (pins U4-WSEL U2-GPIO25)
+    )
+    (net "Net-(J1-Pad1)"
+      (pins J1-1 U1-1)
+    )
+    (net "Net-(J1-Pad2)"
+      (pins J1-2 U1-3)
+    )
+    (class kicad_default "" 3VDC 5VDC GND I2S_BCLK I2S_DIN I2S_WSEL "Net-(J1-Pad1)"
+      "Net-(J1-Pad2)" SPI_CS SPI_MISO SPI_MOSI SPI_SCLK
+      (circuit
+        (use_via Via[0-1]_800:400_um)
+      )
+      (rule
+        (width 250)
+        (clearance 200.1)
+      )
+    )
+  )
+  (wiring
+  )
+)

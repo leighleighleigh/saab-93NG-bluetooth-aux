@@ -1,0 +1,417 @@
+EESchema-LIBRARY Version 2.4
+#encoding utf-8
+#
+# Audio_UDA1334ATS
+#
+DEF Audio_UDA1334ATS U 0 20 Y Y 1 F N
+F0 "U" -400 650 50 H V L CNN
+F1 "Audio_UDA1334ATS" 150 650 50 H V L CNN
+F2 "Package_SO:SSOP-16_4.4x5.2mm_P0.65mm" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ SSOP*4.4x5.2mm*P0.65mm*
+$ENDFPLIST
+DRAW
+S -400 600 400 -600 0 1 10 f
+X BCK 1 -500 500 100 R 50 50 1 1 I
+X PLL0 10 -500 100 100 R 50 50 1 1 I
+X SFOR0 11 -500 -300 100 R 50 50 1 1 I
+X Vref(DAC) 12 500 -300 100 L 50 50 1 1 P
+X VDDA 13 100 700 100 D 50 50 1 1 W
+X VOUTL 14 500 300 100 L 50 50 1 1 O
+X VSSA 15 100 -700 100 U 50 50 1 1 W
+X VOUTR 16 500 200 100 L 50 50 1 1 O
+X WS 2 -500 400 100 R 50 50 1 1 I
+X DATAI 3 -500 300 100 R 50 50 1 1 I
+X VDDD 4 0 700 100 D 50 50 1 1 W
+X VSSD 5 0 -700 100 U 50 50 1 1 W
+X SYSCLK/PLL1 6 -500 0 100 R 50 50 1 1 I
+X SFOR1 7 -500 -400 100 R 50 50 1 1 I
+X MUTE 8 -500 -200 100 R 50 50 1 1 I
+X DEEM/CLKOUT 9 -500 -100 100 R 50 50 1 1 B
+ENDDRAW
+ENDDEF
+#
+# saab_bluetooth_aux_kit-eagle-import_3.3V
+#
+DEF saab_bluetooth_aux_kit-eagle-import_3.3V ~ 0 40 Y Y 1 L P
+F0 "" 0 0 50 H I C CNN
+F1 "saab_bluetooth_aux_kit-eagle-import_3.3V" -60 40 42 H V L BNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+P 2 1 0 0 -50 -50 0 0 N
+P 2 1 0 0 0 0 50 -50 N
+X 3.3V 1 0 -100 100 U 0 0 1 0 W
+ENDDRAW
+ENDDEF
+#
+# saab_bluetooth_aux_kit-eagle-import_AGND
+#
+DEF saab_bluetooth_aux_kit-eagle-import_AGND #AGND 0 40 Y Y 1 L P
+F0 "#AGND" 0 0 50 H I C CNN
+F1 "saab_bluetooth_aux_kit-eagle-import_AGND" -100 -200 59 V V L BNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+P 2 1 0 0 -75 0 75 0 N
+P 2 1 0 0 -43 -20 43 -20 N
+X AGND 1 0 100 100 D 0 0 1 0 W
+ENDDRAW
+ENDDEF
+#
+# saab_bluetooth_aux_kit-eagle-import_AUDIO_3.5MMJACK
+#
+DEF saab_bluetooth_aux_kit-eagle-import_AUDIO_3.5MMJACK X 0 40 Y Y 1 L N
+F0 "X" -200 300 42 H V L BNN
+F1 "saab_bluetooth_aux_kit-eagle-import_AUDIO_3.5MMJACK" -200 -300 42 H V L BNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+A -300 -50 50 1800 -900 1 0 10 N -350 -50 -300 -100
+A -300 -50 50 -900 0 1 0 10 N -300 -100 -250 -50
+P 2 1 0 0 -250 200 -250 -50 N
+P 2 1 0 0 -150 50 -200 100 N
+P 2 1 0 0 -100 100 -150 50 N
+P 2 1 0 0 -50 -150 -100 -200 N
+P 2 1 0 0 0 -200 -50 -150 N
+P 2 1 0 0 100 -200 0 -200 N
+P 2 1 0 0 100 -100 100 -200 N
+P 2 1 0 0 100 0 100 100 N
+P 2 1 0 0 100 100 -100 100 N
+P 2 1 0 0 200 -200 100 -200 N
+P 2 1 0 0 200 -100 100 -100 N
+P 2 1 0 0 200 0 100 0 N
+P 2 1 0 0 200 100 100 100 N
+P 2 1 0 0 200 200 -250 200 N
+X P$1 1 300 200 100 L 50 0 1 0 B
+X P$5 2 300 -200 100 L 50 0 1 0 B
+X P$2 3 300 100 100 L 50 0 1 0 B
+X P$4 4 300 -100 100 L 50 0 1 0 B
+X P$3 5 300 0 100 L 50 0 1 0 B
+ENDDRAW
+ENDDEF
+#
+# saab_bluetooth_aux_kit-eagle-import_AUDIO_I2S_UDA1334""
+#
+DEF saab_bluetooth_aux_kit-eagle-import_AUDIO_I2S_UDA1334"" U 0 40 Y Y 1 L N
+F0 "U" -500 1150 59 H V L BNN
+F1 "saab_bluetooth_aux_kit-eagle-import_AUDIO_I2S_UDA1334\"\"" -500 -1200 59 H V L BNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+T 0 0 1000 42 0 1 0 "UDA1334_I2C Audio DAC" Normal 1 C C
+T 0 0 -1000 42 0 1 0 "VDDA/D: 2.4-3.6V_Op. Temp: -40~85°C" Normal 0 C C
+P 2 1 0 0 -500 -1100 500 -1100 N
+P 2 1 0 0 -500 -900 -500 -1100 N
+P 2 1 0 0 -500 -900 -500 900 N
+P 2 1 0 0 -500 900 -500 1100 N
+P 2 1 0 0 -500 900 500 900 N
+P 2 1 0 0 -500 1100 500 1100 N
+P 2 1 0 0 500 -1100 500 -900 N
+P 2 1 0 0 500 -900 -500 -900 N
+P 2 1 0 0 500 900 500 -900 N
+P 2 1 0 0 500 1100 500 900 N
+X BCK 1 -600 0 100 R 50 50 1 0 I
+X PLL0 10 -600 -800 100 R 50 50 1 0 I
+X SFOR0 11 -600 -400 100 R 50 50 1 0 I
+X VREF(DAC) 12 600 -800 100 L 50 50 1 0 O
+X VDDA 13 -600 800 100 R 50 50 1 0 W
+X VOUTL 14 600 800 100 L 50 50 1 0 O
+X VSSA 15 -600 700 100 R 50 50 1 0 W
+X VOUTR 16 600 0 100 L 50 50 1 0 O
+X WS 2 -600 -100 100 R 50 50 1 0 I
+X DATAI 3 -600 -200 100 R 50 50 1 0 I
+X VDDD 4 -600 500 100 R 50 50 1 0 W
+X VSSD 5 -600 400 100 R 50 50 1 0 W
+X SYSCLK/PLL1 6 -600 200 100 R 50 50 1 0 I
+X SFOR1 7 -600 -300 100 R 50 50 1 0 I
+X MUTE 8 -600 -600 100 R 50 50 1 0 I
+X DEEM/CLKOUT 9 -600 -700 100 R 50 50 1 0 B
+ENDDRAW
+ENDDEF
+#
+# saab_bluetooth_aux_kit-eagle-import_CAP_CERAMIC0805-NOOUTLINE
+#
+DEF saab_bluetooth_aux_kit-eagle-import_CAP_CERAMIC0805-NOOUTLINE C 0 40 Y Y 1 L N
+F0 "C" -90 49 50 V V C CNN
+F1 "saab_bluetooth_aux_kit-eagle-import_CAP_CERAMIC0805-NOOUTLINE" 90 49 50 V V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+S -50 20 50 40 1 0 0 F
+S -50 60 50 80 1 0 0 F
+P 2 1 0 0 0 30 0 0 N
+P 2 1 0 0 0 100 0 70 N
+X 1 1 0 200 100 D 0 0 1 0 P
+X 2 2 0 -100 100 U 0 0 1 0 P
+ENDDRAW
+ENDDEF
+#
+# saab_bluetooth_aux_kit-eagle-import_CAP_ELECTROLYTICPANASONIC_C
+#
+DEF saab_bluetooth_aux_kit-eagle-import_CAP_ELECTROLYTICPANASONIC_C C 0 40 Y Y 1 L N
+F0 "C" -94 49 50 V V C CNN
+F1 "saab_bluetooth_aux_kit-eagle-import_CAP_ELECTROLYTICPANASONIC_C" 98 49 50 V V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+S -55 0 55 35 1 0 0 F
+P 2 1 0 0 -50 70 -50 100 N
+P 2 1 0 0 -50 100 50 100 N
+P 2 1 0 0 -40 135 -10 135 N
+P 2 1 0 0 -25 150 -25 120 N
+P 2 1 0 0 50 70 -50 70 N
+P 2 1 0 0 50 100 50 70 N
+X + + 0 200 100 D 0 0 1 0 P
+X - - 0 -100 100 U 0 0 1 0 P
+ENDDRAW
+ENDDEF
+#
+# saab_bluetooth_aux_kit-eagle-import_FERRITE0805
+#
+DEF saab_bluetooth_aux_kit-eagle-import_FERRITE0805 FB 0 40 Y Y 1 L N
+F0 "FB" -50 75 42 H V L BNN
+F1 "saab_bluetooth_aux_kit-eagle-import_FERRITE0805" -50 -125 42 H V L BNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+P 2 1 0 0 -50 -37 -50 37 N
+P 2 1 0 0 -50 37 50 37 N
+P 2 1 0 0 50 -37 -50 -37 N
+P 2 1 0 0 50 37 50 -37 N
+X P$1 1 -100 0 100 R 0 0 1 0 P
+X P$2 2 100 0 100 L 0 0 1 0 P
+ENDDRAW
+ENDDEF
+#
+# saab_bluetooth_aux_kit-eagle-import_FIDUCIAL_1MM
+#
+DEF saab_bluetooth_aux_kit-eagle-import_FIDUCIAL_1MM FID 0 40 Y Y 1 L N
+F0 "FID" 0 0 50 H I C CNN
+F1 "saab_bluetooth_aux_kit-eagle-import_FIDUCIAL_1MM" 0 0 50 H I C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+C 0 0 50 1 0 10 N
+P 2 1 0 0 -30 30 30 -30 N
+P 2 1 0 0 30 30 -30 -30 N
+ENDDRAW
+ENDDEF
+#
+# saab_bluetooth_aux_kit-eagle-import_FRAME_A4
+#
+DEF saab_bluetooth_aux_kit-eagle-import_FRAME_A4 #FRAME 0 40 Y Y 2 L N
+F0 "#FRAME" 0 0 50 H I C CNN
+F1 "saab_bluetooth_aux_kit-eagle-import_FRAME_A4" 0 0 50 H I C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+C 4300 1237 55 2 0 10 N
+T 0 88 462 59 0 2 0 >CHECKED Normal 0 L B
+T 0 919 1168 106 0 2 0 >COMPANY Normal 1 L B
+T 0 88 112 59 0 2 0 >DATE Normal 0 L B
+T 0 1300 112 85 0 2 0 >DRAWING_NAME Normal 0 L B
+T 0 88 812 59 0 2 0 >DRAWN Normal 0 L B
+T 0 3588 362 73 0 2 0 >DRGNO Normal 0 L B
+T 0 1288 362 85 0 2 0 >LAST_DATE_TIME Normal 0 L B
+T 0 4488 737 127 0 2 0 >REV Normal 0 L B
+T 0 4288 112 100 0 2 0 >SHEET Normal 0 L B
+T 0 4425 1199 59 0 2 0 >YEAR Normal 0 L B
+T 0 4281 1212 42 0 2 0 C Normal 0 L B
+T 0 38 637 59 0 2 0 CHECKED Normal 0 L B
+T 0 38 287 59 0 2 0 DATE Normal 0 L B
+T 0 838 512 100 0 2 0 DATE Normal 0 L B
+T 0 38 987 59 0 2 0 DRAWN Normal 0 L B
+T 0 3538 512 100 0 2 0 DRG Normal 0 L B
+T 0 838 112 100 0 2 0 FILE: Normal 0 L B
+T 0 200 1199 64 0 2 0 ISSUE Normal 0 L B
+T 0 3875 512 100 0 2 0 N Normal 0 L B
+T 0 3975 549 73 0 2 0 o Normal 0 L B
+T 0 3813 112 100 0 2 0 PAGE: Normal 0 L B
+T 0 4425 962 100 0 2 0 REV Normal 0 L B
+T 0 838 962 100 0 2 0 TITLE Normal 0 L B
+P 2 1 0 0 10100 150 10100 350 N
+P 2 1 0 0 10100 350 10100 550 N
+P 2 1 0 0 10100 550 10100 750 N
+P 2 1 0 0 10100 750 10100 1450 N
+P 2 2 0 0 -12 62 788 62 N
+P 2 2 0 0 -12 412 -12 62 N
+P 2 2 0 0 -12 412 788 412 N
+P 2 2 0 0 -12 762 -12 412 N
+P 2 2 0 0 -12 762 788 762 N
+P 2 2 0 0 -12 1112 -12 762 N
+P 2 2 0 0 -12 1112 788 1112 N
+P 2 2 0 0 -12 1362 -12 1112 N
+P 2 2 0 0 788 62 788 262 N
+P 2 2 0 0 788 62 3763 62 N
+P 2 2 0 0 788 262 788 412 N
+P 2 2 0 0 788 262 3488 262 N
+P 2 2 0 0 788 412 788 662 N
+P 2 2 0 0 788 662 788 762 N
+P 2 2 0 0 788 762 788 1112 N
+P 2 2 0 0 788 1112 788 1362 N
+P 2 2 0 0 788 1112 4163 1112 N
+P 2 2 0 0 788 1362 -12 1362 N
+P 2 2 0 0 3488 262 3763 262 N
+P 2 2 0 0 3488 662 788 662 N
+P 2 2 0 0 3488 662 3488 262 N
+P 2 2 0 0 3763 62 4788 62 N
+P 2 2 0 0 3763 262 3763 62 N
+P 2 2 0 0 3763 262 4788 262 N
+P 2 2 0 0 3988 524 4025 524 N
+P 2 2 0 0 4163 1112 4163 1362 N
+P 2 2 0 0 4163 1112 4338 1112 N
+P 2 2 0 0 4163 1362 788 1362 N
+P 2 2 0 0 4338 662 3488 662 N
+P 2 2 0 0 4338 1112 4338 662 N
+P 2 2 0 0 4338 1112 4788 1112 N
+P 2 2 0 0 4788 262 4788 62 N
+P 2 2 0 0 4788 662 4338 662 N
+P 2 2 0 0 4788 662 4788 262 N
+P 2 2 0 0 4788 1112 4788 662 N
+P 2 2 0 0 4788 1362 4163 1362 N
+P 2 2 0 0 4788 1362 4788 1112 N
+ENDDRAW
+ENDDEF
+#
+# saab_bluetooth_aux_kit-eagle-import_GND
+#
+DEF saab_bluetooth_aux_kit-eagle-import_GND ~ 0 40 Y Y 1 L P
+F0 "" 0 0 50 H I C CNN
+F1 "saab_bluetooth_aux_kit-eagle-import_GND" -60 -100 42 H V L BNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+P 2 1 0 0 -50 0 50 0 N
+X GND 1 0 100 100 D 0 0 1 0 W
+ENDDRAW
+ENDDEF
+#
+# saab_bluetooth_aux_kit-eagle-import_HEADER-1X670MIL
+#
+DEF saab_bluetooth_aux_kit-eagle-import_HEADER-1X670MIL JP 0 40 Y Y 1 L N
+F0 "JP" -250 425 59 H V L BNN
+F1 "saab_bluetooth_aux_kit-eagle-import_HEADER-1X670MIL" -250 -400 59 H V L BNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+P 2 1 0 0 -250 -300 50 -300 N
+P 2 1 0 0 -250 400 -250 -300 N
+P 2 1 0 0 50 -300 50 400 N
+P 2 1 0 0 50 400 -250 400 N
+X 1 1 -100 300 100 R 50 0 1 0 P I
+X 2 2 -100 200 100 R 50 0 1 0 P I
+X 3 3 -100 100 100 R 50 0 1 0 P I
+X 4 4 -100 0 100 R 50 0 1 0 P I
+X 5 5 -100 -100 100 R 50 0 1 0 P I
+X 6 6 -100 -200 100 R 50 0 1 0 P I
+ENDDRAW
+ENDDEF
+#
+# saab_bluetooth_aux_kit-eagle-import_HEADER-1X970MIL
+#
+DEF saab_bluetooth_aux_kit-eagle-import_HEADER-1X970MIL JP 0 40 Y Y 1 L N
+F0 "JP" -250 525 59 H V L BNN
+F1 "saab_bluetooth_aux_kit-eagle-import_HEADER-1X970MIL" -250 -600 59 H V L BNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+P 2 1 0 0 -250 -500 50 -500 N
+P 2 1 0 0 -250 500 -250 -500 N
+P 2 1 0 0 50 -500 50 500 N
+P 2 1 0 0 50 500 -250 500 N
+X 1 1 -100 400 100 R 50 0 1 0 P I
+X 2 2 -100 300 100 R 50 0 1 0 P I
+X 3 3 -100 200 100 R 50 0 1 0 P I
+X 4 4 -100 100 100 R 50 0 1 0 P I
+X 5 5 -100 0 100 R 50 0 1 0 P I
+X 6 6 -100 -100 100 R 50 0 1 0 P I
+X 7 7 -100 -200 100 R 50 0 1 0 P I
+X 8 8 -100 -300 100 R 50 0 1 0 P I
+X 9 9 -100 -400 100 R 50 0 1 0 P I
+ENDDRAW
+ENDDEF
+#
+# saab_bluetooth_aux_kit-eagle-import_MOUNTINGHOLE2.5
+#
+DEF saab_bluetooth_aux_kit-eagle-import_MOUNTINGHOLE2.5 ~ 0 40 Y Y 1 L N
+F0 "" 0 0 50 H I C CNN
+F1 "saab_bluetooth_aux_kit-eagle-import_MOUNTINGHOLE2.5" 0 0 50 H I C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+C 0 0 75 1 0 10 N
+C 0 0 100 1 0 10 N
+ENDDRAW
+ENDDEF
+#
+# saab_bluetooth_aux_kit-eagle-import_RESISTOR0805_NOOUTLINE
+#
+DEF saab_bluetooth_aux_kit-eagle-import_RESISTOR0805_NOOUTLINE R 0 40 Y Y 1 L N
+F0 "R" 0 100 50 H V C CNN
+F1 "saab_bluetooth_aux_kit-eagle-import_RESISTOR0805_NOOUTLINE" 0 0 40 H V C CNB
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+P 2 1 0 0 -100 -50 -100 50 N
+P 2 1 0 0 -100 50 100 50 N
+P 2 1 0 0 100 -50 -100 -50 N
+P 2 1 0 0 100 50 100 -50 N
+X 1 1 -200 0 100 R 0 0 1 0 P
+X 2 2 200 0 100 L 0 0 1 0 P
+ENDDRAW
+ENDDEF
+#
+# saab_bluetooth_aux_kit-eagle-import_RESISTOR_0603_NOOUT
+#
+DEF saab_bluetooth_aux_kit-eagle-import_RESISTOR_0603_NOOUT R 0 40 Y Y 1 L N
+F0 "R" 0 100 50 H V C CNN
+F1 "saab_bluetooth_aux_kit-eagle-import_RESISTOR_0603_NOOUT" 0 0 40 H V C CNB
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+P 2 1 0 0 -100 -50 -100 50 N
+P 2 1 0 0 -100 50 100 50 N
+P 2 1 0 0 100 -50 -100 -50 N
+P 2 1 0 0 100 50 100 -50 N
+X 1 1 -200 0 100 R 0 0 1 0 P
+X 2 2 200 0 100 L 0 0 1 0 P
+ENDDRAW
+ENDDEF
+#
+# saab_bluetooth_aux_kit-eagle-import_VIN
+#
+DEF saab_bluetooth_aux_kit-eagle-import_VIN ~ 0 40 Y Y 1 L P
+F0 "" 0 0 50 H I C CNN
+F1 "saab_bluetooth_aux_kit-eagle-import_VIN" -60 40 42 H V L BNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+P 2 1 0 0 -50 -50 0 0 N
+P 2 1 0 0 0 0 50 -50 N
+X VIN 1 0 -100 100 U 0 0 1 0 W
+ENDDRAW
+ENDDEF
+#
+# saab_bluetooth_aux_kit-eagle-import_VREG_SOT23-5
+#
+DEF saab_bluetooth_aux_kit-eagle-import_VREG_SOT23-5 U 0 40 Y Y 1 L N
+F0 "U" -300 240 42 H V L BNN
+F1 "saab_bluetooth_aux_kit-eagle-import_VREG_SOT23-5" -300 -300 42 H V L BNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+P 2 1 0 0 -300 -200 -300 200 N
+P 2 1 0 0 -300 200 300 200 N
+P 2 1 0 0 300 -200 -300 -200 N
+P 2 1 0 0 300 200 300 -200 N
+X IN 1 -400 100 100 R 50 50 1 0 W
+X GND 2 -400 -100 100 R 50 50 1 0 W
+X EN 3 -400 0 100 R 50 50 1 0 I
+X P4 4 400 -100 100 L 50 50 1 0 B
+X OUT 5 400 100 100 L 50 50 1 0 W
+ENDDRAW
+ENDDEF
+#
+#End Library
