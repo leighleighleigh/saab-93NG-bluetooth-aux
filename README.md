@@ -1,6 +1,9 @@
 # saab-93NG-bluetooth-aux
 A module to augment the Aux-In functionality of SAAB 93NG's (2002/3+), to add Bluetooth media playback and steering wheel media control support.
 
+# First prototype!
+![Imgur](https://i.imgur.com/RzdHh4H.jpg)
+
 # Project Layout
 - /saab_bluetooth_aux_kit
   - This is the PCB which all the modules will solder onto, for easy assembly.
