@@ -73,12 +73,6 @@ Wire Wire Line
 Text Label 2900 3700 0    10   ~ 0
 GND
 Wire Wire Line
-	1800 3400 1700 3400
-Wire Wire Line
-	1700 3400 1700 3800
-Text Label 1800 3400 0    10   ~ 0
-GND
-Wire Wire Line
 	10100 2900 9000 2900
 Wire Wire Line
 	9000 2900 9000 3100
@@ -155,14 +149,11 @@ Wire Wire Line
 Text Label 9200 3500 0    70   ~ 0
 OUTR
 Wire Wire Line
-	6400 4000 6500 4000
-Wire Wire Line
 	6500 4000 6500 4100
 Wire Wire Line
 	6500 4000 6800 4000
 Wire Wire Line
 	6800 4000 6800 4100
-Connection ~ 6500 4000
 Wire Wire Line
 	5200 3900 4200 3900
 Wire Wire Line
@@ -250,14 +241,10 @@ Wire Wire Line
 Text Label 4900 1500 0    10   ~ 0
 3.3V
 Wire Wire Line
-	2600 3200 2900 3200
-Wire Wire Line
 	2900 3200 2900 3000
 Wire Wire Line
 	2900 3400 2900 3200
 Connection ~ 2900 3200
-Text Label 2600 3200 0    10   ~ 0
-3.3V
 Wire Wire Line
 	10100 2800 9200 2800
 Wire Wire Line
@@ -281,31 +268,16 @@ Connection ~ 4100 1900
 Text Label 5200 2700 0    10   ~ 0
 3.3V
 Wire Wire Line
-	1800 3200 1700 3200
-Wire Wire Line
-	1700 3200 1500 3200
-Wire Wire Line
 	1500 3200 1500 3000
 Wire Wire Line
-	1800 3300 1700 3300
-Wire Wire Line
-	1700 3300 1700 3200
-Wire Wire Line
 	1500 3400 1500 3200
-Connection ~ 1700 3200
 Connection ~ 1500 3200
-Text Label 1800 3200 0    10   ~ 0
-VIN
 Wire Wire Line
 	10100 2700 9400 2700
 Wire Wire Line
 	9400 2700 9400 2600
 Text Label 10100 2700 0    10   ~ 0
 VIN
-Wire Wire Line
-	6500 3200 6400 3200
-Wire Wire Line
-	6400 2400 6500 2400
 Wire Wire Line
 	5200 2500 4400 2500
 Wire Wire Line
@@ -348,28 +320,6 @@ Wire Wire Line
 	10400 4400 9900 4400
 Text Label 10400 4400 0    10   ~ 0
 AGND
-$Comp
-L saab_bluetooth_aux_kit-eagle-import:FRAME_A4 #FRAME1
-U 1 1 73DA64CA
-P 900 7300
-F 0 "#FRAME1" H 900 7300 50  0001 C CNN
-F 1 "FRAME_A4" H 900 7300 50  0001 C CNN
-F 2 "" H 900 7300 50  0001 C CNN
-F 3 "" H 900 7300 50  0001 C CNN
-	1    900  7300
-	1    0    0    -1  
-$EndComp
-$Comp
-L saab_bluetooth_aux_kit-eagle-import:FRAME_A4 #FRAME1
-U 2 1 73DA64C6
-P 6200 7200
-F 0 "#FRAME1" H 6200 7200 50  0001 C CNN
-F 1 "FRAME_A4" H 6200 7200 50  0001 C CNN
-F 2 "" H 6200 7200 50  0001 C CNN
-F 3 "" H 6200 7200 50  0001 C CNN
-	2    6200 7200
-	1    0    0    -1  
-$EndComp
 $Comp
 L saab_bluetooth_aux_kit-eagle-import:CAP_CERAMIC0805-NOOUTLINE C1
 U 1 1 F1C90C04
@@ -492,72 +442,6 @@ F 3 "" H 6500 4300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L saab_bluetooth_aux_kit-eagle-import:FIDUCIAL_1MM FID1
-U 1 1 DB63CB8D
-P 10900 5700
-F 0 "FID1" H 10900 5700 50  0001 C CNN
-F 1 "FIDUCIAL_1MM" H 10900 5700 50  0001 C CNN
-F 2 "saab_bluetooth_aux_kit:FIDUCIAL_1MM" H 10900 5700 50  0001 C CNN
-F 3 "" H 10900 5700 50  0001 C CNN
-	1    10900 5700
-	1    0    0    -1  
-$EndComp
-$Comp
-L saab_bluetooth_aux_kit-eagle-import:FIDUCIAL_1MM FID2
-U 1 1 E067070F
-P 10800 5700
-F 0 "FID2" H 10800 5700 50  0001 C CNN
-F 1 "FIDUCIAL_1MM" H 10800 5700 50  0001 C CNN
-F 2 "saab_bluetooth_aux_kit:FIDUCIAL_1MM" H 10800 5700 50  0001 C CNN
-F 3 "" H 10800 5700 50  0001 C CNN
-	1    10800 5700
-	1    0    0    -1  
-$EndComp
-$Comp
-L saab_bluetooth_aux_kit-eagle-import:MOUNTINGHOLE2.5 U$11
-U 1 1 283E49E7
-P 10500 5700
-F 0 "U$11" H 10500 5700 50  0001 C CNN
-F 1 "MOUNTINGHOLE2.5" H 10500 5700 50  0001 C CNN
-F 2 "saab_bluetooth_aux_kit:MOUNTINGHOLE_2.5_PLATED" H 10500 5700 50  0001 C CNN
-F 3 "" H 10500 5700 50  0001 C CNN
-	1    10500 5700
-	1    0    0    -1  
-$EndComp
-$Comp
-L saab_bluetooth_aux_kit-eagle-import:MOUNTINGHOLE2.5 U$12
-U 1 1 CB8F9854
-P 10300 5700
-F 0 "U$12" H 10300 5700 50  0001 C CNN
-F 1 "MOUNTINGHOLE2.5" H 10300 5700 50  0001 C CNN
-F 2 "saab_bluetooth_aux_kit:MOUNTINGHOLE_2.5_PLATED" H 10300 5700 50  0001 C CNN
-F 3 "" H 10300 5700 50  0001 C CNN
-	1    10300 5700
-	1    0    0    -1  
-$EndComp
-$Comp
-L saab_bluetooth_aux_kit-eagle-import:MOUNTINGHOLE2.5 U$13
-U 1 1 777B985C
-P 10100 5700
-F 0 "U$13" H 10100 5700 50  0001 C CNN
-F 1 "MOUNTINGHOLE2.5" H 10100 5700 50  0001 C CNN
-F 2 "saab_bluetooth_aux_kit:MOUNTINGHOLE_2.5_PLATED" H 10100 5700 50  0001 C CNN
-F 3 "" H 10100 5700 50  0001 C CNN
-	1    10100 5700
-	1    0    0    -1  
-$EndComp
-$Comp
-L saab_bluetooth_aux_kit-eagle-import:MOUNTINGHOLE2.5 U$14
-U 1 1 491AF09A
-P 9900 5700
-F 0 "U$14" H 9900 5700 50  0001 C CNN
-F 1 "MOUNTINGHOLE2.5" H 9900 5700 50  0001 C CNN
-F 2 "saab_bluetooth_aux_kit:MOUNTINGHOLE_2.5_PLATED" H 9900 5700 50  0001 C CNN
-F 3 "" H 9900 5700 50  0001 C CNN
-	1    9900 5700
-	1    0    0    -1  
-$EndComp
-$Comp
 L saab_bluetooth_aux_kit-eagle-import:GND #U$15
 U 1 1 D0458224
 P 4000 4600
@@ -621,17 +505,6 @@ F 1 "3.3V" H 4840 1140 42  0000 L BNN
 F 2 "" H 4900 1100 50  0001 C CNN
 F 3 "" H 4900 1100 50  0001 C CNN
 	1    4900 1100
-	1    0    0    -1  
-$EndComp
-$Comp
-L saab_bluetooth_aux_kit-eagle-import:VREG_SOT23-5 U2
-U 1 1 60D488E9
-P 2200 3300
-F 0 "U2" H 1900 3540 42  0000 L BNN
-F 1 "MIC5225-3.3" H 1900 3000 42  0000 L BNN
-F 2 "saab_bluetooth_aux_kit:SOT23-5" H 2200 3300 50  0001 C CNN
-F 3 "" H 2200 3300 50  0001 C CNN
-	1    2200 3300
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -1048,25 +921,97 @@ DEEM:\nLOW = De-emphasis off\nHIGH = De-emphasis on
 Text Notes 1300 5900 0    59   ~ 0
 SFOR0   SFOR1   Function\nLOW     LOW     I2S-Bus Input\nLOW     HIGH    LSB-justified 16 bits input \nHIGH     LOW    LSB-justified 20 bits input \nHIGH     HIGH   LSB-justified 24 bits input 
 $Comp
-L saab_bluetooth_aux_kit-eagle-import:AUDIO_I2S_UDA1334"" U1
-U 1 1 A34E531C
-P 5800 3200
-F 0 "U1" H 5300 4350 59  0000 L BNN
-F 1 "UDA1334ATS" H 5300 2000 59  0000 L BNN
-F 2 "saab_bluetooth_aux_kit:SSOP16_4.4MM" H 5800 3200 50  0001 C CNN
-F 3 "" H 5800 3200 50  0001 C CNN
-	1    5800 3200
-	1    0    0    -1  
-$EndComp
-$Comp
 L Audio:UDA1334ATS U?
 U 1 1 5ED9BB68
-P 5050 5800
-F 0 "U?" H 5050 6681 50  0000 C CNN
-F 1 "UDA1334ATS" H 5050 6590 50  0000 C CNN
-F 2 "Package_SO:SSOP-16_4.4x5.2mm_P0.65mm" H 5050 5800 50  0001 C CNN
-F 3 "http://www.nxp.com/docs/en/data-sheet/UDA1334ATS.pdf" H 5050 5800 50  0001 C CNN
-	1    5050 5800
+P 5550 5100
+F 0 "U?" H 5550 5981 50  0000 C CNN
+F 1 "UDA1334ATS" H 5550 5890 50  0000 C CNN
+F 2 "Package_SO:SSOP-16_4.4x5.2mm_P0.65mm" H 5550 5100 50  0001 C CNN
+F 3 "http://www.nxp.com/docs/en/data-sheet/UDA1334ATS.pdf" H 5550 5100 50  0001 C CNN
+	1    5550 5100
 	1    0    0    -1  
 $EndComp
+Text GLabel 6500 4000 1    50   Input ~ 0
+VREF_DAC
+Text GLabel 6500 3200 1    50   Input ~ 0
+VOUT_R
+Text GLabel 6500 2400 1    50   Input ~ 0
+VOUT_L
+Text GLabel 5200 2400 2    50   Input ~ 0
+VDD_A
+Text GLabel 5200 2500 2    50   Input ~ 0
+VSS_A
+Text GLabel 5200 2700 2    50   Input ~ 0
+VDD_D
+Text GLabel 5200 2800 2    50   Input ~ 0
+VSS_D
+Text GLabel 5200 3000 2    50   Input ~ 0
+SYSCLK_IN
+Text GLabel 5200 3200 2    50   Input ~ 0
+BCK
+Text GLabel 5200 3300 2    50   Input ~ 0
+WS
+Text GLabel 5200 3400 2    50   Input ~ 0
+DATAI
+Text GLabel 5200 3500 2    50   Input ~ 0
+SFOR1
+Text GLabel 5200 3600 2    50   Input ~ 0
+SFOR0
+Text GLabel 5200 3800 2    50   Input ~ 0
+MUTE
+Text GLabel 5200 3900 2    50   Input ~ 0
+DEEM
+Text GLabel 5200 4000 2    50   Input ~ 0
+PLL0
+Text GLabel 5050 4600 0    50   Input ~ 0
+BCK
+Text GLabel 5050 4700 0    50   Input ~ 0
+WS
+Text GLabel 5050 4800 0    50   Input ~ 0
+DATAI
+Text GLabel 5050 5000 0    50   Input ~ 0
+PLL0
+Text GLabel 5050 5100 0    50   Input ~ 0
+SYSCLK_IN
+Text GLabel 5050 5200 0    50   Input ~ 0
+DEEM
+Text GLabel 5050 5300 0    50   Input ~ 0
+MUTE
+Text GLabel 5050 5400 0    50   Input ~ 0
+SFOR0
+Text GLabel 5050 5500 0    50   Input ~ 0
+SFOR1
+Text GLabel 6050 5400 2    50   Input ~ 0
+VREF_DAC
+Text GLabel 6050 4900 2    50   Input ~ 0
+VOUT_R
+Text GLabel 6050 4800 2    50   Input ~ 0
+VOUT_L
+Text GLabel 5650 5800 2    50   Input ~ 0
+VSS_A
+Text GLabel 5550 5800 0    50   Input ~ 0
+VSS_D
+Text GLabel 5550 4400 0    50   Input ~ 0
+VDD_D
+Text GLabel 5650 4400 2    50   Input ~ 0
+VDD_A
+$Comp
+L Regulator_Linear:MCP1703A-3302_SOT223 U?
+U 1 1 5EEB1033
+P 2250 3200
+F 0 "U?" H 2250 3442 50  0000 C CNN
+F 1 "MCP1703A-3302_SOT223" H 2250 3351 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-223-3_TabPin2" H 2250 3400 50  0001 C CNN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/20005122B.pdf" H 2250 3150 50  0001 C CNN
+	1    2250 3200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1500 3200 1950 3200
+Wire Wire Line
+	1700 3800 1700 3500
+Wire Wire Line
+	1700 3500 2250 3500
+Wire Wire Line
+	2550 3200 2900 3200
 $EndSCHEMATC

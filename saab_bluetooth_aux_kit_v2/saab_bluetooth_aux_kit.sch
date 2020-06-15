@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 1
+Sheet 1 2
 Title ""
 Date ""
 Rev ""
@@ -22,17 +22,6 @@ F 1 "ESP32-WROOM-30GPIO" H 5075 3475 118 0000 C CNN
 F 2 "custom_footprints:ESP32-WROOM-30GPIO" H 5100 4550 118 0001 C CNN
 F 3 "" H 5100 4550 118 0001 C CNN
 	1    5100 4550
-	1    0    0    -1  
-$EndComp
-$Comp
-L custom_symbols:UDA1334A_BREAKOUT U4
-U 1 1 5EA5F0CB
-P 7200 5500
-F 0 "U4" H 7878 5546 50  0000 L CNN
-F 1 "UDA1334A_BREAKOUT" H 7878 5455 50  0000 L CNN
-F 2 "custom_footprints:UDA1334A-Breakout" H 7200 5500 50  0001 C CNN
-F 3 "" H 7200 5500 50  0001 C CNN
-	1    7200 5500
 	1    0    0    -1  
 $EndComp
 Text GLabel 3450 1950 2    50   Input ~ 10
@@ -63,25 +52,23 @@ Text GLabel 5850 3700 2    50   Input ~ 0
 SPI_MOSI
 Text GLabel 8150 1250 0    50   Input ~ 0
 SPI_MOSI
-Text GLabel 6800 5950 3    50   Input ~ 10
-3VDC
-Text GLabel 7000 5950 3    50   Input ~ 10
+Text GLabel 7300 5050 0    50   Input ~ 10
 GND
-Text GLabel 7100 5950 3    50   Input ~ 0
+Text GLabel 7300 3700 0    50   Input ~ 0
 I2S_WSEL
 Text GLabel 4300 4400 0    50   Input ~ 0
 I2S_WSEL
-Text GLabel 7200 5950 3    50   Input ~ 0
+Text GLabel 7300 3800 0    50   Input ~ 0
 I2S_DIN
 Text GLabel 5850 3800 2    50   Input ~ 0
 I2S_DIN
-Text GLabel 7300 5950 3    50   Input ~ 0
+Text GLabel 7300 3600 0    50   Input ~ 0
 I2S_BCLK
 Text GLabel 4300 4500 0    50   Input ~ 0
 I2S_BCLK
-Text GLabel 7050 5050 1    50   Input ~ 10
+Text GLabel 7300 4300 0    50   Input ~ 10
 GND
-Text GLabel 7250 5050 1    50   Input ~ 10
+Text GLabel 7300 4400 0    50   Input ~ 10
 GND
 $Comp
 L Connector:Barrel_Jack J1
@@ -174,7 +161,7 @@ U 1 1 5ED6F29E
 P 9800 2250
 F 0 "R2" H 9859 2296 50  0000 L CNN
 F 1 "10k" H 9859 2205 50  0000 L CNN
-F 2 "" H 9800 2250 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 9800 2250 50  0001 C CNN
 F 3 "~" H 9800 2250 50  0001 C CNN
 	1    9800 2250
 	1    0    0    -1  
@@ -189,7 +176,7 @@ U 1 1 5ED769A1
 P 9350 2550
 F 0 "R1" H 9409 2596 50  0000 L CNN
 F 1 "10k" H 9409 2505 50  0000 L CNN
-F 2 "" H 9350 2550 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 9350 2550 50  0001 C CNN
 F 3 "~" H 9350 2550 50  0001 C CNN
 	1    9350 2550
 	1    0    0    -1  
@@ -202,20 +189,9 @@ U 1 1 5ED7BB04
 P 7150 2100
 F 0 "Y1" V 7104 2231 50  0000 L CNN
 F 1 "Crystal" V 7195 2231 50  0000 L CNN
-F 2 "" H 7150 2100 50  0001 C CNN
+F 2 "Crystal:Crystal_SMD_SeikoEpson_MA505-2Pin_12.7x5.1mm" H 7150 2100 50  0001 C CNN
 F 3 "~" H 7150 2100 50  0001 C CNN
 	1    7150 2100
-	0    1    1    0   
-$EndComp
-$Comp
-L Device:C_Small C1
-U 1 1 5ED7C478
-P 6850 1950
-F 0 "C1" V 6621 1950 50  0000 C CNN
-F 1 "27pF" V 6712 1950 50  0000 C CNN
-F 2 "" H 6850 1950 50  0001 C CNN
-F 3 "~" H 6850 1950 50  0001 C CNN
-	1    6850 1950
 	0    1    1    0   
 $EndComp
 $Comp
@@ -224,7 +200,7 @@ U 1 1 5ED7C91E
 P 6850 2250
 F 0 "C2" V 6621 2250 50  0000 C CNN
 F 1 "27pF" V 6712 2250 50  0000 C CNN
-F 2 "" H 6850 2250 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6850 2250 50  0001 C CNN
 F 3 "~" H 6850 2250 50  0001 C CNN
 	1    6850 2250
 	0    1    1    0   
@@ -270,4 +246,36 @@ Wire Notes Line
 	6350 2800 6350 750 
 Text Notes 6400 850  0    50   ~ 0
 CAN INTERFACE
+$Sheet
+S 7300 3450 2000 1700
+U 5EE7716E
+F0 "UDA1334 I2S" 50
+F1 "uda1334_submodule.sch" 50
+F2 "BCK" I L 7300 3600 50 
+F3 "WS" I L 7300 3700 50 
+F4 "DATAIN" I L 7300 3800 50 
+F5 "PLL0" I L 7300 3900 50 
+F6 "SYSCLK_IN" I L 7300 4000 50 
+F7 "DEEM" I L 7300 4100 50 
+F8 "MUTE" I L 7300 4200 50 
+F9 "SFOR0" I L 7300 4300 50 
+F10 "SFOR1" I L 7300 4400 50 
+F11 "GND" I L 7300 5050 50 
+F12 "VIN" I L 7300 4950 50 
+$EndSheet
+Text GLabel 7300 4950 0    50   Input ~ 10
+VIN_12V
+Text GLabel 2150 2050 1    50   Input ~ 10
+VIN_12V
+$Comp
+L Device:C_Small C1
+U 1 1 5ED7C478
+P 6850 1950
+F 0 "C1" V 6621 1950 50  0000 C CNN
+F 1 "27pF" V 6712 1950 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6850 1950 50  0001 C CNN
+F 3 "~" H 6850 1950 50  0001 C CNN
+	1    6850 1950
+	0    1    1    0   
+$EndComp
 $EndSCHEMATC
