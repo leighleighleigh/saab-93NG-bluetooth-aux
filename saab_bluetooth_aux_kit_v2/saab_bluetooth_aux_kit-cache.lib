@@ -1,37 +1,6 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# Audio_UDA1334ATS
-#
-DEF Audio_UDA1334ATS U 0 20 Y Y 1 F N
-F0 "U" -400 650 50 H V L CNN
-F1 "Audio_UDA1334ATS" 150 650 50 H V L CNN
-F2 "Package_SO:SSOP-16_4.4x5.2mm_P0.65mm" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-$FPLIST
- SSOP*4.4x5.2mm*P0.65mm*
-$ENDFPLIST
-DRAW
-S -400 600 400 -600 0 1 10 f
-X BCK 1 -500 500 100 R 50 50 1 1 I
-X PLL0 10 -500 100 100 R 50 50 1 1 I
-X SFOR0 11 -500 -300 100 R 50 50 1 1 I
-X Vref(DAC) 12 500 -300 100 L 50 50 1 1 P
-X VDDA 13 100 700 100 D 50 50 1 1 W
-X VOUTL 14 500 300 100 L 50 50 1 1 O
-X VSSA 15 100 -700 100 U 50 50 1 1 W
-X VOUTR 16 500 200 100 L 50 50 1 1 O
-X WS 2 -500 400 100 R 50 50 1 1 I
-X DATAI 3 -500 300 100 R 50 50 1 1 I
-X VDDD 4 0 700 100 D 50 50 1 1 W
-X VSSD 5 0 -700 100 U 50 50 1 1 W
-X SYSCLK/PLL1 6 -500 0 100 R 50 50 1 1 I
-X SFOR1 7 -500 -400 100 R 50 50 1 1 I
-X MUTE 8 -500 -200 100 R 50 50 1 1 I
-X DEEM/CLKOUT 9 -500 -100 100 R 50 50 1 1 B
-ENDDRAW
-ENDDEF
-#
 # Connector_Barrel_Jack
 #
 DEF Connector_Barrel_Jack J 0 40 Y Y 1 F N
@@ -52,26 +21,6 @@ P 2 0 1 10 200 100 150 100 N
 P 6 0 1 10 -150 -100 -100 -100 -50 -50 0 -100 100 -100 200 -100 N
 X ~ 1 300 100 100 L 50 50 1 1 P
 X ~ 2 300 -100 100 L 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
-# Device_CP_Small
-#
-DEF Device_CP_Small C 0 10 N N 1 F N
-F0 "C" 10 70 50 H V L CNN
-F1 "Device_CP_Small" 10 -80 50 H V L CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-$FPLIST
- CP_*
-$ENDFPLIST
-DRAW
-S -60 -12 60 -27 0 1 0 F
-S -60 27 60 12 0 1 0 N
-P 2 0 1 0 -50 60 -30 60 N
-P 2 0 1 0 -40 50 -40 70 N
-X ~ 1 0 100 73 D 50 50 1 1 P
-X ~ 2 0 -100 73 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
@@ -268,126 +217,31 @@ X VIN VIN -800 -550 100 R 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# saab_bluetooth_aux_kit-eagle-import_3.3V
+# custom_symbols_MAX98357A
 #
-DEF saab_bluetooth_aux_kit-eagle-import_3.3V ~ 0 40 Y Y 1 L P
-F0 "" 0 0 50 H I C CNN
-F1 "saab_bluetooth_aux_kit-eagle-import_3.3V" -60 40 42 H V L BNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
+DEF custom_symbols_MAX98357A U 0 40 Y Y 1 F N
+F0 "U" 0 500 50 H V C CNN
+F1 "custom_symbols_MAX98357A" 0 400 50 H V C CNN
+F2 "" 50 -50 50 H I C CNN
+F3 "" 50 -50 50 H I C CNN
 DRAW
-P 2 1 0 0 -50 -50 0 0 N
-P 2 1 0 0 0 0 50 -50 N
-X 3.3V 1 0 -100 100 U 0 0 1 0 W
-ENDDRAW
-ENDDEF
-#
-# saab_bluetooth_aux_kit-eagle-import_AGND
-#
-DEF saab_bluetooth_aux_kit-eagle-import_AGND #AGND 0 40 Y Y 1 L P
-F0 "#AGND" 0 0 50 H I C CNN
-F1 "saab_bluetooth_aux_kit-eagle-import_AGND" -100 -200 59 V V L BNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-P 2 1 0 0 -75 0 75 0 N
-P 2 1 0 0 -43 -20 43 -20 N
-X AGND 1 0 100 100 D 0 0 1 0 W
-ENDDRAW
-ENDDEF
-#
-# saab_bluetooth_aux_kit-eagle-import_CAP_CERAMIC0805-NOOUTLINE
-#
-DEF saab_bluetooth_aux_kit-eagle-import_CAP_CERAMIC0805-NOOUTLINE C 0 40 Y Y 1 L N
-F0 "C" -90 49 50 V V C CNN
-F1 "saab_bluetooth_aux_kit-eagle-import_CAP_CERAMIC0805-NOOUTLINE" 90 49 50 V V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-S -50 20 50 40 1 0 0 F
-S -50 60 50 80 1 0 0 F
-P 2 1 0 0 0 30 0 0 N
-P 2 1 0 0 0 100 0 70 N
-X 1 1 0 200 100 D 0 0 1 0 P
-X 2 2 0 -100 100 U 0 0 1 0 P
-ENDDRAW
-ENDDEF
-#
-# saab_bluetooth_aux_kit-eagle-import_FERRITE0805
-#
-DEF saab_bluetooth_aux_kit-eagle-import_FERRITE0805 FB 0 40 Y Y 1 L N
-F0 "FB" -50 75 42 H V L BNN
-F1 "saab_bluetooth_aux_kit-eagle-import_FERRITE0805" -50 -125 42 H V L BNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-P 2 1 0 0 -50 -37 -50 37 N
-P 2 1 0 0 -50 37 50 37 N
-P 2 1 0 0 50 -37 -50 -37 N
-P 2 1 0 0 50 37 50 -37 N
-X P$1 1 -100 0 100 R 0 0 1 0 P
-X P$2 2 100 0 100 L 0 0 1 0 P
-ENDDRAW
-ENDDEF
-#
-# saab_bluetooth_aux_kit-eagle-import_GND
-#
-DEF saab_bluetooth_aux_kit-eagle-import_GND ~ 0 40 Y Y 1 L P
-F0 "" 0 0 50 H I C CNN
-F1 "saab_bluetooth_aux_kit-eagle-import_GND" -60 -100 42 H V L BNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-P 2 1 0 0 -50 0 50 0 N
-X GND 1 0 100 100 D 0 0 1 0 W
-ENDDRAW
-ENDDEF
-#
-# saab_bluetooth_aux_kit-eagle-import_RESISTOR0805_NOOUTLINE
-#
-DEF saab_bluetooth_aux_kit-eagle-import_RESISTOR0805_NOOUTLINE R 0 40 Y Y 1 L N
-F0 "R" 0 100 50 H V C CNN
-F1 "saab_bluetooth_aux_kit-eagle-import_RESISTOR0805_NOOUTLINE" 0 0 40 H V C CNB
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-P 2 1 0 0 -100 -50 -100 50 N
-P 2 1 0 0 -100 50 100 50 N
-P 2 1 0 0 100 -50 -100 -50 N
-P 2 1 0 0 100 50 100 -50 N
-X 1 1 -200 0 100 R 0 0 1 0 P
-X 2 2 200 0 100 L 0 0 1 0 P
-ENDDRAW
-ENDDEF
-#
-# saab_bluetooth_aux_kit-eagle-import_RESISTOR_0603_NOOUT
-#
-DEF saab_bluetooth_aux_kit-eagle-import_RESISTOR_0603_NOOUT R 0 40 Y Y 1 L N
-F0 "R" 0 100 50 H V C CNN
-F1 "saab_bluetooth_aux_kit-eagle-import_RESISTOR_0603_NOOUT" 0 0 40 H V C CNB
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-P 2 1 0 0 -100 -50 -100 50 N
-P 2 1 0 0 -100 50 100 50 N
-P 2 1 0 0 100 -50 -100 -50 N
-P 2 1 0 0 100 50 100 -50 N
-X 1 1 -200 0 100 R 0 0 1 0 P
-X 2 2 200 0 100 L 0 0 1 0 P
-ENDDRAW
-ENDDEF
-#
-# saab_bluetooth_aux_kit-eagle-import_VIN
-#
-DEF saab_bluetooth_aux_kit-eagle-import_VIN ~ 0 40 Y Y 1 L P
-F0 "" 0 0 50 H I C CNN
-F1 "saab_bluetooth_aux_kit-eagle-import_VIN" -60 40 42 H V L BNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-P 2 1 0 0 -50 -50 0 0 N
-P 2 1 0 0 0 0 50 -50 N
-X VIN 1 0 -100 100 U 0 0 1 0 W
+S -550 650 550 -500 0 1 0 f
+X DIN 1 -650 300 100 R 50 50 1 1 I
+X OUTN 10 650 -300 100 L 50 50 1 1 O
+X GND 11 650 -200 100 L 50 50 1 1 I
+X NC 12 650 -100 100 L 50 50 1 1 N
+X NC 13 650 0 100 L 50 50 1 1 N
+X LRCLK 14 650 100 100 L 50 50 1 1 I
+X GND 15 650 200 100 L 50 50 1 1 I
+X BCLK 16 650 300 100 L 50 50 1 1 I
+X GAIN_SLOT 2 -650 200 100 R 50 50 1 1 I
+X GND 3 -650 100 100 R 50 50 1 1 I
+X ~SD_MODE 4 -650 0 100 R 50 50 1 1 I
+X NC 5 -650 -100 100 R 50 50 1 1 N
+X NC 6 -650 -200 100 R 50 50 1 1 N
+X VDD 7 -650 -300 100 R 50 50 1 1 I
+X VDD 8 -650 -400 100 R 50 50 1 1 I
+X OUTP 9 650 -400 100 L 50 50 1 1 O
 ENDDRAW
 ENDDEF
 #

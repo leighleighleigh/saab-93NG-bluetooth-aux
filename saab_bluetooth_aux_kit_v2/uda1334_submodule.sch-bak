@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 2 2
+Sheet 2 3
 Title ""
 Date ""
 Rev ""
@@ -750,10 +750,10 @@ GND
 Text HLabel 1150 1800 0    50   Input ~ 0
 VIN
 $Comp
-L Device:CP_Small C?
+L Device:CP_Small C11
 U 1 1 5EED3246
 P 7150 4450
-F 0 "C?" V 7375 4450 50  0000 C CNN
+F 0 "C11" V 7375 4450 50  0000 C CNN
 F 1 "47uF" V 7284 4450 50  0000 C CNN
 F 2 "Capacitor_SMD:CP_Elec_5x4.5" H 7150 4450 50  0001 C CNN
 F 3 "~" H 7150 4450 50  0001 C CNN
@@ -761,10 +761,10 @@ F 3 "~" H 7150 4450 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L Device:CP_Small C?
+L Device:CP_Small C12
 U 1 1 5EED423F
 P 7150 5250
-F 0 "C?" V 7375 5250 50  0000 C CNN
+F 0 "C12" V 7375 5250 50  0000 C CNN
 F 1 "47uF" V 7284 5250 50  0000 C CNN
 F 2 "Capacitor_SMD:CP_Elec_5x4.5" H 7150 5250 50  0001 C CNN
 F 3 "~" H 7150 5250 50  0001 C CNN
@@ -775,4 +775,18 @@ Wire Wire Line
 	6050 4450 7050 4450
 Wire Wire Line
 	6050 5250 7050 5250
+$Comp
+L Regulator_Linear:MCP1703A-3302_SOT223 U?
+U 1 1 5EED8232
+P 1900 1950
+F 0 "U?" H 1900 2192 50  0000 C CNN
+F 1 "MCP1703A-3302_SOT223" H 1900 2101 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-223-3_TabPin2" H 1900 2150 50  0001 C CNN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/20005122B.pdf" H 1900 1900 50  0001 C CNN
+	1    1900 1950
+	1    0    0    -1  
+$EndComp
+Connection ~ 1600 1950
+Connection ~ 1900 2250
+Connection ~ 2200 1950
 $EndSCHEMATC

@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 2 2
+Sheet 2 3
 Title ""
 Date ""
 Rev ""
@@ -52,10 +52,6 @@ Wire Wire Line
 	2000 5850 2000 5950
 Wire Wire Line
 	2200 5850 2200 5950
-Wire Wire Line
-	1150 2450 1150 2550
-Wire Wire Line
-	2550 2450 2550 2550
 Wire Wire Line
 	2400 5850 2400 5950
 Wire Wire Line
@@ -123,11 +119,6 @@ Wire Wire Line
 Wire Wire Line
 	4850 1750 4850 1450
 Wire Wire Line
-	2550 1950 2550 1750
-Wire Wire Line
-	2550 2150 2550 1950
-Connection ~ 2550 1950
-Wire Wire Line
 	5150 2950 4050 2950
 Wire Wire Line
 	4050 2950 4050 2450
@@ -141,11 +132,6 @@ Wire Wire Line
 	4050 2150 4050 1450
 Connection ~ 4050 2450
 Connection ~ 4050 2150
-Wire Wire Line
-	1150 1950 1150 1750
-Wire Wire Line
-	1150 2150 1150 1950
-Connection ~ 1150 1950
 Wire Wire Line
 	5150 2750 4350 2750
 Wire Wire Line
@@ -320,105 +306,6 @@ F 1 "GND" H 1540 5950 42  0000 L BNN
 F 2 "" H 1600 6050 50  0001 C CNN
 F 3 "" H 1600 6050 50  0001 C CNN
 	1    1600 6050
-	1    0    0    -1  
-$EndComp
-$Comp
-L saab_bluetooth_aux_kit-eagle-import:3.3V #U$0107
-U 1 1 54307519
-P 4050 1350
-F 0 "#U$0107" H 4050 1350 50  0001 C CNN
-F 1 "3.3V" H 3990 1390 42  0000 L BNN
-F 2 "" H 4050 1350 50  0001 C CNN
-F 3 "" H 4050 1350 50  0001 C CNN
-	1    4050 1350
-	1    0    0    -1  
-$EndComp
-$Comp
-L saab_bluetooth_aux_kit-eagle-import:3.3V #U$0108
-U 1 1 84E86E02
-P 4850 1350
-F 0 "#U$0108" H 4850 1350 50  0001 C CNN
-F 1 "3.3V" H 4790 1390 42  0000 L BNN
-F 2 "" H 4850 1350 50  0001 C CNN
-F 3 "" H 4850 1350 50  0001 C CNN
-	1    4850 1350
-	1    0    0    -1  
-$EndComp
-$Comp
-L saab_bluetooth_aux_kit-eagle-import:CAP_CERAMIC0805-NOOUTLINE C3
-U 1 1 A9BBABC6
-P 1150 2350
-F 0 "C3" V 1060 2399 50  0000 C CNN
-F 1 "10uF" V 1240 2399 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1150 2350 50  0001 C CNN
-F 3 "" H 1150 2350 50  0001 C CNN
-	1    1150 2350
-	1    0    0    -1  
-$EndComp
-$Comp
-L saab_bluetooth_aux_kit-eagle-import:CAP_CERAMIC0805-NOOUTLINE C4
-U 1 1 A2F8029B
-P 2550 2350
-F 0 "C4" V 2460 2399 50  0000 C CNN
-F 1 "10uF" V 2640 2399 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 2550 2350 50  0001 C CNN
-F 3 "" H 2550 2350 50  0001 C CNN
-	1    2550 2350
-	1    0    0    -1  
-$EndComp
-$Comp
-L saab_bluetooth_aux_kit-eagle-import:GND #U$0109
-U 1 1 E246D3EE
-P 1150 2650
-F 0 "#U$0109" H 1150 2650 50  0001 C CNN
-F 1 "GND" H 1090 2550 42  0000 L BNN
-F 2 "" H 1150 2650 50  0001 C CNN
-F 3 "" H 1150 2650 50  0001 C CNN
-	1    1150 2650
-	1    0    0    -1  
-$EndComp
-$Comp
-L saab_bluetooth_aux_kit-eagle-import:GND #U$0110
-U 1 1 F3FE4F2D
-P 2550 2650
-F 0 "#U$0110" H 2550 2650 50  0001 C CNN
-F 1 "GND" H 2490 2550 42  0000 L BNN
-F 2 "" H 2550 2650 50  0001 C CNN
-F 3 "" H 2550 2650 50  0001 C CNN
-	1    2550 2650
-	1    0    0    -1  
-$EndComp
-$Comp
-L saab_bluetooth_aux_kit-eagle-import:3.3V #U$0111
-U 1 1 5EE50C33
-P 2550 1650
-F 0 "#U$0111" H 2550 1650 50  0001 C CNN
-F 1 "3.3V" H 2490 1690 42  0000 L BNN
-F 2 "" H 2550 1650 50  0001 C CNN
-F 3 "" H 2550 1650 50  0001 C CNN
-	1    2550 1650
-	1    0    0    -1  
-$EndComp
-$Comp
-L saab_bluetooth_aux_kit-eagle-import:VIN #U$0112
-U 1 1 D872CB34
-P 1150 1650
-F 0 "#U$0112" H 1150 1650 50  0001 C CNN
-F 1 "VIN" H 1090 1690 42  0000 L BNN
-F 2 "" H 1150 1650 50  0001 C CNN
-F 3 "" H 1150 1650 50  0001 C CNN
-	1    1150 1650
-	1    0    0    -1  
-$EndComp
-$Comp
-L saab_bluetooth_aux_kit-eagle-import:GND #U$0113
-U 1 1 026FD684
-P 1350 2650
-F 0 "#U$0113" H 1350 2650 50  0001 C CNN
-F 1 "GND" H 1290 2550 42  0000 L BNN
-F 2 "" H 1350 2650 50  0001 C CNN
-F 3 "" H 1350 2650 50  0001 C CNN
-	1    1350 2650
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -647,25 +534,6 @@ F 3 "http://www.nxp.com/docs/en/data-sheet/UDA1334ATS.pdf" H 5550 5100 50  0001 
 	1    5550 5100
 	1    0    0    -1  
 $EndComp
-$Comp
-L Regulator_Linear:MCP1703A-3302_SOT223 U4
-U 1 1 5EEB1033
-P 1900 1950
-F 0 "U4" H 1900 2192 50  0000 C CNN
-F 1 "MCP1703A-3302_SOT223" H 1900 2101 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-223-3_TabPin2" H 1900 2150 50  0001 C CNN
-F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/20005122B.pdf" H 1900 1900 50  0001 C CNN
-	1    1900 1950
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1150 1950 1600 1950
-Wire Wire Line
-	1350 2550 1350 2250
-Wire Wire Line
-	1350 2250 1900 2250
-Wire Wire Line
-	2200 1950 2550 1950
 Text HLabel 5050 4600 0    50   Input ~ 0
 BCK
 Text HLabel 5050 4700 0    50   Input ~ 0
@@ -745,9 +613,7 @@ Text Label 5550 5800 2    50   ~ 0
 VSS_D
 Text Label 5550 4400 2    50   ~ 0
 VDD_D
-Text HLabel 1150 2550 0    50   Input ~ 0
-GND
-Text HLabel 1150 1800 0    50   Input ~ 0
+Text HLabel 4050 1450 0    50   Input ~ 0
 VIN
 $Comp
 L Device:CP_Small C11
@@ -775,4 +641,6 @@ Wire Wire Line
 	6050 4450 7050 4450
 Wire Wire Line
 	6050 5250 7050 5250
+Wire Wire Line
+	4850 1450 4050 1450
 $EndSCHEMATC

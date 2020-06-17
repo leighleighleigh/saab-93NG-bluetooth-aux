@@ -24,9 +24,9 @@ F 3 "" H 5100 4550 118 0001 C CNN
 	1    5100 4550
 	1    0    0    -1  
 $EndComp
-Text GLabel 3450 1950 2    50   Input ~ 10
+Text GLabel 3050 1950 2    50   Input ~ 10
 5VDC
-Text GLabel 3450 2150 2    50   Input ~ 10
+Text GLabel 2750 2250 2    50   Input ~ 10
 GND
 Text GLabel 4300 5000 0    50   Input ~ 10
 GND
@@ -52,53 +52,23 @@ Text GLabel 5850 3700 2    50   Input ~ 0
 SPI_MOSI
 Text GLabel 8150 1250 0    50   Input ~ 0
 SPI_MOSI
-Text GLabel 7300 5050 0    50   Input ~ 10
-GND
-Text GLabel 7300 3700 0    50   Input ~ 0
-I2S_WSEL
 Text GLabel 4300 4400 0    50   Input ~ 0
 I2S_WSEL
-Text GLabel 7300 3800 0    50   Input ~ 0
-I2S_DIN
 Text GLabel 5850 3800 2    50   Input ~ 0
 I2S_DIN
-Text GLabel 7300 3600 0    50   Input ~ 0
-I2S_BCLK
 Text GLabel 4300 4500 0    50   Input ~ 0
 I2S_BCLK
-Text GLabel 7300 4300 0    50   Input ~ 10
-GND
-Text GLabel 7300 4400 0    50   Input ~ 10
-GND
 $Comp
 L Connector:Barrel_Jack J1
 U 1 1 5EB35333
-P 1750 2150
-F 0 "J1" H 1807 2475 50  0000 C CNN
-F 1 "Barrel_Jack" H 1807 2384 50  0000 C CNN
-F 2 "Connector_BarrelJack:BarrelJack_Wuerth_6941xx301002" H 1800 2110 50  0001 C CNN
-F 3 "~" H 1800 2110 50  0001 C CNN
-	1    1750 2150
+P 2600 1300
+F 0 "J1" H 2657 1625 50  0000 C CNN
+F 1 "Barrel_Jack" H 2657 1534 50  0000 C CNN
+F 2 "Connector_BarrelJack:BarrelJack_Wuerth_6941xx301002" H 2650 1260 50  0001 C CNN
+F 3 "~" H 2650 1260 50  0001 C CNN
+	1    2600 1300
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	2050 2050 2450 2050
-Wire Wire Line
-	2450 2050 2450 1950
-Wire Wire Line
-	2050 2250 2150 2250
-Wire Wire Line
-	2150 2250 2150 2350
-Wire Wire Line
-	2150 2350 2450 2350
-Wire Wire Line
-	2450 2250 2450 2350
-Wire Wire Line
-	3450 2250 3450 2150
-Wire Wire Line
-	3050 1950 3450 1950
-Wire Wire Line
-	2450 2250 2750 2250
 $Comp
 L Regulator_Linear:MCP1703A-5002_SOT223 U1
 U 1 1 5ED69E86
@@ -110,9 +80,6 @@ F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/20005122B.pdf" H 2750 1900 
 	1    2750 1950
 	1    0    0    -1  
 $EndComp
-Connection ~ 2750 2250
-Wire Wire Line
-	2750 2250 3450 2250
 $Comp
 L Interface_CAN_LIN:MCP2515-xST U3
 U 1 1 5ED6B86A
@@ -246,27 +213,6 @@ Wire Notes Line
 	6350 2800 6350 750 
 Text Notes 6400 850  0    50   ~ 0
 CAN INTERFACE
-$Sheet
-S 7300 3450 2000 1700
-U 5EE7716E
-F0 "UDA1334 I2S" 50
-F1 "uda1334_submodule.sch" 50
-F2 "BCK" I L 7300 3600 50 
-F3 "WS" I L 7300 3700 50 
-F4 "DATAIN" I L 7300 3800 50 
-F5 "PLL0" I L 7300 3900 50 
-F6 "SYSCLK_IN" I L 7300 4000 50 
-F7 "DEEM" I L 7300 4100 50 
-F8 "MUTE" I L 7300 4200 50 
-F9 "SFOR0" I L 7300 4300 50 
-F10 "SFOR1" I L 7300 4400 50 
-F11 "GND" I L 7300 5050 50 
-F12 "VIN" I L 7300 4950 50 
-$EndSheet
-Text GLabel 7300 4950 0    50   Input ~ 10
-VIN_12V
-Text GLabel 2150 2050 1    50   Input ~ 10
-VIN_12V
 $Comp
 L Device:C_Small C1
 U 1 1 5ED7C478
@@ -278,4 +224,55 @@ F 3 "~" H 6850 1950 50  0001 C CNN
 	1    6850 1950
 	0    1    1    0   
 $EndComp
+$Sheet
+S 7150 3800 1400 1250
+U 5EEA5C0A
+F0 "Sheet5EEA5C09" 50
+F1 "file5EEA5C09.sch" 50
+F2 "VCC" I L 7150 3950 50 
+F3 "VDD" I L 7150 3850 50 
+F4 "ENABLE" I L 7150 4100 50 
+F5 "BCLK" I L 7150 4650 50 
+F6 "LRCLK" I L 7150 4550 50 
+F7 "OUTP_L" I R 8550 3950 50 
+F8 "OUTN_L" I R 8550 4050 50 
+F9 "OUTN_R" I R 8550 4900 50 
+F10 "OUTP_R" I R 8550 4800 50 
+F11 "DIN" I L 7150 4450 50 
+$EndSheet
+Text GLabel 7150 4550 0    50   Input ~ 0
+I2S_WSEL
+Text GLabel 7150 4450 0    50   Input ~ 0
+I2S_DIN
+Text GLabel 7150 4650 0    50   Input ~ 0
+I2S_BCLK
+$Comp
+L Regulator_Linear:MCP1703A-3302_SOT223 U4
+U 1 1 5EED9837
+P 2750 2650
+F 0 "U4" H 2750 2892 50  0000 C CNN
+F 1 "MCP1703A-3302_SOT223" H 2750 2801 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-223-3_TabPin2" H 2750 2850 50  0001 C CNN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/20005122B.pdf" H 2750 2600 50  0001 C CNN
+	1    2750 2650
+	1    0    0    -1  
+$EndComp
+Text GLabel 2900 1400 2    50   Input ~ 10
+GND
+Text GLabel 2900 1200 2    50   Input ~ 10
+VIN_12V
+Text GLabel 2450 1950 0    50   Input ~ 10
+VIN_12V
+Text GLabel 2450 2650 0    50   Input ~ 10
+VIN_12V
+Text GLabel 2750 2950 2    50   Input ~ 10
+GND
+Text GLabel 3050 2650 2    50   Input ~ 10
+3.3VDC
+Text GLabel 7150 3850 0    50   Input ~ 10
+3.3VDC
+Text GLabel 7150 3950 0    50   Input ~ 10
+GND
+Text GLabel 7150 4100 0    50   Input ~ 10
+3.3VDC
 $EndSCHEMATC
