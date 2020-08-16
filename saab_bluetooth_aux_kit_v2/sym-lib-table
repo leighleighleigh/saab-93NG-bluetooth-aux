@@ -1,4 +1,5 @@
 (sym_lib_table
   (lib (name custom_symbols)(type Legacy)(uri ${KIPRJMOD}/custom_symbols.lib)(options "")(descr ""))
   (lib (name saab_bluetooth_aux_kit-eagle-import)(type Legacy)(uri ${KIPRJMOD}/saab_bluetooth_aux_kit-eagle-import.lib)(options "")(descr ""))
+  (lib (name max9720)(type Legacy)(uri /home/leigh/Documents/GitHub/saab-93NG-bluetooth-aux/saab_bluetooth_aux_v3/local_libraries/max9720.lib)(options "")(descr ""))
 )
