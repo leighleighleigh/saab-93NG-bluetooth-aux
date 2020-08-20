@@ -61,17 +61,6 @@ F 3 "~" H 6950 5800 50  0001 C CNN
 	1    6950 5800
 	0    1    1    0   
 $EndComp
-$Comp
-L RF_Module:ESP32-WROOM-32U U6
-U 1 1 5F3FAEB2
-P 5300 5050
-F 0 "U6" H 5300 6631 50  0000 C CNN
-F 1 "ESP32-WROOM-32U" H 5300 6540 50  0000 C CNN
-F 2 "RF_Module:ESP32-WROOM-32U" H 5300 3550 50  0001 C CNN
-F 3 "https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32d_esp32-wroom-32u_datasheet_en.pdf" H 5000 5100 50  0001 C CNN
-	1    5300 5050
-	1    0    0    -1  
-$EndComp
 Text GLabel 6000 3650 2    50   Input ~ 0
 GND
 Wire Wire Line
@@ -495,21 +484,6 @@ Text Notes 6800 5500 0    50   ~ 0
 NOTE: MIGHT NEED 10K's HERE
 Text Notes 8400 5450 0    50   ~ 0
 NOTE: NO IDEA IF THIS WILL WORK LMAO
-$Comp
-L Connector_Generic:Conn_01x08 J3
-U 1 1 5F374BE1
-P 5400 7350
-F 0 "J3" V 5525 7296 50  0000 C CNN
-F 1 "Conn_01x08" V 5616 7296 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical" H 5400 7350 50  0001 C CNN
-F 3 "~" H 5400 7350 50  0001 C CNN
-	1    5400 7350
-	0    1    1    0   
-$EndComp
-Text GLabel 5600 7150 1    50   Input ~ 0
-VDD_3.3V
-Text GLabel 5700 7150 1    50   Input ~ 0
-GND
 Wire Wire Line
 	4700 4050 5700 4050
 Wire Wire Line
@@ -520,56 +494,6 @@ Text GLabel 5900 5550 2    50   Input ~ 0
 I2S_WSEL
 Text GLabel 5900 5650 2    50   Input ~ 0
 I2S_BCLK
-Text GLabel 5200 7150 1    50   Input ~ 0
-I2S_DIN
-Text GLabel 5100 7150 1    50   Input ~ 0
-I2S_WSEL
-Text GLabel 5000 7150 1    50   Input ~ 0
-I2S_BCLK
-Wire Wire Line
-	5900 5950 5400 5950
-Wire Wire Line
-	5400 5950 5400 7150
-Wire Wire Line
-	5900 5850 5500 5850
-Wire Wire Line
-	5500 5850 5500 7150
-Wire Wire Line
-	5900 5750 5350 5750
-Wire Wire Line
-	5350 5750 5350 7150
-Wire Wire Line
-	5350 7150 5300 7150
-Wire Notes Line
-	4850 6650 5850 6650
-Wire Notes Line
-	5850 6650 5850 7650
-Wire Notes Line
-	5850 7650 4850 7650
-Wire Notes Line
-	4850 7650 4850 6650
-$Comp
-L Audio:PCM5100 U1
-U 1 1 5F369615
-P 8750 2050
-F 0 "U1" H 8750 1169 50  0000 C CNN
-F 1 "PCM5100" H 8750 1260 50  0000 C CNN
-F 2 "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" H 8700 2800 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/pcm5100.pdf" H 8700 2800 50  0001 C CNN
-	1    8750 2050
-	-1   0    0    1   
-$EndComp
-$Comp
-L max9720:MAX9720 U3
-U 1 1 5F36A9E0
-P 6350 2050
-F 0 "U3" H 6350 2765 50  0000 C CNN
-F 1 "MAX9720" H 6350 2674 50  0000 C CNN
-F 2 "Package_SO:TSSOP-16_4.4x5mm_P0.65mm" H 6200 2000 50  0001 C CNN
-F 3 "" H 6200 2000 50  0001 C CNN
-	1    6350 2050
-	1    0    0    -1  
-$EndComp
 Wire Notes Line
 	2400 4450 2400 2850
 Wire Notes Line
@@ -602,125 +526,383 @@ Text GLabel 3300 6150 2    50   Input ~ 0
 GND
 Text GLabel 3600 5950 2    50   Input ~ 0
 VIN
-Wire Wire Line
-	6750 1800 7700 1800
-Wire Wire Line
-	7700 1800 7700 1450
-Wire Wire Line
-	6750 2000 7800 2000
-Wire Wire Line
-	7800 2000 7800 1450
-Wire Wire Line
-	8250 2350 7100 2350
-Wire Wire Line
-	7100 2450 8250 2450
-Text GLabel 8650 2650 0    50   Input ~ 0
-VDD_3.3V
-Text GLabel 5950 1800 0    50   Input ~ 0
-VDD_3.3V
-Text GLabel 8850 1350 2    50   Input ~ 0
+Text GLabel 8600 2400 2    50   Input ~ 0
+I2S_DIN
+Text GLabel 8600 2500 2    50   Input ~ 0
+I2S_WSEL
+Text GLabel 8600 2300 2    50   Input ~ 0
+I2S_BCLK
+$Comp
+L RF_Module:ESP32-WROOM-32U U6
+U 1 1 5F3FAEB2
+P 5300 5050
+F 0 "U6" H 5300 6631 50  0000 C CNN
+F 1 "ESP32-WROOM-32U" H 5300 6540 50  0000 C CNN
+F 2 "RF_Module:ESP32-WROOM-32U" H 5300 3550 50  0001 C CNN
+F 3 "https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32d_esp32-wroom-32u_datasheet_en.pdf" H 5000 5100 50  0001 C CNN
+	1    5300 5050
+	1    0    0    -1  
+$EndComp
+Text GLabel 6100 2300 1    50   Input ~ 0
 GND
 $Comp
-L Device:C_Small C?
-U 1 1 5F42486D
-P 7000 2350
-F 0 "C?" V 7229 2350 50  0000 C CNN
-F 1 "1uF" V 7138 2350 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7000 2350 50  0001 C CNN
-F 3 "~" H 7000 2350 50  0001 C CNN
-	1    7000 2350
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:C_Small C?
+L Device:C_Small C10
 U 1 1 5F4272B3
-P 7000 2450
-F 0 "C?" V 7229 2450 50  0000 C CNN
-F 1 "1uF" V 7138 2450 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7000 2450 50  0001 C CNN
-F 3 "~" H 7000 2450 50  0001 C CNN
-	1    7000 2450
+P 6350 2500
+F 0 "C10" V 6579 2500 50  0000 C CNN
+F 1 "1uF" V 6488 2500 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6350 2500 50  0001 C CNN
+F 3 "~" H 6350 2500 50  0001 C CNN
+	1    6350 2500
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:C_Small C9
+U 1 1 5F42486D
+P 6350 2400
+F 0 "C9" V 6579 2400 50  0000 C CNN
+F 1 "1uF" V 6488 2400 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6350 2400 50  0001 C CNN
+F 3 "~" H 6350 2400 50  0001 C CNN
+	1    6350 2400
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	6750 2300 6900 2300
+	6450 2500 7600 2500
 Wire Wire Line
-	6900 2300 6900 2350
-Wire Wire Line
-	6900 2450 6900 2500
-Wire Wire Line
-	6900 2500 6750 2500
+	7600 2400 6450 2400
 $Comp
-L Device:R_Small R?
-U 1 1 5F42AD83
-P 5950 2600
-F 0 "R?" V 5754 2600 50  0000 C CNN
-F 1 "10k" V 5845 2600 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 5950 2600 50  0001 C CNN
-F 3 "~" H 5950 2600 50  0001 C CNN
-	1    5950 2600
-	-1   0    0    1   
-$EndComp
-Text GLabel 5950 2700 0    50   Input ~ 0
-VDD_3.3V
-$Comp
-L Device:C_Small C?
-U 1 1 5F42CC63
-P 5600 2100
-F 0 "C?" V 5829 2100 50  0000 C CNN
-F 1 "1uF" V 5738 2100 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 5600 2100 50  0001 C CNN
-F 3 "~" H 5600 2100 50  0001 C CNN
-	1    5600 2100
+L Connector:AudioJack3 J3
+U 1 1 5F44C9FF
+P 5900 2400
+F 0 "J3" V 5836 2588 50  0000 L CNN
+F 1 "AudioJack3" V 5927 2588 50  0000 L CNN
+F 2 "" H 5900 2400 50  0001 C CNN
+F 3 "~" H 5900 2400 50  0001 C CNN
+	1    5900 2400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5950 2000 5600 2000
+	6250 2400 6100 2400
 Wire Wire Line
-	5600 2200 5950 2200
+	6100 2500 6250 2500
+NoConn ~ 8600 2200
 $Comp
-L Device:C_Small C?
-U 1 1 5F42F0DF
-P 5350 2300
-F 0 "C?" V 5579 2300 50  0000 C CNN
-F 1 "1uF" V 5488 2300 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 5350 2300 50  0001 C CNN
-F 3 "~" H 5350 2300 50  0001 C CNN
-	1    5350 2300
+L Device:C_Small C11
+U 1 1 5F48C02E
+P 6850 1500
+F 0 "C11" V 6621 1500 50  0000 C CNN
+F 1 "100nF" V 6712 1500 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6850 1500 50  0001 C CNN
+F 3 "~" H 6850 1500 50  0001 C CNN
+	1    6850 1500
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:C_Small C12
+U 1 1 5F4922A6
+P 6850 1700
+F 0 "C12" V 6621 1700 50  0000 C CNN
+F 1 "100nF" V 6712 1700 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6850 1700 50  0001 C CNN
+F 3 "~" H 6850 1700 50  0001 C CNN
+	1    6850 1700
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:CP_Small C1
+U 1 1 5F49628A
+P 6500 1500
+F 0 "C1" H 6588 1546 50  0000 L CNN
+F 1 "10uF" H 6588 1455 50  0000 L CNN
+F 2 "" H 6500 1500 50  0001 C CNN
+F 3 "~" H 6500 1500 50  0001 C CNN
+	1    6500 1500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP_Small C8
+U 1 1 5F4964EE
+P 6500 1700
+F 0 "C8" H 6412 1654 50  0000 R CNN
+F 1 "10uF" H 6412 1745 50  0000 R CNN
+F 2 "" H 6500 1700 50  0001 C CNN
+F 3 "~" H 6500 1700 50  0001 C CNN
+	1    6500 1700
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	6500 1400 6850 1400
+Wire Wire Line
+	6850 1600 6500 1600
+Connection ~ 6850 1600
+Connection ~ 6500 1600
+Wire Wire Line
+	6500 1600 6300 1600
+Text GLabel 6300 1800 0    50   Input ~ 0
+VDD_3.3V
+Wire Wire Line
+	6300 1800 6500 1800
+Connection ~ 6500 1800
+Wire Wire Line
+	6500 1800 6850 1800
+Wire Wire Line
+	6850 1400 7300 1400
+Wire Wire Line
+	7300 1400 7300 1700
+Wire Wire Line
+	7300 1700 7600 1700
+Connection ~ 6850 1400
+$Comp
+L power:GNDD #PWR0101
+U 1 1 5F4A78A4
+P 6300 1600
+F 0 "#PWR0101" H 6300 1350 50  0001 C CNN
+F 1 "GNDD" V 6304 1490 50  0000 R CNN
+F 2 "" H 6300 1600 50  0001 C CNN
+F 3 "" H 6300 1600 50  0001 C CNN
+	1    6300 1600
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GNDD #PWR0102
+U 1 1 5F4A7ADB
+P 8100 1400
+F 0 "#PWR0102" H 8100 1150 50  0001 C CNN
+F 1 "GNDD" H 8104 1245 50  0000 C CNN
+F 2 "" H 8100 1400 50  0001 C CNN
+F 3 "" H 8100 1400 50  0001 C CNN
+	1    8100 1400
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GNDD #PWR0103
+U 1 1 5F4A837F
+P 8600 1700
+F 0 "#PWR0103" H 8600 1450 50  0001 C CNN
+F 1 "GNDD" V 8604 1590 50  0000 R CNN
+F 2 "" H 8600 1700 50  0001 C CNN
+F 3 "" H 8600 1700 50  0001 C CNN
+	1    8600 1700
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GNDD #PWR0104
+U 1 1 5F4A8C64
+P 8600 2000
+F 0 "#PWR0104" H 8600 1750 50  0001 C CNN
+F 1 "GNDD" V 8604 1890 50  0000 R CNN
+F 2 "" H 8600 2000 50  0001 C CNN
+F 3 "" H 8600 2000 50  0001 C CNN
+	1    8600 2000
+	0    -1   -1   0   
+$EndComp
+Text GLabel 8100 2700 3    50   Input ~ 0
+VDD_3.3V
+$Comp
+L Device:R R1
+U 1 1 5F4B2380
+P 9050 1750
+F 0 "R1" H 9120 1796 50  0000 L CNN
+F 1 "10K" H 9120 1705 50  0000 L CNN
+F 2 "" V 8980 1750 50  0001 C CNN
+F 3 "~" H 9050 1750 50  0001 C CNN
+	1    9050 1750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8600 1900 9050 1900
+Text GLabel 9050 1600 2    50   Input ~ 0
+VDD_3.3V
+Text GLabel 6550 2850 0    50   Input ~ 0
+GND
+$Comp
+L Device:CP_Small C13
+U 1 1 5F4C115A
+P 6950 1000
+F 0 "C13" H 6862 954 50  0000 R CNN
+F 1 "47uF" H 6862 1045 50  0000 R CNN
+F 2 "" H 6950 1000 50  0001 C CNN
+F 3 "~" H 6950 1000 50  0001 C CNN
+	1    6950 1000
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:C_Small C14
+U 1 1 5F4C1725
+P 7200 1000
+F 0 "C14" V 6971 1000 50  0000 C CNN
+F 1 "100nF" V 7062 1000 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7200 1000 50  0001 C CNN
+F 3 "~" H 7200 1000 50  0001 C CNN
+	1    7200 1000
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GNDD #PWR0105
+U 1 1 5F4C1B0B
+P 6550 900
+F 0 "#PWR0105" H 6550 650 50  0001 C CNN
+F 1 "GNDD" V 6554 790 50  0000 R CNN
+F 2 "" H 6550 900 50  0001 C CNN
+F 3 "" H 6550 900 50  0001 C CNN
+	1    6550 900 
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	5950 2300 5900 2300
+	8000 900  8000 1400
+Connection ~ 7200 900 
 Wire Wire Line
-	6750 2100 6400 2100
+	7200 900  8000 900 
 Wire Wire Line
-	6400 2250 5900 2250
+	6550 900  6950 900 
+Connection ~ 6950 900 
 Wire Wire Line
-	5900 2250 5900 2300
-Wire Wire Line
-	6400 2100 6400 2250
-Connection ~ 5900 2300
-Wire Wire Line
-	5900 2300 5450 2300
-Text GLabel 5250 2300 0    50   Input ~ 0
-GND
-Wire Wire Line
-	5950 2100 6350 2100
-Wire Wire Line
-	6350 2100 6350 2200
-Wire Wire Line
-	6350 2200 6750 2200
+	6950 900  7200 900 
 $Comp
-L Connector:AudioJack3 J?
-U 1 1 5F44C9FF
-P 7800 1250
-F 0 "J?" V 7736 1438 50  0000 L CNN
-F 1 "AudioJack3" V 7827 1438 50  0000 L CNN
-F 2 "" H 7800 1250 50  0001 C CNN
-F 3 "~" H 7800 1250 50  0001 C CNN
-	1    7800 1250
+L power:VDDA #PWR0106
+U 1 1 5F4C8814
+P 8000 2700
+F 0 "#PWR0106" H 8000 2550 50  0001 C CNN
+F 1 "VDDA" H 8018 2873 50  0000 C CNN
+F 2 "" H 8000 2700 50  0001 C CNN
+F 3 "" H 8000 2700 50  0001 C CNN
+	1    8000 2700
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:VDDA #PWR0107
+U 1 1 5F4C98D7
+P 7500 1100
+F 0 "#PWR0107" H 7500 950 50  0001 C CNN
+F 1 "VDDA" V 7517 1228 50  0000 L CNN
+F 2 "" H 7500 1100 50  0001 C CNN
+F 3 "" H 7500 1100 50  0001 C CNN
+	1    7500 1100
 	0    1    1    0   
 $EndComp
-Text GLabel 6750 2200 2    50   Input ~ 0
-GND
+Wire Wire Line
+	7500 1100 7200 1100
+Connection ~ 7200 1100
+Wire Wire Line
+	7200 1100 6950 1100
+Wire Wire Line
+	6950 1100 6550 1100
+Connection ~ 6950 1100
+Text GLabel 6550 1100 0    50   Input ~ 0
+VDD_3.3V
+$Comp
+L Device:CP_Small C15
+U 1 1 5F4D5ADE
+P 7500 1400
+F 0 "C15" H 7412 1354 50  0000 R CNN
+F 1 "10uF" H 7412 1445 50  0000 R CNN
+F 2 "" H 7500 1400 50  0001 C CNN
+F 3 "~" H 7500 1400 50  0001 C CNN
+	1    7500 1400
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	8200 1400 8200 1150
+Wire Wire Line
+	8200 1150 7850 1150
+Wire Wire Line
+	7850 1150 7850 1300
+Wire Wire Line
+	7850 1300 7500 1300
+Wire Wire Line
+	7500 1500 7500 1600
+Wire Wire Line
+	7500 1600 7600 1600
+$Comp
+L Device:C_Small C16
+U 1 1 5F4DCE4A
+P 8200 1050
+F 0 "C16" V 7971 1050 50  0000 C CNN
+F 1 "100nF" V 8062 1050 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 8200 1050 50  0001 C CNN
+F 3 "~" H 8200 1050 50  0001 C CNN
+	1    8200 1050
+	-1   0    0    1   
+$EndComp
+Connection ~ 8200 1150
+$Comp
+L Device:CP_Small C17
+U 1 1 5F4DD606
+P 8450 1050
+F 0 "C17" H 8538 1096 50  0000 L CNN
+F 1 "47uF" H 8538 1005 50  0000 L CNN
+F 2 "" H 8450 1050 50  0001 C CNN
+F 3 "~" H 8450 1050 50  0001 C CNN
+	1    8450 1050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8450 1150 8200 1150
+Wire Wire Line
+	8200 950  8450 950 
+Wire Wire Line
+	8450 1150 8850 1150
+Connection ~ 8450 1150
+$Comp
+L power:GNDD #PWR0108
+U 1 1 5F4E497B
+P 8850 1150
+F 0 "#PWR0108" H 8850 900 50  0001 C CNN
+F 1 "GNDD" V 8854 1040 50  0000 R CNN
+F 2 "" H 8850 1150 50  0001 C CNN
+F 3 "" H 8850 1150 50  0001 C CNN
+	1    8850 1150
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8200 2700 8300 2700
+Wire Wire Line
+	8750 950  8450 950 
+Connection ~ 8450 950 
+Text GLabel 8750 950  2    50   Input ~ 0
+VDD_3.3V
+$Comp
+L power:GNDD #PWR0109
+U 1 1 5F4ED7D1
+P 6550 2850
+F 0 "#PWR0109" H 6550 2600 50  0001 C CNN
+F 1 "GNDD" V 6554 2740 50  0000 R CNN
+F 2 "" H 6550 2850 50  0001 C CNN
+F 3 "" H 6550 2850 50  0001 C CNN
+	1    6550 2850
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:CP_Small C?
+U 1 1 5F50A79A
+P 7350 2050
+F 0 "C?" H 7262 2004 50  0000 R CNN
+F 1 "10uF" H 7262 2095 50  0000 R CNN
+F 2 "" H 7350 2050 50  0001 C CNN
+F 3 "~" H 7350 2050 50  0001 C CNN
+	1    7350 2050
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7600 1900 7350 1900
+Wire Wire Line
+	7350 1900 7350 1950
+Wire Wire Line
+	7350 2150 7350 2200
+Wire Wire Line
+	7350 2200 7600 2200
+Text GLabel 8300 2700 2    50   Input ~ 0
+VDD_3.3V
+$Comp
+L Audio:PCM5100 U1
+U 1 1 5F369615
+P 8100 2100
+F 0 "U1" H 8100 1219 50  0000 C CNN
+F 1 "PCM5100" H 8100 1310 50  0000 C CNN
+F 2 "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" H 8050 2850 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/pcm5100.pdf" H 8050 2850 50  0001 C CNN
+	1    8100 2100
+	-1   0    0    1   
+$EndComp
 $EndSCHEMATC
