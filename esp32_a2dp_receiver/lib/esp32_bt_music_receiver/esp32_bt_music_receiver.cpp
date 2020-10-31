@@ -15,6 +15,8 @@
 
 #include "esp32_bt_music_receiver.h"
 #include <Arduino.h>
+#include <EEPROM.h>
+#define EEPROM_SIZE 8
 
 /**
  * Some data that must be avaliable for C calls
@@ -106,7 +108,7 @@ void BlootoothA2DSink::start(char *name)
     // Bluetooth device name, connection mode and profile set up
     app_work_dispatch(av_hdl_stack_evt_2, BT_APP_EVT_STACK_UP, NULL, 0);
 
-    // Setup HFS handler and such
+    // Setup HFS handler and such (for phone operation...)
     // app_work_dispatch(bt_hf_client_hdl_stack_evt, BT_APP_EVT_STACK_UP, NULL, 0);
 
     // setup i2s
@@ -359,11 +361,24 @@ void BlootoothA2DSink::av_hdl_a2d_evt(uint16_t event, void *p_param)
         // Grab the bda (bluetooth device address)
         uint8_t *bda = a2d->conn_stat.remote_bda;
 
+        // Store this BDA into the eeprom, if we are connecting.
+        if(a2d->conn_stat.state == 2) // Connected state!
+        {
+            // Store this BDA into eeprom
+            ESP_LOGD(BT_AV_TAG, "STORING BDA TO EEPROM!");
+            EEPROM.write(0,bda[0]);
+            EEPROM.write(1,bda[1]);
+            EEPROM.write(2,bda[2]);
+            EEPROM.write(3,bda[3]);
+            EEPROM.write(4,bda[4]);
+            EEPROM.write(5,bda[5]);
+            EEPROM.commit();
+        }
+
         // Expose private connection state for muting and such
         conn_state = a2d->conn_stat.state;
 
-        ESP_LOGI(BT_AV_TAG, "A2DP connection state: %s, [%02x:%02x:%02x:%02x:%02x:%02x]",
-                 m_a2d_conn_state_str[a2d->conn_stat.state], bda[0], bda[1], bda[2], bda[3], bda[4], bda[5]);
+        ESP_LOGI(BT_AV_TAG, "A2DP connection state: %s, [%02x:%02x:%02x:%02x:%02x:%02x]",m_a2d_conn_state_str[a2d->conn_stat.state], bda[0], bda[1], bda[2], bda[3], bda[4], bda[5]);
         break;
     }
     case ESP_A2D_AUDIO_STATE_EVT:
@@ -564,6 +579,20 @@ void BlootoothA2DSink::av_hdl_stack_evt(uint16_t event, void *p_param)
 
         /* set discoverable and connectable mode, wait to be connected */
         esp_bt_gap_set_scan_mode(ESP_BT_SCAN_MODE_CONNECTABLE_DISCOVERABLE);
+
+        /* setup EEPROM for last BDA address */
+        EEPROM.begin(EEPROM_SIZE);
+        esp_bd_addr_t lastConnAddr;
+        lastConnAddr[0] = EEPROM.read(0);
+        lastConnAddr[1] = EEPROM.read(1);
+        lastConnAddr[2] = EEPROM.read(2);
+        lastConnAddr[3] = EEPROM.read(3);
+        lastConnAddr[4] = EEPROM.read(4);
+        lastConnAddr[5] = EEPROM.read(5);
+
+        // Re-connect to last 
+        ESP_LOGD(BT_AV_TAG, "ATTEMPT CONN TO: [%02x:%02x:%02x:%02x:%02x:%02x]",lastConnAddr[0],lastConnAddr[1],lastConnAddr[2],lastConnAddr[3],lastConnAddr[4],lastConnAddr[5]);
+        esp_a2d_sink_connect(lastConnAddr);
         break;
     }
     default:
@@ -575,6 +604,7 @@ void BlootoothA2DSink::av_hdl_stack_evt(uint16_t event, void *p_param)
 /* callback for A2DP sink */
 void BlootoothA2DSink::app_a2d_callback(esp_a2d_cb_event_t event, esp_a2d_cb_param_t *param)
 {
+    // Received a2d event callback, send off app work dispatch containing the event stuff.
     ESP_LOGD(BT_AV_TAG, "%s", __func__);
     switch (event)
     {
