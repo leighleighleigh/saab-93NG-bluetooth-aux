@@ -591,7 +591,7 @@ void BlootoothA2DSink::av_hdl_stack_evt(uint16_t event, void *p_param)
         lastConnAddr[5] = EEPROM.read(5);
 
         // Re-connect to last 
-        ESP_LOGD(BT_AV_TAG, "ATTEMPT CONN TO: [%02x:%02x:%02x:%02x:%02x:%02x]",lastConnAddr[0],lastConnAddr[1],lastConnAddr[2],lastConnAddr[3],lastConnAddr[4],lastConnAddr[5]);
+        ESP_LOGI(BT_AV_TAG, "ATTEMPT CONN TO: [%02x:%02x:%02x:%02x:%02x:%02x]",lastConnAddr[0],lastConnAddr[1],lastConnAddr[2],lastConnAddr[3],lastConnAddr[4],lastConnAddr[5]);
         esp_a2d_sink_connect(lastConnAddr);
         break;
     }
