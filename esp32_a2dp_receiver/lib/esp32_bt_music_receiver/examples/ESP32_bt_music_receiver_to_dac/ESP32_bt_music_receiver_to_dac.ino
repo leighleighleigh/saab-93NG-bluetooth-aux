@@ -16,7 +16,7 @@
 #include <Arduino.h>
 #include "esp32_bt_music_receiver.h"
 
-BlootoothA2DSink a2d_sink;
+BTSink a2d_sink;
 
 void setup() {
   static const i2s_config_t i2s_config = {

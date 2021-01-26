@@ -7,7 +7,7 @@
 #include <Wire.h>
 
 
-BlootoothA2DSink a2d_sink;
+BTSink a2d_sink;
 
 #define USE_CAN
 
@@ -41,7 +41,24 @@ void setup()
 
   // Fix the audio clock, this improves audio quality.
   rtc_clk_apll_enable(1, 15, 8, 5, 6);
-  a2d_sink.start("SAAB");
+  Serial.println("Starting BT");
+  a2d_sink.start("SAAB DEV");
+
+  // Wait for 5 seconds and then attempt reconnect 
+  delay(3000); 
+  Serial.println("Connecting to last device...");
+  a2d_sink.reconn_last();
+  Serial.println("Connected!");
+
+  // Wait for the CALLS to be available  
+
+  // Wait for 10 seconds and trigger google assistant
+  delay(10000);
+  Serial.println("Triggering google assistant...");
+  
+  esp_hf_client_start_voice_recognition();
+  delay(5000);
+  esp_hf_client_stop_voice_recognition();
 }
 
 bool muteState = false;
@@ -134,7 +151,9 @@ void loop()
     playingState = true;
     // Determine full screen refresh
     String currentContent = "";
-    currentContent = a2d_sink.get_track_name() + " - " + a2d_sink.get_album_name() + " by " + a2d_sink.get_artist_name() + " : " + a2d_sink.get_track_length();
+
+    // currentContent = a2d_sink.get_track_name() + " - " + a2d_sink.get_album_name() + " by " + a2d_sink.get_artist_name() + " : " + a2d_sink.get_track_length();
+    currentContent = a2d_sink.audio_trackname + " - " + a2d_sink.audio_trackalbum + " by " + a2d_sink.audio_trackartist + " : " + a2d_sink.audio_tracklength;
 
     // Do full refresh
     if (currentContent != lastContent)

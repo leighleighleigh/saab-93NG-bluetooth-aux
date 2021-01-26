@@ -16,7 +16,7 @@
 #include <Arduino.h>
 #include "esp32_bt_music_receiver.h"
 
-BlootoothA2DSink a2d_sink;
+BTSink a2d_sink;
 
 void setup() {
   a2d_sink.start("MyMusic");  

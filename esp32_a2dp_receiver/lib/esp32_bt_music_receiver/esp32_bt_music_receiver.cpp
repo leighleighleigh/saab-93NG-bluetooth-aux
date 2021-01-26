@@ -22,7 +22,7 @@
  * Some data that must be avaliable for C calls
  */
 // to support static callback functions
-BlootoothA2DSink *actualBlootoothA2DSink;
+BTSink *actualSinkObject;
 i2s_port_t i2s_port;
 
 // Forward declarations for C Callback functions for ESP32 Framework
@@ -30,6 +30,7 @@ extern "C" void app_task_handler_2(void *arg);
 extern "C" void audio_data_callback_2(const uint8_t *data, uint32_t len);
 extern "C" void app_a2d_callback_2(esp_a2d_cb_event_t event, esp_a2d_cb_param_t *param);
 extern "C" void app_rc_ct_callback_2(esp_avrc_ct_cb_event_t event, esp_avrc_ct_cb_param_t *param);
+
 static void av_hdl_stack_evt_2(uint16_t event, void *p_param);
 static void av_hdl_a2d_evt_2(uint16_t event, void *p_param);
 static void av_hdl_avrc_evt_2(uint16_t event, void *p_param);
@@ -37,9 +38,9 @@ static void av_hdl_avrc_evt_2(uint16_t event, void *p_param);
 /**
  * Constructor
  */
-BlootoothA2DSink::BlootoothA2DSink()
+BTSink::BTSink()
 {
-    actualBlootoothA2DSink = this;
+    actualSinkObject = this;
     // default i2s port is 0
     i2s_port = (i2s_port_t)0;
 
@@ -56,7 +57,6 @@ BlootoothA2DSink::BlootoothA2DSink()
         .use_apll = true,
         .tx_desc_auto_clear = true};
 
-
     // setup default pins
     pin_config = {
         .bck_io_num = 26,
@@ -65,31 +65,27 @@ BlootoothA2DSink::BlootoothA2DSink()
         .data_in_num = I2S_PIN_NO_CHANGE};
 }
 
-BlootoothA2DSink::~BlootoothA2DSink()
+BTSink::~BTSink()
 {
     i2s_driver_uninstall(i2s_port);
 }
 
-void BlootoothA2DSink::set_pin_config(i2s_pin_config_t pin_config)
+void BTSink::set_pin_config(i2s_pin_config_t pin_config)
 {
     this->pin_config = pin_config;
 }
 
-void BlootoothA2DSink::set_i2s_port(i2s_port_t i2s_num)
+void BTSink::set_i2s_port(i2s_port_t i2s_num)
 {
     i2s_port = i2s_num;
 }
 
-void BlootoothA2DSink::set_i2s_config(i2s_config_t i2s_config)
+void BTSink::set_i2s_config(i2s_config_t i2s_config)
 {
     this->i2s_config = i2s_config;
 }
 
-
-/**
- * Main function to start the Bluetooth Processing
- */
-void BlootoothA2DSink::start(char *name)
+void BTSink::start(char *name)
 {
     ESP_LOGD(BT_AV_TAG, "%s", __func__);
     //store parameters
@@ -108,9 +104,6 @@ void BlootoothA2DSink::start(char *name)
     // Bluetooth device name, connection mode and profile set up
     app_work_dispatch(av_hdl_stack_evt_2, BT_APP_EVT_STACK_UP, NULL, 0);
 
-    // Setup HFS handler and such (for phone operation...)
-    // app_work_dispatch(bt_hf_client_hdl_stack_evt, BT_APP_EVT_STACK_UP, NULL, 0);
-
     // setup i2s
     i2s_driver_install(i2s_port, &i2s_config, 0, NULL);
 
@@ -126,52 +119,27 @@ void BlootoothA2DSink::start(char *name)
     }
 }
 
-String BlootoothA2DSink::get_track_name()
+uint32_t BTSink::get_remote_features()
 {
-    return audio_trackattr;
+    return actualSinkObject->avrc_remote_features;
 }
 
-String BlootoothA2DSink::get_album_name()
-{
-    return audio_albumattr;
-}
-
-String BlootoothA2DSink::get_artist_name()
-{
-    return audio_artistattr;
-}
-
-String BlootoothA2DSink::get_track_length()
-{
-    return audio_timeattr;
-}
-
-String BlootoothA2DSink::get_track_pos()
-{
-    return String(audio_posattr);
-}
-
-uint32_t BlootoothA2DSink::get_remote_features()
-{
-    return avrc_remote_features;
-}
-
-esp_a2d_connection_state_t BlootoothA2DSink::get_conn_state()
+esp_a2d_connection_state_t BTSink::get_conn_state()
 {
     return conn_state;
 }
 
-esp_a2d_audio_state_t BlootoothA2DSink::get_audio_state()
+esp_a2d_audio_state_t BTSink::get_audio_state()
 {
     return audio_state;
 }
 
-esp_a2d_mct_t BlootoothA2DSink::get_audio_type()
+esp_a2d_mct_t BTSink::get_audio_type()
 {
     return audio_type;
 }
 
-int BlootoothA2DSink::init_bluetooth()
+int BTSink::init_bluetooth()
 {
     ESP_LOGD(BT_AV_TAG, "%s", __func__);
     if (!btStart())
@@ -196,7 +164,7 @@ int BlootoothA2DSink::init_bluetooth()
     ESP_LOGI(BT_AV_TAG, "bluedroid enabled");
 }
 
-bool BlootoothA2DSink::app_work_dispatch(app_callback_t p_cback, uint16_t event, void *p_params, int param_len)
+bool BTSink::app_work_dispatch(app_callback_t p_cback, uint16_t event, void *p_params, int param_len)
 {
     ESP_LOGD(BT_APP_CORE_TAG, "%s event 0x%x, param len %d", __func__, event, param_len);
 
@@ -223,7 +191,7 @@ bool BlootoothA2DSink::app_work_dispatch(app_callback_t p_cback, uint16_t event,
     return false;
 }
 
-void BlootoothA2DSink::app_work_dispatched(app_msg_t *msg)
+void BTSink::app_work_dispatched(app_msg_t *msg)
 {
     ESP_LOGD(BT_AV_TAG, "%s", __func__);
     if (msg->cb)
@@ -232,7 +200,7 @@ void BlootoothA2DSink::app_work_dispatched(app_msg_t *msg)
     }
 }
 
-bool BlootoothA2DSink::app_send_msg(app_msg_t *msg)
+bool BTSink::app_send_msg(app_msg_t *msg)
 {
     ESP_LOGD(BT_AV_TAG, "%s", __func__);
     if (msg == NULL)
@@ -248,7 +216,7 @@ bool BlootoothA2DSink::app_send_msg(app_msg_t *msg)
     return true;
 }
 
-void BlootoothA2DSink::app_task_handler()
+void BTSink::app_task_handler()
 {
     ESP_LOGD(BT_AV_TAG, "%s", __func__);
     app_msg_t msg;
@@ -276,7 +244,7 @@ void BlootoothA2DSink::app_task_handler()
     }
 }
 
-void BlootoothA2DSink::app_task_start_up(void)
+void BTSink::app_task_start_up(void)
 {
     ESP_LOGD(BT_AV_TAG, "%s", __func__);
     app_task_queue = xQueueCreate(10, sizeof(app_msg_t));
@@ -284,7 +252,7 @@ void BlootoothA2DSink::app_task_start_up(void)
     return;
 }
 
-void BlootoothA2DSink::app_task_shut_down(void)
+void BTSink::app_task_shut_down(void)
 {
     ESP_LOGD(BT_AV_TAG, "%s", __func__);
     if (app_task_handle)
@@ -299,7 +267,7 @@ void BlootoothA2DSink::app_task_shut_down(void)
     }
 }
 
-void BlootoothA2DSink::app_alloc_meta_buffer(esp_avrc_ct_cb_param_t *param)
+void BTSink::app_alloc_meta_buffer(esp_avrc_ct_cb_param_t *param)
 {
     ESP_LOGD(BT_AV_TAG, "%s", __func__);
     esp_avrc_ct_cb_param_t *rc = (esp_avrc_ct_cb_param_t *)(param);
@@ -310,7 +278,7 @@ void BlootoothA2DSink::app_alloc_meta_buffer(esp_avrc_ct_cb_param_t *param)
     rc->meta_rsp.attr_text = attr_text;
 }
 
-void BlootoothA2DSink::app_rc_ct_callback(esp_avrc_ct_cb_event_t event, esp_avrc_ct_cb_param_t *param)
+void BTSink::app_rc_ct_callback(esp_avrc_ct_cb_event_t event, esp_avrc_ct_cb_param_t *param)
 {
     ESP_LOGD(BT_AV_TAG, "%s", __func__);
 
@@ -345,7 +313,7 @@ void BlootoothA2DSink::app_rc_ct_callback(esp_avrc_ct_cb_event_t event, esp_avrc
     }
 }
 
-void BlootoothA2DSink::av_hdl_a2d_evt(uint16_t event, void *p_param)
+void BTSink::av_hdl_a2d_evt(uint16_t event, void *p_param)
 {
     ESP_LOGD(BT_AV_TAG, "%s evt %d", __func__, event);
     esp_a2d_cb_param_t *a2d = NULL;
@@ -354,31 +322,31 @@ void BlootoothA2DSink::av_hdl_a2d_evt(uint16_t event, void *p_param)
     case ESP_A2D_CONNECTION_STATE_EVT:
     {
         ESP_LOGD(BT_AV_TAG, "%s ESP_A2D_CONNECTION_STATE_EVT", __func__);
-        
+
         // Define our params struct
         a2d = (esp_a2d_cb_param_t *)(p_param);
-        
+
         // Grab the bda (bluetooth device address)
         uint8_t *bda = a2d->conn_stat.remote_bda;
 
         // Store this BDA into the eeprom, if we are connecting.
-        if(a2d->conn_stat.state == 2) // Connected state!
+        if (a2d->conn_stat.state == 2) // Connected state!
         {
             // Store this BDA into eeprom
             ESP_LOGD(BT_AV_TAG, "STORING BDA TO EEPROM!");
-            EEPROM.write(0,bda[0]);
-            EEPROM.write(1,bda[1]);
-            EEPROM.write(2,bda[2]);
-            EEPROM.write(3,bda[3]);
-            EEPROM.write(4,bda[4]);
-            EEPROM.write(5,bda[5]);
+            EEPROM.write(0, bda[0]);
+            EEPROM.write(1, bda[1]);
+            EEPROM.write(2, bda[2]);
+            EEPROM.write(3, bda[3]);
+            EEPROM.write(4, bda[4]);
+            EEPROM.write(5, bda[5]);
             EEPROM.commit();
         }
 
         // Expose private connection state for muting and such
         conn_state = a2d->conn_stat.state;
 
-        ESP_LOGI(BT_AV_TAG, "A2DP connection state: %s, [%02x:%02x:%02x:%02x:%02x:%02x]",m_a2d_conn_state_str[a2d->conn_stat.state], bda[0], bda[1], bda[2], bda[3], bda[4], bda[5]);
+        ESP_LOGI(BT_AV_TAG, "A2DP connection state: %s, [%02x:%02x:%02x:%02x:%02x:%02x]", m_a2d_conn_state_str[a2d->conn_stat.state], bda[0], bda[1], bda[2], bda[3], bda[4], bda[5]);
         break;
     }
     case ESP_A2D_AUDIO_STATE_EVT:
@@ -440,7 +408,7 @@ static void bt_av_play_pos_changed(void)
     esp_avrc_ct_send_register_notification_cmd(10, ESP_AVRC_RN_PLAY_POS_CHANGED, 1);
 }
 
-void BlootoothA2DSink::av_new_track()
+void BTSink::av_new_track()
 {
     ESP_LOGD(BT_AV_TAG, "%s", __func__);
     // This is the first info we get from the connection
@@ -450,7 +418,7 @@ void BlootoothA2DSink::av_new_track()
     bt_av_play_pos_changed();
 }
 
-void BlootoothA2DSink::av_notify_evt_handler(uint8_t event_id, esp_avrc_rn_param_t *event_parameter)
+void BTSink::av_notify_evt_handler(uint8_t event_id, esp_avrc_rn_param_t *event_parameter)
 {
     ESP_LOGD(BT_AV_TAG, "%s", __func__);
     switch (event_id)
@@ -462,7 +430,8 @@ void BlootoothA2DSink::av_notify_evt_handler(uint8_t event_id, esp_avrc_rn_param
     case ESP_AVRC_RN_PLAY_POS_CHANGED:
         ESP_LOGD(BT_AV_TAG, "Play position changed: %d-ms", event_parameter->play_pos);
         bt_av_play_pos_changed();
-        audio_posattr = event_parameter->play_pos;
+        // Save the play position
+        actualSinkObject->audio_playpos = event_parameter->play_pos;
         break;
     default:
         ESP_LOGE(BT_AV_TAG, "%s unhandled evt %d", __func__, event_id);
@@ -470,7 +439,7 @@ void BlootoothA2DSink::av_notify_evt_handler(uint8_t event_id, esp_avrc_rn_param
     }
 }
 
-void BlootoothA2DSink::av_hdl_avrc_evt(uint16_t event, void *p_param)
+void BTSink::av_hdl_avrc_evt(uint16_t event, void *p_param)
 {
     ESP_LOGD(BT_AV_TAG, "%s evt %d", __func__, event);
     esp_avrc_ct_cb_param_t *rc = (esp_avrc_ct_cb_param_t *)(p_param);
@@ -504,8 +473,10 @@ void BlootoothA2DSink::av_hdl_avrc_evt(uint16_t event, void *p_param)
             {
                 char text[256] = {0};
                 memcpy(&text, rc->meta_rsp.attr_text, rc->meta_rsp.attr_length);
-                audio_trackattr = "";
-                audio_trackattr = text;
+                actualSinkObject->audio_trackname = "";
+                actualSinkObject->audio_trackname = text;
+                // audio_trackname = "";
+                // audio_trackname = ;
             }
             break;
         case 0x2:
@@ -513,8 +484,8 @@ void BlootoothA2DSink::av_hdl_avrc_evt(uint16_t event, void *p_param)
             {
                 char text[256] = {0};
                 memcpy(&text, rc->meta_rsp.attr_text, rc->meta_rsp.attr_length);
-                audio_artistattr = "";
-                audio_artistattr = text;
+                actualSinkObject->audio_trackartist = "";
+                actualSinkObject->audio_trackartist = text;
             }
             break;
         case 0x4:
@@ -522,8 +493,8 @@ void BlootoothA2DSink::av_hdl_avrc_evt(uint16_t event, void *p_param)
             {
                 char text[256] = {0};
                 memcpy(&text, rc->meta_rsp.attr_text, rc->meta_rsp.attr_length);
-                audio_albumattr = "";
-                audio_albumattr = text;
+                actualSinkObject->audio_trackalbum = "";
+                actualSinkObject->audio_trackalbum = text;
             }
             break;
         case 64:
@@ -531,8 +502,8 @@ void BlootoothA2DSink::av_hdl_avrc_evt(uint16_t event, void *p_param)
             {
                 char text[256] = {0};
                 memcpy(&text, rc->meta_rsp.attr_text, rc->meta_rsp.attr_length);
-                audio_timeattr = "";
-                audio_timeattr = text;
+                actualSinkObject->audio_tracklength = "";
+                actualSinkObject->audio_tracklength = text;
             }
         default:
             break;
@@ -558,7 +529,7 @@ void BlootoothA2DSink::av_hdl_avrc_evt(uint16_t event, void *p_param)
     }
 }
 
-void BlootoothA2DSink::av_hdl_stack_evt(uint16_t event, void *p_param)
+void BTSink::av_hdl_stack_evt(uint16_t event, void *p_param)
 {
     switch (event)
     {
@@ -574,25 +545,23 @@ void BlootoothA2DSink::av_hdl_stack_evt(uint16_t event, void *p_param)
         esp_a2d_sink_init();
 
         /* initialize AVRCP controller */
-        esp_avrc_ct_init();
         esp_avrc_ct_register_callback(app_rc_ct_callback_2);
+        esp_avrc_ct_init();
+
+        /* initialise the HF AP (handsfree) */
+        esp_hf_client_register_callback(bt_app_hf_client_cb);
+        esp_hf_client_init();
+
+        esp_bt_pin_type_t pin_type = ESP_BT_PIN_TYPE_FIXED;
+        esp_bt_pin_code_t pin_code;
+        pin_code[0] = '0';
+        pin_code[1] = '0';
+        pin_code[2] = '0';
+        pin_code[3] = '0';
+        esp_bt_gap_set_pin(pin_type, 4, pin_code);
 
         /* set discoverable and connectable mode, wait to be connected */
         esp_bt_gap_set_scan_mode(ESP_BT_SCAN_MODE_CONNECTABLE_DISCOVERABLE);
-
-        /* setup EEPROM for last BDA address */
-        EEPROM.begin(EEPROM_SIZE);
-        esp_bd_addr_t lastConnAddr;
-        lastConnAddr[0] = EEPROM.read(0);
-        lastConnAddr[1] = EEPROM.read(1);
-        lastConnAddr[2] = EEPROM.read(2);
-        lastConnAddr[3] = EEPROM.read(3);
-        lastConnAddr[4] = EEPROM.read(4);
-        lastConnAddr[5] = EEPROM.read(5);
-
-        // Re-connect to last 
-        ESP_LOGI(BT_AV_TAG, "ATTEMPT CONN TO: [%02x:%02x:%02x:%02x:%02x:%02x]",lastConnAddr[0],lastConnAddr[1],lastConnAddr[2],lastConnAddr[3],lastConnAddr[4],lastConnAddr[5]);
-        esp_a2d_sink_connect(lastConnAddr);
         break;
     }
     default:
@@ -602,7 +571,7 @@ void BlootoothA2DSink::av_hdl_stack_evt(uint16_t event, void *p_param)
 }
 
 /* callback for A2DP sink */
-void BlootoothA2DSink::app_a2d_callback(esp_a2d_cb_event_t event, esp_a2d_cb_param_t *param)
+void BTSink::app_a2d_callback(esp_a2d_cb_event_t event, esp_a2d_cb_param_t *param)
 {
     // Received a2d event callback, send off app work dispatch containing the event stuff.
     ESP_LOGD(BT_AV_TAG, "%s", __func__);
@@ -629,7 +598,7 @@ void BlootoothA2DSink::app_a2d_callback(esp_a2d_cb_event_t event, esp_a2d_cb_par
     }
 }
 
-void BlootoothA2DSink::audio_data_callback(const uint8_t *data, uint32_t len)
+void BTSink::audio_data_callback(const uint8_t *data, uint32_t len)
 {
     ESP_LOGD(BT_AV_TAG, "%s", __func__);
 
@@ -645,26 +614,44 @@ void BlootoothA2DSink::audio_data_callback(const uint8_t *data, uint32_t len)
     }
 }
 
+// Reconnect to last connected
+void BTSink::reconn_last()
+{
+    /* setup EEPROM for last BDA address */
+    EEPROM.begin(EEPROM_SIZE);
+    esp_bd_addr_t lastConnAddr;
+    lastConnAddr[0] = EEPROM.read(0);
+    lastConnAddr[1] = EEPROM.read(1);
+    lastConnAddr[2] = EEPROM.read(2);
+    lastConnAddr[3] = EEPROM.read(3);
+    lastConnAddr[4] = EEPROM.read(4);
+    lastConnAddr[5] = EEPROM.read(5);
+
+    // Re-connect to last BDA device
+    ESP_LOGI(BT_AV_TAG, "ATTEMPT CONN TO: [%02x:%02x:%02x:%02x:%02x:%02x]", lastConnAddr[0], lastConnAddr[1], lastConnAddr[2], lastConnAddr[3], lastConnAddr[4], lastConnAddr[5]);
+    esp_a2d_sink_connect(lastConnAddr);
+}
+
 /**
  * Static methods as internal callbacks
  */
 void av_hdl_stack_evt_2(uint16_t event, void *p_param)
 {
     ESP_LOGD(BT_AV_TAG, "%s", __func__);
-    if (actualBlootoothA2DSink)
-        actualBlootoothA2DSink->av_hdl_stack_evt(event, p_param);
+    if (actualSinkObject)
+        actualSinkObject->av_hdl_stack_evt(event, p_param);
 }
 void av_hdl_a2d_evt_2(uint16_t event, void *p_param)
 {
     ESP_LOGD(BT_AV_TAG, "%s", __func__);
-    if (actualBlootoothA2DSink)
-        actualBlootoothA2DSink->av_hdl_a2d_evt(event, p_param);
+    if (actualSinkObject)
+        actualSinkObject->av_hdl_a2d_evt(event, p_param);
 }
 void av_hdl_avrc_evt_2(uint16_t event, void *p_param)
 {
     ESP_LOGD(BT_AV_TAG, "%s", __func__);
-    if (actualBlootoothA2DSink)
-        actualBlootoothA2DSink->av_hdl_avrc_evt(event, p_param);
+    if (actualSinkObject)
+        actualSinkObject->av_hdl_avrc_evt(event, p_param);
 }
 
 /**
@@ -673,27 +660,27 @@ void av_hdl_avrc_evt_2(uint16_t event, void *p_param)
 extern "C" void app_task_handler_2(void *arg)
 {
     ESP_LOGD(BT_AV_TAG, "%s", __func__);
-    if (actualBlootoothA2DSink)
-        actualBlootoothA2DSink->app_task_handler();
+    if (actualSinkObject)
+        actualSinkObject->app_task_handler();
 }
 
 extern "C" void audio_data_callback_2(const uint8_t *data, uint32_t len)
 {
     //ESP_LOGD(BT_AV_TAG, "%s", __func__);
-    if (actualBlootoothA2DSink)
-        actualBlootoothA2DSink->audio_data_callback(data, len);
+    if (actualSinkObject)
+        actualSinkObject->audio_data_callback(data, len);
 }
 
 extern "C" void app_a2d_callback_2(esp_a2d_cb_event_t event, esp_a2d_cb_param_t *param)
 {
     ESP_LOGD(BT_AV_TAG, "%s", __func__);
-    if (actualBlootoothA2DSink)
-        actualBlootoothA2DSink->app_a2d_callback(event, param);
+    if (actualSinkObject)
+        actualSinkObject->app_a2d_callback(event, param);
 }
 
 extern "C" void app_rc_ct_callback_2(esp_avrc_ct_cb_event_t event, esp_avrc_ct_cb_param_t *param)
 {
     ESP_LOGD(BT_AV_TAG, "%s", __func__);
-    if (actualBlootoothA2DSink)
-        actualBlootoothA2DSink->app_rc_ct_callback(event, param);
+    if (actualSinkObject)
+        actualSinkObject->app_rc_ct_callback(event, param);
 }
