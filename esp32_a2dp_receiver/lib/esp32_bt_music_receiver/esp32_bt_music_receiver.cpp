@@ -549,16 +549,16 @@ void BTSink::av_hdl_stack_evt(uint16_t event, void *p_param)
         esp_avrc_ct_init();
 
         /* initialise the HF AP (handsfree) */
-        esp_hf_client_register_callback(bt_app_hf_client_cb);
-        esp_hf_client_init();
+        // esp_hf_client_register_callback(bt_app_hf_client_cb);
+        // esp_hf_client_init();
 
-        esp_bt_pin_type_t pin_type = ESP_BT_PIN_TYPE_FIXED;
-        esp_bt_pin_code_t pin_code;
-        pin_code[0] = '0';
-        pin_code[1] = '0';
-        pin_code[2] = '0';
-        pin_code[3] = '0';
-        esp_bt_gap_set_pin(pin_type, 4, pin_code);
+        // esp_bt_pin_type_t pin_type = ESP_BT_PIN_TYPE_FIXED;
+        // esp_bt_pin_code_t pin_code;
+        // pin_code[0] = '0';
+        // pin_code[1] = '0';
+        // pin_code[2] = '0';
+        // pin_code[3] = '0';
+        // esp_bt_gap_set_pin(pin_type, 4, pin_code);
 
         /* set discoverable and connectable mode, wait to be connected */
         esp_bt_gap_set_scan_mode(ESP_BT_SCAN_MODE_CONNECTABLE_DISCOVERABLE);

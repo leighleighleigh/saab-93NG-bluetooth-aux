@@ -48,17 +48,17 @@ void setup()
   delay(3000); 
   Serial.println("Connecting to last device...");
   a2d_sink.reconn_last();
-  Serial.println("Connected!");
+  // Serial.println("Connected!");
 
   // Wait for the CALLS to be available  
 
-  // Wait for 10 seconds and trigger google assistant
-  delay(10000);
-  Serial.println("Triggering google assistant...");
+  // // Wait for 10 seconds and trigger google assistant
+  // delay(10000);
+  // Serial.println("Triggering google assistant...");
   
-  esp_hf_client_start_voice_recognition();
-  delay(5000);
-  esp_hf_client_stop_voice_recognition();
+  // esp_hf_client_start_voice_recognition();
+  // delay(5000);
+  // esp_hf_client_stop_voice_recognition();
 }
 
 bool muteState = false;
