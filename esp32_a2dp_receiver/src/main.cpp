@@ -45,7 +45,7 @@ void setup()
   a2d_sink.start("SAAB DEV");
 
   // Wait for 5 seconds and then attempt reconnect 
-  delay(3000); 
+  delay(5000); 
   Serial.println("Connecting to last device...");
   a2d_sink.reconn_last();
   // Serial.println("Connected!");
