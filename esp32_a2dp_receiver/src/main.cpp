@@ -27,6 +27,8 @@ void setup()
   Serial.begin(115200);
   Serial.println("BOOTED!");
 
+  delay(3000);
+
   // Turn off wifi
   esp_wifi_set_mode(WIFI_MODE_NULL);
   // esp_wifi_stop();
@@ -39,20 +41,35 @@ void setup()
   mcp2515.setNormalMode();
 #endif
 
+  Serial.println("Starting BT STACK...");
+
   // Fix the audio clock, this improves audio quality.
   rtc_clk_apll_enable(1, 15, 8, 5, 6);
-  Serial.println("Starting BT");
-  a2d_sink.start("SAAB DEV");
+  a2d_sink.start("SAAB");
+
+  // Wait for stack up
+  while(a2d_sink.stackUpComplete == false)
+  {
+    Serial.print(",");
+    delay(50);
+  }
+  Serial.println("BT STACK UP!");
 
   // Wait for 5 seconds and then attempt reconnect 
   delay(5000); 
   Serial.println("Connecting to last device...");
   a2d_sink.reconn_last();
-  // Serial.println("Connected!");
+
+  while(a2d_sink.get_conn_state() != ESP_A2D_CONNECTION_STATE_CONNECTED)
+  {
+    Serial.print(".");
+    delay(1000);
+  }
+  Serial.println("Connected!");
 
   // Wait for the CALLS to be available  
 
-  // // Wait for 10 seconds and trigger google assistant
+  // // // Wait for 10 seconds and trigger google assistant
   // delay(10000);
   // Serial.println("Triggering google assistant...");
   
@@ -68,6 +85,8 @@ bool playingState = false;
 String lastContent = "";
 
 long playTime = 0;
+uint32_t lastVoiceReqTime = millis();
+uint32_t voiceReqFreq = 1000;
 
 void loop()
 {   
@@ -141,6 +160,13 @@ void loop()
         delay(50);
         //PLAY/PAUSE
         break;
+      case 0x12:
+        Serial.println("VOICE REQ");
+        if(millis() - lastVoiceReqTime > voiceReqFreq){
+          esp_hf_client_start_voice_recognition();
+          delay(50);
+          lastVoiceReqTime = millis();
+        }
       }
     }
   }

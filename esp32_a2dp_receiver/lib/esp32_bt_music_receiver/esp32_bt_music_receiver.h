@@ -109,6 +109,12 @@ public:
   // Reconnect to last thingy
   void reconn_last();
 
+  // Current connected bt addr
+  uint8_t currentBTAddr[6];
+
+  // Stack up valid
+  bool stackUpComplete = false;
+
   // Audio playing state
   String audio_trackname;
   String audio_trackalbum;

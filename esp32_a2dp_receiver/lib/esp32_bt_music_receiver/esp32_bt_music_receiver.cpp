@@ -126,17 +126,17 @@ uint32_t BTSink::get_remote_features()
 
 esp_a2d_connection_state_t BTSink::get_conn_state()
 {
-    return conn_state;
+    return this->conn_state;
 }
 
 esp_a2d_audio_state_t BTSink::get_audio_state()
 {
-    return audio_state;
+    return this->audio_state;
 }
 
 esp_a2d_mct_t BTSink::get_audio_type()
 {
-    return audio_type;
+    return this->audio_type;
 }
 
 int BTSink::init_bluetooth()
@@ -329,8 +329,21 @@ void BTSink::av_hdl_a2d_evt(uint16_t event, void *p_param)
         // Grab the bda (bluetooth device address)
         uint8_t *bda = a2d->conn_stat.remote_bda;
 
+        // If we are currently connected to something, disconnect, and connect to this
+        if(a2d->conn_stat.state == ESP_A2D_CONNECTION_STATE_CONNECTING)
+        {
+            // If we are already connected
+            if(this->conn_state == ESP_A2D_CONNECTION_STATE_CONNECTED)
+            {
+                ESP_LOGD("DISCONNECTING FROM CURRENT DEVICE");
+                // Disconnect
+                esp_a2d_sink_disconnect(this->currentBTAddr);
+                esp_hf_client_disconnect(this->currentBTAddr);
+            }
+        }        
+
         // Store this BDA into the eeprom, if we are connecting.
-        if (a2d->conn_stat.state == 2) // Connected state!
+        if (a2d->conn_stat.state == ESP_A2D_CONNECTION_STATE_CONNECTED) // Connected state!
         {
             // Store this BDA into eeprom
             ESP_LOGD(BT_AV_TAG, "STORING BDA TO EEPROM!");
@@ -341,11 +354,18 @@ void BTSink::av_hdl_a2d_evt(uint16_t event, void *p_param)
             EEPROM.write(4, bda[4]);
             EEPROM.write(5, bda[5]);
             EEPROM.commit();
+            
+            this->currentBTAddr[0] = bda[0];
+            this->currentBTAddr[1] = bda[1];
+            this->currentBTAddr[2] = bda[2];
+            this->currentBTAddr[3] = bda[3];
+            this->currentBTAddr[4] = bda[4];
+            this->currentBTAddr[5] = bda[5];
         }
 
         // Expose private connection state for muting and such
-        conn_state = a2d->conn_stat.state;
-
+        this->conn_state = a2d->conn_stat.state;
+        
         ESP_LOGI(BT_AV_TAG, "A2DP connection state: %s, [%02x:%02x:%02x:%02x:%02x:%02x]", m_a2d_conn_state_str[a2d->conn_stat.state], bda[0], bda[1], bda[2], bda[3], bda[4], bda[5]);
         break;
     }
@@ -365,7 +385,7 @@ void BTSink::av_hdl_a2d_evt(uint16_t event, void *p_param)
     {
         ESP_LOGD(BT_AV_TAG, "%s ESP_A2D_AUDIO_CFG_EVT", __func__);
         esp_a2d_cb_param_t *esp_a2d_callback_param = (esp_a2d_cb_param_t *)(p_param);
-        audio_type = esp_a2d_callback_param->audio_cfg.mcc.type;
+        this->audio_type = esp_a2d_callback_param->audio_cfg.mcc.type;
         a2d = (esp_a2d_cb_param_t *)(p_param);
         ESP_LOGI(BT_AV_TAG, "a2dp audio_cfg_cb , codec type %d", a2d->audio_cfg.mcc.type);
         // for now only SBC stream is supported
@@ -549,19 +569,23 @@ void BTSink::av_hdl_stack_evt(uint16_t event, void *p_param)
         esp_avrc_ct_init();
 
         /* initialise the HF AP (handsfree) */
-        // esp_hf_client_register_callback(bt_app_hf_client_cb);
-        // esp_hf_client_init();
+        esp_hf_client_register_callback(bt_app_hf_client_cb);
+        esp_hf_client_init();
 
-        // esp_bt_pin_type_t pin_type = ESP_BT_PIN_TYPE_FIXED;
-        // esp_bt_pin_code_t pin_code;
-        // pin_code[0] = '0';
-        // pin_code[1] = '0';
-        // pin_code[2] = '0';
-        // pin_code[3] = '0';
-        // esp_bt_gap_set_pin(pin_type, 4, pin_code);
+        esp_bt_pin_type_t pin_type = ESP_BT_PIN_TYPE_FIXED;
+        esp_bt_pin_code_t pin_code;
+        pin_code[0] = '0';
+        pin_code[1] = '0';
+        pin_code[2] = '0';
+        pin_code[3] = '0';
+        esp_bt_gap_set_pin(pin_type, 4, pin_code);
 
         /* set discoverable and connectable mode, wait to be connected */
         esp_bt_gap_set_scan_mode(ESP_BT_SCAN_MODE_CONNECTABLE_DISCOVERABLE);
+
+        // Complete stack up
+        this->stackUpComplete = true;
+
         break;
     }
     default:
@@ -583,7 +607,7 @@ void BTSink::app_a2d_callback(esp_a2d_cb_event_t event, esp_a2d_cb_param_t *para
         break;
     case ESP_A2D_AUDIO_STATE_EVT:
         ESP_LOGD(BT_AV_TAG, "%s ESP_A2D_AUDIO_STATE_EVT", __func__);
-        audio_state = param->audio_stat.state;
+        this->audio_state = param->audio_stat.state;
         app_work_dispatch(av_hdl_a2d_evt_2, event, param, sizeof(esp_a2d_cb_param_t));
         break;
     case ESP_A2D_AUDIO_CFG_EVT:
@@ -630,6 +654,7 @@ void BTSink::reconn_last()
     // Re-connect to last BDA device
     ESP_LOGI(BT_AV_TAG, "ATTEMPT CONN TO: [%02x:%02x:%02x:%02x:%02x:%02x]", lastConnAddr[0], lastConnAddr[1], lastConnAddr[2], lastConnAddr[3], lastConnAddr[4], lastConnAddr[5]);
     esp_a2d_sink_connect(lastConnAddr);
+    esp_hf_client_connect(lastConnAddr);
 }
 
 /**
