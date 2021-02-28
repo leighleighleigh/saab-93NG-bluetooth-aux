@@ -160,7 +160,7 @@ void loop()
         delay(50);
         //PLAY/PAUSE
         break;
-      case 0x12:
+      case 0x04:
         Serial.println("VOICE REQ");
         if(millis() - lastVoiceReqTime > voiceReqFreq){
           esp_hf_client_start_voice_recognition();
