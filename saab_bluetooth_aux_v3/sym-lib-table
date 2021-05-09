@@ -1,4 +1,0 @@
-(sym_lib_table
-  (lib (name local_symbols)(type Legacy)(uri ${KIPRJMOD}/local_libraries/local_symbols.lib)(options "")(descr ""))
-  (lib (name max9720)(type Legacy)(uri ${KIPRJMOD}/local_libraries/max9720.lib)(options "")(descr ""))
-)

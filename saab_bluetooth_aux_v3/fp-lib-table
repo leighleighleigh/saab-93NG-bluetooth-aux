@@ -1,3 +1,0 @@
-(fp_lib_table
-  (lib (name sid-board)(type KiCad)(uri ${KIPRJMOD}/local_libraries/sid-board.pretty)(options "")(descr ""))
-)
