@@ -485,6 +485,8 @@ void BTSink::av_hdl_avrc_evt(uint16_t event, void *p_param)
     case ESP_AVRC_CT_METADATA_RSP_EVT:
     {
         ESP_LOGI(BT_AV_TAG, "AVRC metadata rsp: attribute id 0x%x, %s", rc->meta_rsp.attr_id, rc->meta_rsp.attr_text);
+        Serial.println("ACRV Metadata event");
+
         // Update audio_attrib array
         switch (rc->meta_rsp.attr_id)
         {

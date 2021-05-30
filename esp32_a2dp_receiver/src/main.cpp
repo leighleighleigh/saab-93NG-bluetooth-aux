@@ -71,7 +71,8 @@ void setup()
 
   // // // Wait for 10 seconds and trigger google assistant
   // delay(10000);
-  // Serial.println("Triggering google assistant...");
+  // Serial.println("Pressing next song...");
+  // esp_avrc_ct_send_passthrough_cmd(10, ESP_AVRC_PT_CMD_FORWARD, ESP_AVRC_PT_CMD_STATE_PRESSED);
   
   // esp_hf_client_start_voice_recognition();
   // delay(5000);
