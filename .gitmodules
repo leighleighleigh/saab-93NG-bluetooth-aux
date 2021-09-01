@@ -1,3 +1,0 @@
-[submodule "esp32_a2dp_recv/lib/Arduino_SAAB_ICM2_LCD_Driver"]
-	path = esp32_a2dp_receiver/lib/Arduino_SAAB_ICM2_LCD_Driver
-	url = git@github.com:leighleighleigh/Arduino_SAAB_ICM2_LCD_Driver.git
