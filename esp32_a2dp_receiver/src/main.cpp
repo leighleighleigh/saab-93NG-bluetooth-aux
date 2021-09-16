@@ -2,6 +2,7 @@
 #include <SPI.h>
 #include <mcp2515.h>
 #include <esp_wifi.h>
+#include <esp_hf_client_api.h>
 #include "soc/rtc.h"
 #include <Wire.h>
 #include "BluetoothA2DPSink.h"
@@ -23,6 +24,20 @@ MCP2515 mcp2515(5);
 // bck_io_num => GPIO 26,
 int mutePin = 2;
 
+// Metadata
+void avrc_metadata_callback(uint8_t data1, const uint8_t *data2) {
+  Serial.printf("AVRC metadata rsp: attribute id 0x%x, %s\n", data1, data2);
+}
+
+void bt_hf_client_cb(esp_hf_client_cb_event_t event, esp_hf_client_cb_param_t *param)
+{
+    if (event <= ESP_HF_CLIENT_RING_IND_EVT) {
+        ESP_LOGE(BT_HF_TAG, "APP HFP event: %s", c_hf_evt_str[event]);
+    } else {
+        ESP_LOGE(BT_HF_TAG, "APP HFP invalid event %d", event);
+    }
+}
+
 
 void setup() {
   // Enable serial
@@ -31,7 +46,7 @@ void setup() {
 
   // Turn off wifi
   esp_wifi_set_mode(WIFI_MODE_NULL);
-  // esp_wifi_stop();
+  //esp_wifi_stop(); // This causes the ESP32 to bootloop
   pinMode(mutePin, OUTPUT);
 
   // Setup CAN
@@ -59,8 +74,12 @@ void setup() {
     rtc_clk_apll_enable(1, 15, 8, 5, 6);
     a2dp_sink.set_i2s_config(i2s_config);
 
+  // Metadata
+  a2dp_sink.set_avrc_metadata_callback(avrc_metadata_callback);
   // Start the A2DP sink
   a2dp_sink.start("Saab 9-3");  
+  esp_hf_client_register_callback(bt_hf_client_cb);
+  esp_hf_client_init();
   Serial.println("BT STACK UP!");
 }
 
@@ -83,11 +102,11 @@ void loop() {
     
     muteState = true;
     playingState = false;
+	
     return;
   }
   else
   {
-
     // Wait until playing again
     if (playingState)
     {
@@ -97,16 +116,16 @@ void loop() {
         // Set digital mute off.
         delay(50);
         digitalWrite(mutePin, 0);
-        //Serial.print("ACRC feat: ");
-        //Serial.println(a2dp_sink.get_remote_features(),HEX);
       }
     }else{
       muteState = true;
     }
   }
 
-
 // Read messages
+// 
+// CAN database can be found here:
+// https://www.trionictuning.com/forum/viewtopic.php?f=46&t=5763
 #ifdef USE_CAN
   if (mcp2515.readMessage(&canMsg) == MCP2515::ERROR_OK)
   {
@@ -147,7 +166,10 @@ void loop() {
         //PLAY/PAUSE
         break;
 
-      /*
+      // ESP HF Client
+      // https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/bluetooth/esp_hf_client.html
+      //
+      // Voice Recognition
       case 0x04:
         Serial.println("VOICE REQ");
         if(millis() - lastVoiceReqTime > voiceReqFreq){
@@ -155,8 +177,14 @@ void loop() {
           delay(50);
           lastVoiceReqTime = millis();
         }
-        */
 
+      // Answer phone call
+      // Need a way to detect if we are in an active call, to be able to hang up the phone. 
+      case 0x12:
+        Serial.println("ANSWER CALL");
+        esp_hf_client_answer_call();
+        delay(50);
+        break;
       }
     }
   }
