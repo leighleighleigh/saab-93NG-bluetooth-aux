@@ -1,14 +1,16 @@
 #include <Arduino.h>
 #include <SPI.h>
 #include <mcp2515.h>
-#include "esp32_bt_music_receiver.h"
 #include <esp_wifi.h>
+#include <esp_hf_client_api.h>
 #include "soc/rtc.h"
 #include <Wire.h>
+#include "BluetoothA2DPSink.h"
 
+BluetoothA2DPSink a2dp_sink;
 
-BTSink a2d_sink;
-
+// Connect CAN_H to LS GMLAN1 (can be found on the ICM harness (pin 1), or solder directly to ICM connector PCB pads). 
+// Leave CAN_L unconnected. 
 #define USE_CAN
 
 #ifdef USE_CAN
@@ -22,61 +24,63 @@ MCP2515 mcp2515(5);
 // bck_io_num => GPIO 26,
 int mutePin = 2;
 
-void setup()
+// Metadata
+void avrc_metadata_callback(uint8_t data1, const uint8_t *data2) {
+  Serial.printf("AVRC metadata rsp: attribute id 0x%x, %s\n", data1, data2);
+}
+
+void bt_hf_client_cb(esp_hf_client_cb_event_t event, esp_hf_client_cb_param_t *param)
 {
+    if (event <= ESP_HF_CLIENT_RING_IND_EVT) {
+        ESP_LOGE(BT_HF_TAG, "APP HFP event: %s", c_hf_evt_str[event]);
+    } else {
+        ESP_LOGE(BT_HF_TAG, "APP HFP invalid event %d", event);
+    }
+}
+
+
+void setup() {
+  // Enable serial
   Serial.begin(115200);
   Serial.println("BOOTED!");
 
-  delay(3000);
-
   // Turn off wifi
   esp_wifi_set_mode(WIFI_MODE_NULL);
-  // esp_wifi_stop();
+  //esp_wifi_stop(); // This causes the ESP32 to bootloop
   pinMode(mutePin, OUTPUT);
 
-#ifdef USE_CAN
+  // Setup CAN
+  #ifdef USE_CAN
   SPI.begin();
   mcp2515.reset();
   mcp2515.setBitrate(CAN_33KBPS, CAN_CLOCK::MCP_8MHZ);
   mcp2515.setNormalMode();
-#endif
+  #endif
 
-  Serial.println("Starting BT STACK...");
+  // Setup UDA1334A DAC
+  static const i2s_config_t i2s_config = {
+    .mode = (i2s_mode_t) (I2S_MODE_MASTER | I2S_MODE_TX),
+      .sample_rate = 44100,
+      .bits_per_sample = I2S_BITS_PER_SAMPLE_16BIT,
+      .channel_format = I2S_CHANNEL_FMT_RIGHT_LEFT,
+      .communication_format = (i2s_comm_format_t) (I2S_COMM_FORMAT_I2S | I2S_COMM_FORMAT_I2S_MSB),
+      .intr_alloc_flags = 0, // default interrupt priority
+      .dma_buf_count = 8,
+      .dma_buf_len = 64,
+      .use_apll = true,
+      .tx_desc_auto_clear = true
+    };
+    // Fix the audio clock, this improves audio quality.
+    rtc_clk_apll_enable(1, 15, 8, 5, 6);
+    a2dp_sink.set_i2s_config(i2s_config);
 
-  // Fix the audio clock, this improves audio quality.
-  rtc_clk_apll_enable(1, 15, 8, 5, 6);
-  a2d_sink.start("SAAB");
-
-  // Wait for stack up
-  while(a2d_sink.stackUpComplete == false)
-  {
-    Serial.print(",");
-    delay(50);
-  }
+  // Metadata
+  a2dp_sink.set_avrc_metadata_callback(avrc_metadata_callback);
+  // Start the A2DP sink
+  a2dp_sink.start("Saab 9-3");  
+  esp_hf_client_register_callback(bt_hf_client_cb);
+  esp_hf_client_init();
   Serial.println("BT STACK UP!");
-
-  // Wait for 5 seconds and then attempt reconnect 
-  delay(5000); 
-  Serial.println("Connecting to last device...");
-  a2d_sink.reconn_last();
-
-  while(a2d_sink.get_conn_state() != ESP_A2D_CONNECTION_STATE_CONNECTED)
-  {
-    Serial.print(".");
-    delay(1000);
-  }
-  Serial.println("Connected!");
-
-  // Wait for the CALLS to be available  
-
-  // // // Wait for 10 seconds and trigger google assistant
-  // delay(10000);
-  // Serial.println("Pressing next song...");
-  // esp_avrc_ct_send_passthrough_cmd(10, ESP_AVRC_PT_CMD_FORWARD, ESP_AVRC_PT_CMD_STATE_PRESSED);
-  
-  // esp_hf_client_start_voice_recognition();
-  // delay(5000);
-  // esp_hf_client_stop_voice_recognition();
 }
 
 bool muteState = false;
@@ -89,21 +93,20 @@ long playTime = 0;
 uint32_t lastVoiceReqTime = millis();
 uint32_t voiceReqFreq = 1000;
 
-void loop()
-{   
+void loop() {
   // Check if we have connection
-  if (a2d_sink.get_conn_state() != ESP_A2D_CONNECTION_STATE_CONNECTED)
+  if (a2dp_sink.get_connection_state() != ESP_A2D_CONNECTION_STATE_CONNECTED)
   {
     // Set digital mute ON and do not handle events.
     digitalWrite(mutePin, 1);
     
     muteState = true;
     playingState = false;
+	
     return;
   }
   else
   {
-
     // Wait until playing again
     if (playingState)
     {
@@ -113,8 +116,6 @@ void loop()
         // Set digital mute off.
         delay(50);
         digitalWrite(mutePin, 0);
-        Serial.print("ACRC feat: ");
-        Serial.println(a2d_sink.get_remote_features(),HEX);
       }
     }else{
       muteState = true;
@@ -122,6 +123,9 @@ void loop()
   }
 
 // Read messages
+// 
+// CAN database can be found here:
+// https://www.trionictuning.com/forum/viewtopic.php?f=46&t=5763
 #ifdef USE_CAN
   if (mcp2515.readMessage(&canMsg) == MCP2515::ERROR_OK)
   {
@@ -136,13 +140,13 @@ void loop()
         break;
       case 0x5:
         Serial.println("NEXT");
-        esp_avrc_ct_send_passthrough_cmd(10, ESP_AVRC_PT_CMD_FORWARD, ESP_AVRC_PT_CMD_STATE_PRESSED);
+        a2dp_sink.next();
         delay(50);
         //NEXT
         break;
       case 0x6:
         Serial.println("PREV");
-        esp_avrc_ct_send_passthrough_cmd(11, ESP_AVRC_PT_CMD_BACKWARD, ESP_AVRC_PT_CMD_STATE_PRESSED);
+        a2dp_sink.previous();
         delay(50);
         //PREV
         break;
@@ -150,17 +154,22 @@ void loop()
         Serial.println("PLAY/PAUSE");
         if (playingStateRequest)
         {
-          esp_avrc_ct_send_passthrough_cmd(12, ESP_AVRC_PT_CMD_PAUSE, ESP_AVRC_PT_CMD_STATE_PRESSED);
+          a2dp_sink.pause();
         }
         else
         {
-          esp_avrc_ct_send_passthrough_cmd(13, ESP_AVRC_PT_CMD_PLAY, ESP_AVRC_PT_CMD_STATE_PRESSED);
+          a2dp_sink.play();
         }
         // Update the boolean
         playingStateRequest = !playingStateRequest;
         delay(50);
         //PLAY/PAUSE
         break;
+
+      // ESP HF Client
+      // https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/bluetooth/esp_hf_client.html
+      //
+      // Voice Recognition
       case 0x04:
         Serial.println("VOICE REQ");
         if(millis() - lastVoiceReqTime > voiceReqFreq){
@@ -168,19 +177,26 @@ void loop()
           delay(50);
           lastVoiceReqTime = millis();
         }
+
+      // Answer phone call
+      // Need a way to detect if we are in an active call, to be able to hang up the phone. 
+      case 0x12:
+        Serial.println("ANSWER CALL");
+        esp_hf_client_answer_call();
+        delay(50);
+        break;
       }
     }
   }
 
   // If playing content
-  if (a2d_sink.get_audio_state() == 2)
+  if (a2dp_sink.get_audio_state() == 2)
   {
     playingState = true;
     // Determine full screen refresh
     String currentContent = "";
 
-    // currentContent = a2d_sink.get_track_name() + " - " + a2d_sink.get_album_name() + " by " + a2d_sink.get_artist_name() + " : " + a2d_sink.get_track_length();
-    currentContent = a2d_sink.audio_trackname + " - " + a2d_sink.audio_trackalbum + " by " + a2d_sink.audio_trackartist + " : " + a2d_sink.audio_tracklength;
+    //currentContent = a2dp_sink.audio_trackname + " - " + a2dp_sink.audio_trackalbum + " by " + a2dp_sink.audio_trackartist + " : " + a2dp_sink.audio_tracklength;
 
     // Do full refresh
     if (currentContent != lastContent)
@@ -193,6 +209,5 @@ void loop()
   {
     playingState = false;
   }
-  // delay(100);
-#endif
+  #endif
 }
