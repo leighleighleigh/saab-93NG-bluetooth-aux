@@ -25,10 +25,14 @@ MCP2515 mcp2515(5);
 int mutePin = 2;
 
 // Metadata
+// 0x1 - Song Title
+// 0x2 - Artist
+// 0x4 - Album
 void avrc_metadata_callback(uint8_t data1, const uint8_t *data2) {
   Serial.printf("AVRC metadata rsp: attribute id 0x%x, %s\n", data1, data2);
 }
 
+// HFP
 void bt_hf_client_cb(esp_hf_client_cb_event_t event, esp_hf_client_cb_param_t *param)
 {
     if (event <= ESP_HF_CLIENT_RING_IND_EVT) {
@@ -74,12 +78,20 @@ void setup() {
     rtc_clk_apll_enable(1, 15, 8, 5, 6);
     a2dp_sink.set_i2s_config(i2s_config);
 
-  // Metadata
-  a2dp_sink.set_avrc_metadata_callback(avrc_metadata_callback);
+  // Enable auto-reconnect
+  a2dp_sink.set_auto_reconnect(true);
+  // Swap audio channels due to this bug: https://github.com/espressif/esp-idf/issues/3399
+  // (or is it a bug on my UDA1334A board?)
+  // Set to false if left and right channels are swapped for you
+  a2dp_sink.set_swap_lr_channels(true);
   // Start the A2DP sink
   a2dp_sink.start("Saab 9-3");  
-  esp_hf_client_register_callback(bt_hf_client_cb);
+  // Metadata
+  a2dp_sink.set_avrc_metadata_callback(avrc_metadata_callback);
+  // HFP
   esp_hf_client_init();
+  esp_hf_client_register_callback(bt_hf_client_cb);
+
   Serial.println("BT STACK UP!");
 }
 
