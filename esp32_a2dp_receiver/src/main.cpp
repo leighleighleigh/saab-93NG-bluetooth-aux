@@ -105,16 +105,35 @@ long playTime = 0;
 uint32_t lastVoiceReqTime = millis();
 uint32_t voiceReqFreq = 1000;
 
+unsigned long startMillis;
+unsigned long currentMillis;
+const unsigned long period = 10000; // Time after which we reboot if we are disconnected for 10 seconds
+
 void loop() {
+  //Get the current time since boot
+  currentMillis = millis();
+
   // Check if we have connection
-  if (a2dp_sink.get_connection_state() != ESP_A2D_CONNECTION_STATE_CONNECTED)
+  if (a2dp_sink.get_connection_state() == ESP_A2D_CONNECTION_STATE_DISCONNECTED)
   {
     // Set digital mute ON and do not handle events.
     digitalWrite(mutePin, 1);
     
     muteState = true;
     playingState = false;
-	
+
+    // Auto-reconnect issue workaround
+    // Comment out these two lines in ESP32-A2DP library's BluetoothA2DPCommon.cpp:
+    //    esp_bd_addr_t cleanBda = { 0 };
+    //    set_last_connection(cleanBda);
+    if (currentMillis - startMillis >= period)  //test whether the period has elapsed
+    {
+      startMillis = currentMillis;
+      delay(50);
+      Serial.println("Connection state: disconnected - Rebooting ESP32 to try again");
+      delay(50);
+      ESP.restart();
+    }
     return;
   }
   else
