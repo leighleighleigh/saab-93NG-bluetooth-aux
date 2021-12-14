@@ -79,18 +79,24 @@ void setup() {
     a2dp_sink.set_i2s_config(i2s_config);
 
   // Enable auto-reconnect
-  a2dp_sink.set_auto_reconnect(true);
+  // See for details: https://github.com/pschatzmann/ESP32-A2DP/wiki/Auto-Reconnect
+  a2dp_sink.set_auto_reconnect(true, false, 1000);
+
   // Swap audio channels due to this bug: https://github.com/espressif/esp-idf/issues/3399
   // (or is it a bug on my UDA1334A board?)
   // Set to false if left and right channels are swapped for you
   a2dp_sink.set_swap_lr_channels(true);
+
   // Start the A2DP sink
   a2dp_sink.start("Saab 9-3");  
+
   // Metadata
   a2dp_sink.set_avrc_metadata_callback(avrc_metadata_callback);
+
   // HFP
   esp_hf_client_init();
   esp_hf_client_register_callback(bt_hf_client_cb);
+  
   Serial.println("BT STACK UP!");
 }
 
