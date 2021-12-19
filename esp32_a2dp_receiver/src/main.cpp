@@ -8,9 +8,10 @@
 
 BluetoothA2DPSink a2dp_sink;
 
-// Connect CAN_H to LS GMLAN1 (can be found on the ICM harness (pin 1), or solder directly to ICM connector PCB pads). 
-// Leave CAN_L unconnected. 
+// Use CAN for steering wheel controls
 #define USE_CAN
+// Start playing audio immediately after connecting/reconnecting to phone
+#define RESUME_AUDIO_ON_CONNECTION
 
 #ifdef USE_CAN
 struct can_frame canMsg;
@@ -122,6 +123,10 @@ bool muteState = false;
 bool playingStateRequest = true;
 bool playingState = false;
 
+#ifdef RESUME_AUDIO_ON_CONNECTION
+bool resumeAudio = true;
+#endif
+
 String lastContent = "";
 
 long playTime = 0;
@@ -132,6 +137,11 @@ void loop() {
   // Check if we have connection
   if (a2dp_sink.get_connection_state() != ESP_A2D_CONNECTION_STATE_CONNECTED)
   {
+    #ifdef RESUME_AUDIO_ON_CONNECTION
+    // If there is no connection, set resumeAudio to true, so that once there is connection we resume audio playback
+    if(resumeAudio == false) resumeAudio = true;
+    #endif
+    
     // Set digital mute ON and do not handle events.
     digitalWrite(mutePin, 1);
     
@@ -142,6 +152,17 @@ void loop() {
   }
   else
   {
+    #ifdef RESUME_AUDIO_ON_CONNECTION
+    // Once connected, resume audio playback
+    if(resumeAudio == true) 
+    {
+      // Wait for A2DP to initialize fully before resuming playback (otherwise it might not play)
+      delay(1000);
+      a2dp_sink.play();
+      resumeAudio = false;
+    }
+    #endif
+
     // Wait until playing again
     if (playingState)
     {
