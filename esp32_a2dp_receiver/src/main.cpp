@@ -94,8 +94,6 @@ void setup() {
       .use_apll = true,
       .tx_desc_auto_clear = true
     };
-    // Fix the audio clock, this improves audio quality.
-    rtc_clk_apll_enable(1, 15, 8, 5, 6);
     a2dp_sink.set_i2s_config(i2s_config);
 
   // Enable auto-reconnect
