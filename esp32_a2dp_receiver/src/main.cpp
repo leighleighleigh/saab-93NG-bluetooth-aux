@@ -1,7 +1,6 @@
 #include <Arduino.h>
 #include <SPI.h>
 #include <mcp2515.h>
-#include <esp_wifi.h>
 #include <esp_hf_client_api.h>
 #include "soc/rtc.h"
 #include <Wire.h>
@@ -48,9 +47,6 @@ void setup() {
   Serial.begin(115200);
   Serial.println("BOOTED!");
 
-  // Turn off wifi
-  esp_wifi_set_mode(WIFI_MODE_NULL);
-  //esp_wifi_stop(); // This causes the ESP32 to bootloop
   pinMode(mutePin, OUTPUT);
 
   // Setup CAN
