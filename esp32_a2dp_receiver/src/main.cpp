@@ -1,7 +1,6 @@
 #include <Arduino.h>
 #include <SPI.h>
 #include <mcp2515.h>
-#include <esp_wifi.h>
 #include <esp_hf_client_api.h>
 #include "soc/rtc.h"
 #include <Wire.h>
@@ -9,9 +8,10 @@
 
 BluetoothA2DPSink a2dp_sink;
 
-// Connect CAN_H to LS GMLAN1 (can be found on the ICM harness (pin 1), or solder directly to ICM connector PCB pads). 
-// Leave CAN_L unconnected. 
+// Use CAN for steering wheel controls
 #define USE_CAN
+// Start playing audio immediately after connecting/reconnecting to phone
+#define RESUME_AUDIO_ON_CONNECTION
 
 #ifdef USE_CAN
 struct can_frame canMsg;
@@ -25,10 +25,38 @@ MCP2515 mcp2515(5);
 int mutePin = 2;
 
 // Metadata
+// 0x1 - Song Title
+// 0x2 - Artist
+// 0x4 - Album
 void avrc_metadata_callback(uint8_t data1, const uint8_t *data2) {
   Serial.printf("AVRC metadata rsp: attribute id 0x%x, %s\n", data1, data2);
 }
 
+// HFP
+static const char *BT_HF_TAG = "BT_HF";
+const char *c_hf_evt_str[] = {
+    "CONNECTION_STATE_EVT",              /*!< connection state changed event */
+    "AUDIO_STATE_EVT",                   /*!< audio connection state change event */
+    "VR_STATE_CHANGE_EVT",                /*!< voice recognition state changed */
+    "CALL_IND_EVT",                      /*!< call indication event */
+    "CALL_SETUP_IND_EVT",                /*!< call setup indication event */
+    "CALL_HELD_IND_EVT",                 /*!< call held indicator event */
+    "NETWORK_STATE_EVT",                 /*!< network state change event */
+    "SIGNAL_STRENGTH_IND_EVT",           /*!< signal strength indication event */
+    "ROAMING_STATUS_IND_EVT",            /*!< roaming status indication event */
+    "BATTERY_LEVEL_IND_EVT",             /*!< battery level indication event */
+    "CURRENT_OPERATOR_EVT",              /*!< current operator name event */
+    "RESP_AND_HOLD_EVT",                 /*!< response and hold event */
+    "CLIP_EVT",                          /*!< Calling Line Identification notification event */
+    "CALL_WAITING_EVT",                  /*!< call waiting notification */
+    "CLCC_EVT",                          /*!< listing current calls event */
+    "VOLUME_CONTROL_EVT",                /*!< audio volume control event */
+    "AT_RESPONSE",                       /*!< audio volume control event */
+    "SUBSCRIBER_INFO_EVT",               /*!< subscriber information event */
+    "INBAND_RING_TONE_EVT",              /*!< in-band ring tone settings */
+    "LAST_VOICE_TAG_NUMBER_EVT",         /*!< requested number from AG event */
+    "RING_IND_EVT",                      /*!< ring indication event */
+};
 void bt_hf_client_cb(esp_hf_client_cb_event_t event, esp_hf_client_cb_param_t *param)
 {
     if (event <= ESP_HF_CLIENT_RING_IND_EVT) {
@@ -44,9 +72,6 @@ void setup() {
   Serial.begin(115200);
   Serial.println("BOOTED!");
 
-  // Turn off wifi
-  esp_wifi_set_mode(WIFI_MODE_NULL);
-  //esp_wifi_stop(); // This causes the ESP32 to bootloop
   pinMode(mutePin, OUTPUT);
 
   // Setup CAN
@@ -63,29 +88,44 @@ void setup() {
       .sample_rate = 44100,
       .bits_per_sample = I2S_BITS_PER_SAMPLE_16BIT,
       .channel_format = I2S_CHANNEL_FMT_RIGHT_LEFT,
-      .communication_format = (i2s_comm_format_t) (I2S_COMM_FORMAT_I2S | I2S_COMM_FORMAT_I2S_MSB),
+      .communication_format = (i2s_comm_format_t) (I2S_COMM_FORMAT_STAND_I2S),
       .intr_alloc_flags = 0, // default interrupt priority
       .dma_buf_count = 8,
       .dma_buf_len = 64,
       .use_apll = true,
       .tx_desc_auto_clear = true
     };
-    // Fix the audio clock, this improves audio quality.
-    rtc_clk_apll_enable(1, 15, 8, 5, 6);
     a2dp_sink.set_i2s_config(i2s_config);
+
+  // Enable auto-reconnect
+  // See for details: https://github.com/pschatzmann/ESP32-A2DP/wiki/Auto-Reconnect
+  a2dp_sink.set_auto_reconnect(true, false, 1000);
+
+  // Swap audio channels due to this bug: https://github.com/espressif/esp-idf/issues/3399
+  // (or is it a bug on my UDA1334A board?)
+  // Set to false if left and right channels are swapped for you
+  a2dp_sink.set_swap_lr_channels(true);
+
+  // Start the A2DP sink
+  a2dp_sink.start("Saab 9-3");  
 
   // Metadata
   a2dp_sink.set_avrc_metadata_callback(avrc_metadata_callback);
-  // Start the A2DP sink
-  a2dp_sink.start("Saab 9-3");  
-  esp_hf_client_register_callback(bt_hf_client_cb);
+
+  // HFP
   esp_hf_client_init();
+  esp_hf_client_register_callback(bt_hf_client_cb);
+  
   Serial.println("BT STACK UP!");
 }
 
 bool muteState = false;
 bool playingStateRequest = true;
 bool playingState = false;
+
+#ifdef RESUME_AUDIO_ON_CONNECTION
+bool resumeAudio = true;
+#endif
 
 String lastContent = "";
 
@@ -97,16 +137,32 @@ void loop() {
   // Check if we have connection
   if (a2dp_sink.get_connection_state() != ESP_A2D_CONNECTION_STATE_CONNECTED)
   {
+    #ifdef RESUME_AUDIO_ON_CONNECTION
+    // If there is no connection, set resumeAudio to true, so that once there is connection we resume audio playback
+    if(resumeAudio == false) resumeAudio = true;
+    #endif
+    
     // Set digital mute ON and do not handle events.
     digitalWrite(mutePin, 1);
     
     muteState = true;
     playingState = false;
-	
+
     return;
   }
   else
   {
+    #ifdef RESUME_AUDIO_ON_CONNECTION
+    // Once connected, resume audio playback
+    if(resumeAudio == true) 
+    {
+      // Wait for A2DP to initialize fully before resuming playback (otherwise it might not play)
+      delay(1000);
+      a2dp_sink.play();
+      resumeAudio = false;
+    }
+    #endif
+
     // Wait until playing again
     if (playingState)
     {
