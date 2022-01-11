@@ -11,7 +11,7 @@ Key hardware change involved using the internal CAN controller of the ESP32, wit
  - `PCM5102` DAC Module
  - `TJA1050` CAN Transceiver Module
  - `VXO7805-500-M-TR DC-DC` 12V -> 5V Power Supply Module. 
-  - This is in a ***4-SMD Module*** package, of which there are plenty alternatives to choose from.
+   - This is in a ***4-SMD Module*** package, of which there are plenty alternatives to choose from.
 
 ![modules.jpg](./media/modules.jpg)
 
