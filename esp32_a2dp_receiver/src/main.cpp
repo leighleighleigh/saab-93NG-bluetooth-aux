@@ -9,7 +9,7 @@
 BluetoothA2DPSink a2dp_sink;
 
 // Use CAN for steering wheel controls
-#define USE_CAN
+// #define USE_CAN
 // Start playing audio immediately after connecting/reconnecting to phone
 #define RESUME_AUDIO_ON_CONNECTION
 
@@ -82,13 +82,22 @@ void setup() {
   mcp2515.setNormalMode();
   #endif
 
+  // Change pins
+  static const i2s_pin_config_t pin_config = {
+      .bck_io_num = 4, // 26
+      .ws_io_num = 15, // 25
+      .data_out_num = 2, // 22
+      .data_in_num = I2S_PIN_NO_CHANGE
+  };
+  a2dp_sink.set_pin_config(pin_config);
+
   // Setup UDA1334A DAC
   static const i2s_config_t i2s_config = {
     .mode = (i2s_mode_t) (I2S_MODE_MASTER | I2S_MODE_TX),
       .sample_rate = 44100,
       .bits_per_sample = I2S_BITS_PER_SAMPLE_16BIT,
       .channel_format = I2S_CHANNEL_FMT_RIGHT_LEFT,
-      .communication_format = (i2s_comm_format_t) (I2S_COMM_FORMAT_STAND_I2S),
+      .communication_format = (i2s_comm_format_t) (I2S_COMM_FORMAT_STAND_MSB),
       .intr_alloc_flags = 0, // default interrupt priority
       .dma_buf_count = 8,
       .dma_buf_len = 64,
@@ -107,7 +116,7 @@ void setup() {
   a2dp_sink.set_swap_lr_channels(true);
 
   // Start the A2DP sink
-  a2dp_sink.start("Saab 9-3");  
+  a2dp_sink.start("ESP32 DEV");  
 
   // Metadata
   a2dp_sink.set_avrc_metadata_callback(avrc_metadata_callback);
