@@ -1,22 +1,21 @@
 #include <Arduino.h>
 #include <SPI.h>
-#include <mcp2515.h>
 #include <esp_hf_client_api.h>
 #include "soc/rtc.h"
 #include <Wire.h>
 #include "BluetoothA2DPSink.h"
+#include <ESP32CAN.h>
+#include <CAN_config.h>
 
 BluetoothA2DPSink a2dp_sink;
+
+/* the variable name CAN_cfg is fixed, do not change */
+CAN_device_t CAN_cfg;
 
 // Use CAN for steering wheel controls
 // #define USE_CAN
 // Start playing audio immediately after connecting/reconnecting to phone
 #define RESUME_AUDIO_ON_CONNECTION
-
-#ifdef USE_CAN
-struct can_frame canMsg;
-MCP2515 mcp2515(5);
-#endif
 
 // I2C Pins
 // ws_io_num => GPIO 25,
@@ -72,15 +71,17 @@ void setup() {
   Serial.begin(115200);
   Serial.println("BOOTED!");
 
+
   pinMode(mutePin, OUTPUT);
 
-  // Setup CAN
-  #ifdef USE_CAN
-  SPI.begin();
-  mcp2515.reset();
-  mcp2515.setBitrate(CAN_33KBPS, CAN_CLOCK::MCP_8MHZ);
-  mcp2515.setNormalMode();
-  #endif
+  /* set CAN pins and baudrate */
+  CAN_cfg.speed=CAN_SPEED_100KBPS;
+  CAN_cfg.tx_pin_id = GPIO_NUM_5;
+  CAN_cfg.rx_pin_id = GPIO_NUM_4;
+  /* create a queue for CAN receiving */
+  CAN_cfg.rx_queue = xQueueCreate(10,sizeof(CAN_frame_t));
+  //initialize CAN Module
+  ESP32Can.CANInit();
 
   // Change pins
   static const i2s_pin_config_t pin_config = {
@@ -126,6 +127,25 @@ void setup() {
   esp_hf_client_register_callback(bt_hf_client_cb);
   
   Serial.println("BT STACK UP!");
+
+  delay(3000);
+
+  CAN_frame_t rx_frame;
+  rx_frame.FIR.B.FF = CAN_frame_std;
+  rx_frame.MsgID = 1;
+  rx_frame.FIR.B.DLC = 8;
+  rx_frame.data.u8[0] = 'h';
+  rx_frame.data.u8[1] = 'e';
+  rx_frame.data.u8[2] = 'l';
+  rx_frame.data.u8[3] = 'l';
+  rx_frame.data.u8[4] = 'o';
+  rx_frame.data.u8[5] = 'c';
+  rx_frame.data.u8[6] = 'a';
+  rx_frame.data.u8[7] = 'n';
+
+  ESP32Can.CANWriteFrame(&rx_frame);
+
+  Serial.println("CAN DONE!");
 }
 
 bool muteState = false;
@@ -142,7 +162,14 @@ long playTime = 0;
 uint32_t lastVoiceReqTime = millis();
 uint32_t voiceReqFreq = 1000;
 
+void send_test_can()
+{
+  
+}
+
 void loop() {
+  // send_test_can();
+
   // Check if we have connection
   if (a2dp_sink.get_connection_state() != ESP_A2D_CONNECTION_STATE_CONNECTED)
   {
