@@ -1,2 +1,4 @@
-idf_component_register(SRCS "twai_self_test_example_main.c"
+idf_component_register(SRCS "bt_app_av.c"
+                            "bt_app_core.c"
+                            "main.c"
                     INCLUDE_DIRS ".")
