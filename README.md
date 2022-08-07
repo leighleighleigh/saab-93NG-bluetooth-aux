@@ -1,29 +1,36 @@
 # saab-93NG-bluetooth-aux
 A module to augment the Aux-In functionality of SAAB 93NG's (2002/3+), to add Bluetooth media playback and steering wheel media control support.
+**WIP, new hardware currently in development.**
 
 # Features
- - Bluetooth music playback through the wired aux port
+ - Bluetooth music playback through the wired AUX port
  - Steering wheel button controls
   - Play / Pause
   - Next / Previous
-  - Voice Assistant
-  - Accept incoming phone call 
+  - *WIP* Voice Assistant 
+  - *WIP* Accept incoming phone call 
+ - **[SOON]** Digital Microphone support
+ - **[SOON]** SID integration for automatic Aux-switching
+ - **[FUTURE]** SID augmentation, to show music track names etc.
 
-# First prototype!
-<img src="https://i.imgur.com/RzdHh4H.jpg" width="315" height="auto">
+# Project Layout
+- /hardware_saab_bluetooth_aux_kit
+  - Version 1 hardware. Very basic, breakout-module-based. KiCAD 5
+- /hardware/esp32_93NG_btaux_v2
+  - Version 2 hardware. SMD components. Multiple DAC options. SID/HPD interfaces. KiCAD 6.
+- /esp32_a2dp_reciever
+  - PlatformIO project, the software flashed to the ESP32 module.
+  - Utilises the Arduino for ESP32 framework.
 
-# Prototype parts
+# Version 1, Prototype
+The first edition of the PCB serves only to wire together some off-the-shelf modules, after they were tested on a breadboard.
+<img src="https://i.imgur.com/RzdHh4H.jpg" width="256" height="auto">
+## Prototype parts
  - ESP32 NodeMCU Board (30-pin variant)
  - Adafruit I2S to Stereo DAC (UDA1334)
  - MCP2515 CAN-bus to SPI interface module
 
-# Project Layout
-- /saab_bluetooth_aux_kit
-  - This is the PCB which all the modules will solder onto, for easy assembly.
-- /esp32_a2dp_reciever  
-  - PIO project, the software flashed to the ESP32 module to provide bluetooth audio -> I2S functionality.
-  - Also handles CAN bus messages, for steering wheel Play/Pause/Next/Previous
-  
+<!-- 
 # Notes for building your own (by [jokubasver](https://github.com/jokubasver))
 - CAN H connects to LS GMLAN1 (green wire, it can be found on the ICM connector pin 1, or solder directly to ICM connector PCB pad).
 - CAN L connects to GND
@@ -48,3 +55,4 @@ A module to augment the Aux-In functionality of SAAB 93NG's (2002/3+), to add Bl
   - I have experienced massive current draw from the battery when using this 5V line previously, while experimenting with a generic Bluetooth Aux module. I tried it again with this project and everything is fine.
   - My guess is that my first experiment had a ground loop, and this either caused current to flow through the ground loop, draining the battery, or it confused the EHU and prevented it to go into sleep.
   - Therefore, I highly suggest you use an isolated DC-DC converter (whether you are using 12V, or 5V from the EHU)
+-->

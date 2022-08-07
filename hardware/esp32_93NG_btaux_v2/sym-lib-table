@@ -1,0 +1,6 @@
+(sym_lib_table
+  (lib (name "pcm5102_breakout")(type "KiCad")(uri "${KIPRJMOD}/kicadlibrary/pcm5102_breakout.kicad_sym")(options "")(descr ""))
+  (lib (name "esp32_30pin_breakout")(type "KiCad")(uri "${KIPRJMOD}/kicadlibrary/esp32_30pin_breakout.kicad_sym")(options "")(descr ""))
+  (lib (name "uda1334a_breakout")(type "KiCad")(uri "${KIPRJMOD}/kicadlibrary/uda1334a_breakout.kicad_sym")(options "")(descr ""))
+  (lib (name "esp32_mini")(type "KiCad")(uri "${KIPRJMOD}/kicadlibrary/esp32_mini.kicad_sym")(options "")(descr ""))
+)
