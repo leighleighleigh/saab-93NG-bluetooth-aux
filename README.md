@@ -1,14 +1,18 @@
 # saab-93NG-bluetooth-aux
 A module to augment the Aux-In functionality of SAAB 93NG's (2002/3+), to add Bluetooth media playback and steering wheel media control support.
-**WIP, new hardware currently in development.**
+
+<blockquote>
+<p><b>August 2022 update - development of new hardware has begun</b></p>
+<img src="https://raw.githubusercontent.com/leighleighleigh/saab-93NG-bluetooth-aux/master/images/hw_v2.png" width="320" height="auto">
+</blockquote>
 
 # Features
  - Bluetooth music playback through the wired AUX port
  - Steering wheel button controls
-  - Play / Pause
-  - Next / Previous
-  - *WIP* Voice Assistant 
-  - *WIP* Accept incoming phone call 
+   - Play / Pause
+   - Next / Previous
+   - *WIP* Voice Assistant 
+   - *WIP* Accept incoming phone call 
  - **[SOON]** Digital Microphone support
  - **[SOON]** SID integration for automatic Aux-switching
  - **[FUTURE]** SID augmentation, to show music track names etc.
