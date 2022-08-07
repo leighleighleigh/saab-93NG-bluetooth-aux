@@ -3,7 +3,7 @@ A module to augment the Aux-In functionality of SAAB 93NG's (2002/3+), to add Bl
 
 <blockquote>
 <p><b>August 2022 update - development of new hardware has begun</b></p>
-<img src="https://raw.githubusercontent.com/leighleighleigh/saab-93NG-bluetooth-aux/master/images/hw_v2.png" width="320" height="auto">
+<img src="https://raw.githubusercontent.com/leighleighleigh/saab-93NG-bluetooth-aux/master/images/hw_v2.png" width="512" height="auto">
 </blockquote>
 
 # Features
