@@ -471,6 +471,9 @@
     (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/6d159d8a-19cc-4b54-9df5-aabee87de99b"
       (reference "#PWR049") (unit 1) (value "GND") (footprint "")
     )
+    (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/36e64c55-778e-42df-a0a6-77d09eca5d89"
+      (reference "#PWR050") (unit 1) (value "GND") (footprint "")
+    )
     (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/5a30f0f6-9c37-4ca8-99b9-7241bf457728"
       (reference "#PWR051") (unit 1) (value "GND") (footprint "")
     )
@@ -516,14 +519,14 @@
     (path "/53266b87-52b6-481e-baf5-dd58dce0c567/52296185-2f7c-42f1-844f-6177894b59c8"
       (reference "#PWR065") (unit 1) (value "+12V") (footprint "")
     )
-    (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/33367d7d-2d36-42da-965f-f553f91ddb74"
-      (reference "#PWR0101") (unit 1) (value "GND") (footprint "")
+    (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/0dfc1ae4-fc8a-4fc3-8264-700fe456f875"
+      (reference "#PWR066") (unit 1) (value "+3V3") (footprint "")
     )
-    (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/d668e3be-b232-43da-b862-ca687907731c"
-      (reference "#PWR0102") (unit 1) (value "GND") (footprint "")
+    (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/ab489794-83a4-434e-bb53-a510c897634e"
+      (reference "#PWR067") (unit 1) (value "GND") (footprint "")
     )
-    (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/2cd5bd17-61c8-4232-b67c-65e843108786"
-      (reference "#PWR0103") (unit 1) (value "GND") (footprint "")
+    (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/fd8ecd0c-cddc-4679-af5a-36606841586e"
+      (reference "#PWR068") (unit 1) (value "+3V3") (footprint "")
     )
     (path "/2fa2b14d-c4c1-4661-9edb-e2b76cbe62ef/30083b66-2041-47e5-b2f5-04471ea0925a"
       (reference "C1") (unit 1) (value "2.2uF") (footprint "Capacitor_SMD:C_0805_2012Metric")
@@ -560,9 +563,6 @@
     )
     (path "/2fa2b14d-c4c1-4661-9edb-e2b76cbe62ef/b1cf1ee2-a820-479a-81a7-545f18ef128d"
       (reference "C12") (unit 1) (value "10uF") (footprint "Capacitor_SMD:C_0805_2012Metric")
-    )
-    (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/45a4859c-eb23-4c1f-9144-52f587bedfce"
-      (reference "D1") (unit 1) (value "LED_RGB") (footprint "LED_SMD:LED_RGB_PLCC-6")
     )
     (path "/c2c0af82-d5bb-4f53-a1f4-c83c6e59b9c8"
       (reference "H1") (unit 1) (value "MountingHole") (footprint "kicadlibrary:MountingHole_3.2mm_M3_BARE")
@@ -610,16 +610,19 @@
       (reference "J3") (unit 1) (value "PROG") (footprint "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Horizontal")
     )
     (path "/53266b87-52b6-481e-baf5-dd58dce0c567/fa0623db-e2fa-4b5f-8fa0-4d4500c3e5f7"
-      (reference "J4") (unit 1) (value "Conn_01x02_Male") (footprint "kicadlibrary:Molex_Micro-Fit_3.0_43045-0212_2x01_P3.00mm_Vertical")
+      (reference "J4") (unit 1) (value "Conn_VCC") (footprint "kicadlibrary:Molex_Micro-Fit_3.0_43045-0212_2x01_P3.00mm_Vertical")
     )
     (path "/53266b87-52b6-481e-baf5-dd58dce0c567/b08acb3c-90b5-4a91-ad85-d0f837175d05"
-      (reference "J5") (unit 1) (value "Conn_01x02_Male") (footprint "kicadlibrary:Molex_Micro-Fit_3.0_43045-0212_2x01_P3.00mm_Vertical")
+      (reference "J5") (unit 1) (value "Conn_CAN_IBUS") (footprint "kicadlibrary:Molex_Micro-Fit_3.0_43045-0212_2x01_P3.00mm_Vertical")
     )
     (path "/53266b87-52b6-481e-baf5-dd58dce0c567/efa04f3a-5d25-4b75-ae4b-da0c554fc068"
-      (reference "J6") (unit 1) (value "Conn_01x02_Male") (footprint "kicadlibrary:Molex_Micro-Fit_3.0_43045-0212_2x01_P3.00mm_Vertical")
+      (reference "J6") (unit 1) (value "Conn_HPD_IN") (footprint "kicadlibrary:Molex_Micro-Fit_3.0_43045-0212_2x01_P3.00mm_Vertical")
     )
     (path "/53266b87-52b6-481e-baf5-dd58dce0c567/3f75b2ef-d054-45a0-a89e-07ecbbf7f4b7"
-      (reference "J7") (unit 1) (value "Conn_01x02_Male") (footprint "kicadlibrary:Molex_Micro-Fit_3.0_43045-0212_2x01_P3.00mm_Vertical")
+      (reference "J7") (unit 1) (value "Conn_HPD_Out") (footprint "kicadlibrary:Molex_Micro-Fit_3.0_43045-0212_2x01_P3.00mm_Vertical")
+    )
+    (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/3eda13ed-de69-44fa-ab7e-32c596e9f4ab"
+      (reference "J8") (unit 1) (value "Conn_GPIO") (footprint "Connector_PinHeader_2.54mm:PinHeader_2x04_P2.54mm_Vertical")
     )
     (path "/8bc2b530-151f-4f56-9f76-2f9c6dd944ba/f201171a-312f-4ac3-8729-2f2ecc509603"
       (reference "R1") (unit 1) (value "100K") (footprint "Resistor_SMD:R_0805_2012Metric")
@@ -656,15 +659,6 @@
     )
     (path "/7b5a11ad-a9f0-478d-aabc-930d8269097c/16230ef5-0558-4a3c-bd5f-8c832a6c908a"
       (reference "R12") (unit 1) (value "0R") (footprint "Resistor_SMD:R_1206_3216Metric")
-    )
-    (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/ed059568-0c90-4adf-94be-3b576e097c7a"
-      (reference "R13") (unit 1) (value "1K") (footprint "Resistor_SMD:R_0805_2012Metric")
-    )
-    (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/c33f199c-72cf-48ce-a1ca-199e4f946144"
-      (reference "R14") (unit 1) (value "1K") (footprint "Resistor_SMD:R_0805_2012Metric")
-    )
-    (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/4a6d9d19-def7-4c13-9206-3a5cd918320c"
-      (reference "R15") (unit 1) (value "1K") (footprint "Resistor_SMD:R_0805_2012Metric")
     )
     (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/3a716e2b-1811-4981-aba8-bf8de611e548"
       (reference "SW2") (unit 1) (value "EN") (footprint "kicadlibrary:R-667834")

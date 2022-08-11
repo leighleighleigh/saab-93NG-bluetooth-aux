@@ -229,6 +229,17 @@
     (uuid f965daf4-fb6b-4bab-8532-0c7caa2ba836)
   )
 
+  (text "SLOPE CONTROL RESISTOR\nFor high-speed operation, this can be replaced \nwith 0Ohms (or bridged with solder)."
+    (at 106.68 106.68 0)
+    (effects (font (size 1.27 1.27)) (justify right bottom))
+    (uuid 1023badc-f0e4-4ed4-ac8e-2192a0fa0427)
+  )
+  (text "GMLAN SWCAN terminations.\n'Low' is tied to Ground.\n'High' is terminated to Ground via 4.7K resistor."
+    (at 154.94 116.84 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 3447ab5a-518f-415a-9980-0725e43b0586)
+  )
+
   (global_label "CAN_L" (shape input) (at 176.53 95.885 90) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid 29cb6063-743e-490a-a908-d27550114577)
