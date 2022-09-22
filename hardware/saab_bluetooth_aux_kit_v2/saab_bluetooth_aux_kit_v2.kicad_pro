@@ -44,7 +44,7 @@
         "silk_text_thickness": 0.15,
         "silk_text_upright": false,
         "zones": {
-          "45_degree_only": true,
+          "45_degree_only": false,
           "min_clearance": 0.254
         }
       },
@@ -351,7 +351,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "esp32_93NG_btaux_v2.kicad_pro",
+    "filename": "saab_bluetooth_aux_kit_v2.kicad_pro",
     "version": 1
   },
   "net_settings": {

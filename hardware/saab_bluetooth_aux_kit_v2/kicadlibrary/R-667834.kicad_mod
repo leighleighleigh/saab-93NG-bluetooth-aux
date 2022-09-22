@@ -1,0 +1,57 @@
+(footprint "R-667834" (version 20211014) (generator pcbnew)
+  (layer "F.Cu")
+  (tedit 62CC02AE)
+  (descr "SWITCH TACTILE, SPST-NO, 0.05A 1")
+  (tags "switch pushbutton tactile smd spst-no")
+  (property "Sheetfile" "esp32mini-funboard.kicad_sch")
+  (property "Sheetname" "")
+  (attr smd)
+  (fp_text reference "SW1" (at 0 2.8 unlocked) (layer "F.SilkS")
+    (effects (font (size 1 1) (thickness 0.15)))
+    (tstamp 4af296d7-5b9f-4bb5-b41b-15ef7f1bfd5b)
+  )
+  (fp_text value "SW_Push" (at 0 -4.25 unlocked) (layer "F.Fab") hide
+    (effects (font (size 1 1) (thickness 0.15)))
+    (tstamp 50e8bbe5-12ec-4b23-bb02-4a14f3062052)
+  )
+  (fp_text user "${REFERENCE}" (at 0 -2.75 unlocked) (layer "F.Fab")
+    (effects (font (size 1 1) (thickness 0.15)))
+    (tstamp 5bcef2c7-506e-46d9-a632-cef359ab8a5c)
+  )
+  (fp_line (start 1.65 -0.95) (end 1.65 -1.8) (layer "F.SilkS") (width 0.12) (tstamp 0079a48d-86f7-405d-ba5a-a1c9dd862235))
+  (fp_line (start 1.65 -1.8) (end -1.65 -1.8) (layer "F.SilkS") (width 0.12) (tstamp 0c253761-6473-4fd6-a16a-518d0a1f81d3))
+  (fp_line (start 1.65 -0.95) (end 1.85 -0.75) (layer "F.SilkS") (width 0.12) (tstamp 3cf8f43c-3fbb-48e3-8e8a-73782c930db7))
+  (fp_line (start -1.65 0.95) (end -1.65 1.8) (layer "F.SilkS") (width 0.12) (tstamp 412b93dd-22a7-4cfc-9a1e-c63bf0687924))
+  (fp_line (start 1.85 -0.75) (end 1.85 0.75) (layer "F.SilkS") (width 0.12) (tstamp 4967be1b-0f59-4911-8d91-9c7e556c45c9))
+  (fp_line (start -1.65 -1.8) (end -1.65 -0.95) (layer "F.SilkS") (width 0.12) (tstamp 68dddee2-c3ef-4116-a91d-faab53ebd5a3))
+  (fp_line (start -1.65 1.8) (end 1.65 1.8) (layer "F.SilkS") (width 0.12) (tstamp 6a1a643b-8637-4d53-a8f2-1a43cb2757ec))
+  (fp_line (start -1.85 -0.75) (end -1.65 -0.95) (layer "F.SilkS") (width 0.12) (tstamp 7b1b85f5-c4c4-4c79-b10a-148a787341bd))
+  (fp_line (start 1.65 1.8) (end 1.65 0.95) (layer "F.SilkS") (width 0.12) (tstamp abbbabe7-90de-453a-abec-d03f563dab04))
+  (fp_line (start 1.85 0.75) (end 1.65 0.95) (layer "F.SilkS") (width 0.12) (tstamp e08b1201-31c0-412b-87de-21e17281c3ac))
+  (fp_line (start -1.85 0.75) (end -1.85 -0.75) (layer "F.SilkS") (width 0.12) (tstamp edea0bc2-a181-43b2-bfcf-32576a59a77d))
+  (fp_line (start -1.65 0.95) (end -1.85 0.75) (layer "F.SilkS") (width 0.12) (tstamp fa890f2e-5f78-4d84-9e2f-71d3299a251b))
+  (fp_circle (center 0 0) (end 1.3 0) (layer "F.SilkS") (width 0.12) (fill none) (tstamp 52a4258b-0d37-4713-a7b3-12884b634100))
+  (fp_rect (start -1.85 -1.8) (end 1.85 1.8) (layer "F.CrtYd") (width 0.05) (fill none) (tstamp 7424ae20-2c44-4507-87c5-daa7cd01fae3))
+  (pad "1" smd rect (at 1.55 1.375 180) (size 0.6 0.65) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 4ad39416-f27b-459d-98d0-7e240459aba0))
+  (pad "1" smd rect (at -1.55 1.375 180) (size 0.6 0.65) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 4fbd5c89-64a1-4700-89d5-d987c2534415))
+  (pad "2" smd rect (at -1.55 -1.375) (size 0.6 0.65) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 36a602ad-c79d-49b2-8e75-2733f2b077b9))
+  (pad "2" smd rect (at 1.55 -1.375 180) (size 0.6 0.65) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 7b60faa9-c36d-4ab1-8a3e-ef12cdb65cd5))
+  (group "" (id 9edc8951-c0ce-4865-8a9e-fe7ac5ec16b2)
+    (members
+      412b93dd-22a7-4cfc-9a1e-c63bf0687924
+      68dddee2-c3ef-4116-a91d-faab53ebd5a3
+      7b1b85f5-c4c4-4c79-b10a-148a787341bd
+      edea0bc2-a181-43b2-bfcf-32576a59a77d
+      fa890f2e-5f78-4d84-9e2f-71d3299a251b
+    )
+  )
+  (group "" (id a35a630f-78a7-4027-8477-bcde7b5a2bb8)
+    (members
+      0079a48d-86f7-405d-ba5a-a1c9dd862235
+      3cf8f43c-3fbb-48e3-8e8a-73782c930db7
+      4967be1b-0f59-4911-8d91-9c7e556c45c9
+      abbbabe7-90de-453a-abec-d03f563dab04
+      e08b1201-31c0-412b-87de-21e17281c3ac
+    )
+  )
+)
