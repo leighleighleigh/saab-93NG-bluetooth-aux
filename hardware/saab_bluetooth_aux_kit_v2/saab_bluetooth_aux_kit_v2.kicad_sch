@@ -298,20 +298,35 @@
     (path "/53266b87-52b6-481e-baf5-dd58dce0c567/52296185-2f7c-42f1-844f-6177894b59c8"
       (reference "#PWR065") (unit 1) (value "+12V") (footprint "")
     )
-    (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/32a780c5-085d-43f5-822a-b0aedde4d1e0"
+    (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/d4ba7d3e-baad-4a0d-bcee-4c54e56b670a"
       (reference "#PWR0101") (unit 1) (value "+3V3") (footprint "")
     )
-    (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/7a94b27e-02df-482b-9687-08c63dbe176b"
-      (reference "#PWR0102") (unit 1) (value "GND") (footprint "")
+    (path "/2fa2b14d-c4c1-4661-9edb-e2b76cbe62ef/103bebc4-d647-48f9-ae64-a1f77b552efa"
+      (reference "#PWR0102") (unit 1) (value "+5V") (footprint "")
     )
-    (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/fe437089-bda3-416d-a0f0-8e4311981daa"
-      (reference "#PWR0103") (unit 1) (value "GND") (footprint "")
+    (path "/2fa2b14d-c4c1-4661-9edb-e2b76cbe62ef/3e40e0a8-310a-4455-979e-173527757171"
+      (reference "#PWR0103") (unit 1) (value "+3V3") (footprint "")
     )
     (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/15af2c4e-1fae-44ba-bc31-e408dc888317"
       (reference "#PWR0104") (unit 1) (value "+3V3") (footprint "")
     )
     (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/7f65e158-04d3-4c9e-860f-2d43d290bb29"
       (reference "#PWR0105") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/2fa2b14d-c4c1-4661-9edb-e2b76cbe62ef/18e2f2cc-64f2-4c1a-8025-17924e6e288e"
+      (reference "#PWR0106") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/2fa2b14d-c4c1-4661-9edb-e2b76cbe62ef/10caeaad-c2b2-460b-9b15-978b86303b7e"
+      (reference "#PWR0107") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/6105a736-ef32-44de-b0b0-5909b7a241b8"
+      (reference "#PWR0108") (unit 1) (value "+3V3") (footprint "")
+    )
+    (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/68f1c0d4-dd50-4045-9f9b-6b13d3cd6330"
+      (reference "#PWR0109") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/902b1673-d6d0-48af-bd08-c6d48de37504"
+      (reference "#PWR0110") (unit 1) (value "GND") (footprint "")
     )
     (path "/2fa2b14d-c4c1-4661-9edb-e2b76cbe62ef/30083b66-2041-47e5-b2f5-04471ea0925a"
       (reference "C1") (unit 1) (value "2.2uF") (footprint "Capacitor_SMD:C_0805_2012Metric")
@@ -355,6 +370,9 @@
     (path "/1f1ae0f0-fe6f-4b1c-b941-e16b69b97194"
       (reference "H4") (unit 1) (value "MountingHole") (footprint "kicadlibrary:MountingHole_3.2mm_M3_BARE")
     )
+    (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/368eb27c-6b05-48aa-8c54-2a3ad4ae94ab"
+      (reference "J1") (unit 1) (value "Conn_02x08") (footprint "Connector_PinHeader_2.54mm:PinHeader_2x08_P2.54mm_Vertical")
+    )
     (path "/53266b87-52b6-481e-baf5-dd58dce0c567/c469846c-a104-4bfc-aae8-66d18a7e7de0"
       (reference "J2") (unit 1) (value "I2S_MIC") (footprint "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical")
     )
@@ -376,8 +394,35 @@
     (path "/7b5a11ad-a9f0-478d-aabc-930d8269097c/16230ef5-0558-4a3c-bd5f-8c832a6c908a"
       (reference "R12") (unit 1) (value "0R") (footprint "Resistor_SMD:R_1206_3216Metric")
     )
-    (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/8d7f5cc1-f59d-4b86-85d7-d50dbe58165a"
-      (reference "U1") (unit 1) (value "ESP32_30Pin_Breakout") (footprint "kicadlibrary:ESP32_30Pin_Breakout")
+    (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/f214b5c8-ef87-46e3-a1a6-be5658c634c5"
+      (reference "TP1") (unit 1) (value "CANRX") (footprint "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm")
+    )
+    (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/f8b228e9-7666-4261-8774-b6e81c2986ac"
+      (reference "TP2") (unit 1) (value "EN") (footprint "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm")
+    )
+    (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/c1e7abff-16d2-4da9-895c-b02ed80bf85e"
+      (reference "TP3") (unit 1) (value "WSEL") (footprint "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm")
+    )
+    (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/71267d5a-1a65-4b33-80ae-f14716ec5bf4"
+      (reference "TP4") (unit 1) (value "CANTX") (footprint "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm")
+    )
+    (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/b41f0a60-c04e-4329-9d23-febe0772aebc"
+      (reference "TP5") (unit 1) (value "DOUT") (footprint "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm")
+    )
+    (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/9f22dfbd-a88e-4a76-9b11-0ceca7e6a582"
+      (reference "TP6") (unit 1) (value "BCK") (footprint "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm")
+    )
+    (path "/2fa2b14d-c4c1-4661-9edb-e2b76cbe62ef/40cdbbb0-f383-4991-9995-ccee63ff6a1e"
+      (reference "TP8") (unit 1) (value "5V0") (footprint "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm")
+    )
+    (path "/2fa2b14d-c4c1-4661-9edb-e2b76cbe62ef/4c35e738-061c-4dbb-81e1-821d14cd10f4"
+      (reference "TP9") (unit 1) (value "3V3") (footprint "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm")
+    )
+    (path "/2fa2b14d-c4c1-4661-9edb-e2b76cbe62ef/f80b97cf-dff0-4dab-9912-a14ecfc6341d"
+      (reference "TP10") (unit 1) (value "GND") (footprint "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm")
+    )
+    (path "/2fa2b14d-c4c1-4661-9edb-e2b76cbe62ef/5c73a769-bfa1-406a-91e7-014a758d3e00"
+      (reference "TP11") (unit 1) (value "GND") (footprint "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm")
     )
     (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/263ceeb5-a3d7-42ad-b544-7786cd73d4c9"
       (reference "U2") (unit 1) (value "WeMos_LoLin32_Lite") (footprint "kicadlibrary:WEMOS_LoLin32_Lite")
