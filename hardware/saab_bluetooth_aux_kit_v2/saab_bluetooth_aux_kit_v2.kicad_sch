@@ -328,6 +328,27 @@
     (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/902b1673-d6d0-48af-bd08-c6d48de37504"
       (reference "#PWR0110") (unit 1) (value "GND") (footprint "")
     )
+    (path "/53266b87-52b6-481e-baf5-dd58dce0c567/33dbbcf4-5fd1-42b9-8a5a-ae7868437eea"
+      (reference "#PWR0111") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/53266b87-52b6-481e-baf5-dd58dce0c567/9614afee-d85c-4e37-b7c9-3f6a0726b7ef"
+      (reference "#PWR0112") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/53266b87-52b6-481e-baf5-dd58dce0c567/d98b61e0-d6cf-45e0-be2d-5e2be469e041"
+      (reference "#PWR0113") (unit 1) (value "+5V") (footprint "")
+    )
+    (path "/53266b87-52b6-481e-baf5-dd58dce0c567/f699bad7-1d54-4ab2-8d4e-cb6527f1bf7c"
+      (reference "#PWR0114") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/53266b87-52b6-481e-baf5-dd58dce0c567/8889906c-efcf-4ade-abda-666ee2b162ee"
+      (reference "#PWR0115") (unit 1) (value "+12V") (footprint "")
+    )
+    (path "/53266b87-52b6-481e-baf5-dd58dce0c567/d62b9747-f33c-4238-945e-0988aa465b71"
+      (reference "#PWR0116") (unit 1) (value "+3V3") (footprint "")
+    )
+    (path "/2fa2b14d-c4c1-4661-9edb-e2b76cbe62ef/a6f3c419-66c0-41ae-81eb-8de627c8ad1d"
+      (reference "#PWR0117") (unit 1) (value "GND") (footprint "")
+    )
     (path "/2fa2b14d-c4c1-4661-9edb-e2b76cbe62ef/30083b66-2041-47e5-b2f5-04471ea0925a"
       (reference "C1") (unit 1) (value "2.2uF") (footprint "Capacitor_SMD:C_0805_2012Metric")
     )
@@ -376,6 +397,9 @@
     (path "/53266b87-52b6-481e-baf5-dd58dce0c567/c469846c-a104-4bfc-aae8-66d18a7e7de0"
       (reference "J2") (unit 1) (value "I2S_MIC") (footprint "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical")
     )
+    (path "/53266b87-52b6-481e-baf5-dd58dce0c567/a500369a-3292-46a6-8a64-7c1bf6098bda"
+      (reference "J3") (unit 1) (value "POWER") (footprint "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical")
+    )
     (path "/53266b87-52b6-481e-baf5-dd58dce0c567/fa0623db-e2fa-4b5f-8fa0-4d4500c3e5f7"
       (reference "J4") (unit 1) (value "Conn_VCC") (footprint "kicadlibrary:Molex_Mega-Fit_76825-0002_2x01_P5.70mm_Horizontal")
     )
@@ -411,6 +435,9 @@
     )
     (path "/886f198d-d54b-48bc-876a-d12e0fc086d6/9f22dfbd-a88e-4a76-9b11-0ceca7e6a582"
       (reference "TP6") (unit 1) (value "BCK") (footprint "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm")
+    )
+    (path "/2fa2b14d-c4c1-4661-9edb-e2b76cbe62ef/afaba1e2-ef7a-42f2-9580-4c73c4f4bbcc"
+      (reference "TP7") (unit 1) (value "GND") (footprint "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm")
     )
     (path "/2fa2b14d-c4c1-4661-9edb-e2b76cbe62ef/40cdbbb0-f383-4991-9995-ccee63ff6a1e"
       (reference "TP8") (unit 1) (value "5V0") (footprint "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm")
