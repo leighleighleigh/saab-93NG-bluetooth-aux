@@ -2,8 +2,8 @@
 A module to augment the Aux-In functionality of SAAB 93NG's (2002/3+), to add Bluetooth media playback and steering wheel media control support.
 
 <blockquote>
-<p><b>August 11th 2022 update - hardware revision is underway, with the schematics and first PCB draft complete.</b></p>
-<img src="https://raw.githubusercontent.com/leighleighleigh/saab-93NG-bluetooth-aux/master/images/hw_v2.png" width="1280" height="auto">
+<p><b>September 30th 2022 update - PCB ordered!</b></p>
+<img src="https://raw.githubusercontent.com/leighleighleigh/saab-93NG-bluetooth-aux/master/images/hw_kit_v2.png" width="1280" height="auto">
 </blockquote>
 
 # Features
@@ -14,21 +14,25 @@ A module to augment the Aux-In functionality of SAAB 93NG's (2002/3+), to add Bl
    - *WIP* Voice Assistant 
    - *WIP* Accept incoming phone call 
  - **[SOON]** Digital Microphone support
- - **[SOON]** SID integration for automatic Aux-switching
+ - **[FUTURE]** SID integration for automatic Aux-switching
  - **[FUTURE]** SID augmentation, to show music track names etc.
 
 # Project Layout
-- /hardware_saab_bluetooth_aux_kit
+- /hardware/saab_bluetooth_aux_kit
   - Version 1 hardware. Very basic, breakout-module-based. KiCAD 5
+- /hardware/saab_bluetooth_aux_kit_v2
+  - Version 2 of the 'kit'. WeMos LOLIN32-Lite module is used as the MCU. Some SMD components for power supply and CAN. Multiple through-hole DAC options (PCM5102, UDH1334H). KiCAD 6.
 - /hardware/esp32_93NG_btaux_v2
-  - Version 2 hardware. SMD components. Multiple DAC options. SID/HPD interfaces. KiCAD 6.
+  - Version 2 hardware, unfinished. Intention was to use full-SMD components, and have multiple CAN interfaces. Currently too much work, and not as approachable for newbies.
 - /esp32_a2dp_reciever
   - PlatformIO project, the software flashed to the ESP32 module.
   - Utilises the Arduino for ESP32 framework.
 
 # Version 1, Prototype
 The first edition of the PCB serves only to wire together some off-the-shelf modules, after they were tested on a breadboard.
+
 <img src="https://i.imgur.com/RzdHh4H.jpg" width="256" height="auto">
+
 ## Prototype parts
  - ESP32 NodeMCU Board (30-pin variant)
  - Adafruit I2S to Stereo DAC (UDA1334)
