@@ -3022,7 +3022,7 @@
       ) (layer "F.SilkS") (width 0) (fill solid) (tstamp c7a2c137-1406-4d3c-8e90-cf2701ad4998))
   )
 
-  (footprint "kicadlibrary:MountingHole_3.2mm_M3_BARE" (layer "F.Cu")
+  (footprint "kicadlibrary:MountingHole_3.2mm_M3_BARE" locked (layer "F.Cu")
     (tedit 56D1B4CB) (tstamp 895e4b2a-3179-4ee5-8acf-438465b8f6bb)
     (at 151.0792 113.919002)
     (descr "Mounting Hole 3.2mm, no annular, M3, bare FR4")
@@ -3046,7 +3046,7 @@
     (fp_circle (center 0 0) (end 3.45 0) (layer "F.SilkS") (width 0.15) (fill none) (tstamp cdd5cb16-2f8d-4b91-86c8-0918ae6fe043))
     (fp_circle (center 0 0) (end 3.2 0) (layer "Cmts.User") (width 0.15) (fill none) (tstamp 566b990a-1b62-4da9-82ab-7677d0c5983f))
     (fp_circle (center 0 0) (end 3.45 0) (layer "F.CrtYd") (width 0.05) (fill none) (tstamp 065e377c-bef2-495c-8cad-b93952f1aedf))
-    (pad "" np_thru_hole circle (at 0 0) (size 3.2 3.2) (drill 3.2) (layers F&B.Cu *.Mask) (tstamp b0554c7f-b066-4b87-9948-19e2e18a2e6d))
+    (pad "" np_thru_hole circle locked (at 0 0) (size 3.2 3.2) (drill 3.2) (layers F&B.Cu *.Mask) (tstamp b0554c7f-b066-4b87-9948-19e2e18a2e6d))
     (zone (net 0) (net_name "") (layers *.Cu) (tstamp f7c99b3c-f58c-4602-9c01-9437ce10d4aa) (name "MOUNT_FR4_BARE") (hatch edge 0.508)
       (connect_pads (clearance 0))
       (min_thickness 0.254)
@@ -3115,6 +3115,11 @@
           (xy 154.484111 113.942773)
         )
       )
+    )
+    (model "${KIPRJMOD}/packages3D/1551WXGY_bottom.stp"
+      (opacity 0.3000)      (offset (xyz 27.5 -32.5 -8))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 0))
     )
   )
 
@@ -4226,6 +4231,11 @@
           (xy 209.500511 113.942773)
         )
       )
+    )
+    (model "${KIPRJMOD}/packages3D/1551WXGY_top.stp"
+      (opacity 0.3000)      (offset (xyz -27.5 -32.5 8))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 0))
     )
   )
 
